@@ -1,11 +1,22 @@
 <?php
-
+use App\Http\Controllers\QuiBioController;
+use App\Http\Controllers\egresado\egresadoController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+//Rutas Egresado 
+
+Route::get('/bienvenida', [EgresadoController::class, 'bienvenida'])->name('egresado.bienvenida');
+
+Route::get('/instrucciones', [EgresadoController::class, 'instrucciones'])->name('egresado.instrucciones');
+
+
+
+//Rutas Egresado  Fin
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -20,3 +31,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/general.php';
+require __DIR__.'/quibio.php';
+require __DIR__.'/admin.php';
+

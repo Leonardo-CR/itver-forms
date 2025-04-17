@@ -1,3 +1,54 @@
+@php
+    //Rutas del proyecto separadas en grupos
+    $links = [
+        
+            [
+                'name' => 'Dashboard',
+                'icon' => 'home',
+                'url' =>  route('dashboard'),
+                'current' => request()->routeIs('dashboard')
+            ],
+            [
+                'name' => 'Bienvenida',
+                'icon' => 'home',
+                'url' =>  route('egresado.bienvenida'),
+                'current' => request()->routeIs('egresado.bienvenida.*')
+            ],
+            [
+                'name' => 'Instrucciones',
+                'icon' => 'clipboard-document-list',
+                'url' =>  route('egresado.instrucciones'),
+                'current' => request()->routeIs('egresado.instrucciones.*')
+            ],
+            [
+                'name' => 'Encuesta',
+                'icon' => 'academic-cap',
+                'url' =>  route('egresado.encuesta'),
+                'current' => request()->routeIs('egresado.encuesta.*')
+            ],
+            [
+                'name' => 'Encuesta QuiBio',
+                'icon' => 'academic-cap',
+                'url' =>  route('quibio.encuesta'),
+                'current' => request()->routeIs('quibio.*')
+            ],
+            [
+                'name' => 'Avisos',
+                'icon' => 'inbox',
+                'url' =>  route('avisos'),
+                'current' => request()->routeIs('avisos.*')
+            ],
+            
+            
+            
+];
+        
+        
+        
+
+        
+    
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
@@ -7,47 +58,31 @@
         <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
+            {{-- Logo y titulo --}}
             <a href="{{ route('dashboard') }}" class="ml-2 mr-5 flex items-center space-x-2 lg:ml-0" wire:navigate>
                 <x-app-logo />
             </a>
 
+            {{-- Menu y links --}}
             <flux:navbar class="-mb-px max-lg:hidden">
-                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
+
+                @foreach ($links as $link)
+                <flux:navbar.item icon="{{ $link['icon'] }}" href="{{ $link['url'] }}" current="{{ $link['current'] }}" wire:navigate>
+                    {{ $link['name'] }}
                 </flux:navbar.item>
+                @endforeach
             </flux:navbar>
 
             <flux:spacer />
 
-            <flux:navbar class="mr-1.5 space-x-0.5 py-0!">
-                <flux:tooltip :content="__('Search')" position="bottom">
-                    <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
-                </flux:tooltip>
-                <flux:tooltip :content="__('Repository')" position="bottom">
-                    <flux:navbar.item
-                        class="h-10 max-lg:hidden [&>div>svg]:size-5"
-                        icon="folder-git-2"
-                        href="https://github.com/laravel/livewire-starter-kit"
-                        target="_blank"
-                        :label="__('Repository')"
-                    />
-                </flux:tooltip>
-                <flux:tooltip :content="__('Documentation')" position="bottom">
-                    <flux:navbar.item
-                        class="h-10 max-lg:hidden [&>div>svg]:size-5"
-                        icon="book-open-text"
-                        href="https://laravel.com/docs/starter-kits"
-                        target="_blank"
-                        label="Documentation"
-                    />
-                </flux:tooltip>
-            </flux:navbar>
+            
 
             <!-- Desktop User Menu -->
             <flux:dropdown position="top" align="end">
-                <flux:profile
+                <flux:button
                     class="cursor-pointer"
-                    :initials="auth()->user()->initials()"
+                    icon="user"
+                    
                 />
 
                 <flux:menu>
@@ -73,7 +108,10 @@
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
+
                         <flux:menu.item href="/settings/profile" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+
+
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />

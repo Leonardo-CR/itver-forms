@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Aviso;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'leo@leo.com',
             'password' => bcrypt('12345'),
         ]);
+        Aviso::factory(20)->create();
     }
 }
