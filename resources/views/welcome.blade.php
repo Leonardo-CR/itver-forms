@@ -66,7 +66,7 @@
                         @auth
                             <a
                                 href="{{ url('/dashboard') }}"
-                                class=""
+                                class="font-bold text-white text-sm py-1 sm:text-xl bg-blue-500 rounded px-2 py-2 sm:px-4 sm:mr-6 hover:bg-blue-700"
                             >
                                 Inicio
                             </a>

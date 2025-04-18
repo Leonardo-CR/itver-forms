@@ -19,6 +19,9 @@ return new class extends Migration
             $table->date('fecha_cierre');
             $table->time('hora_inicio');
             $table->time('hora_cierre');
+            
+            $table->unsignedBigInteger('cv_tipo_encuesta');
+            $table->foreign('cv_tipo_encuesta')->references('cv_tipo_encuesta')->on('tipo_encuesta');
         });
     }
 
