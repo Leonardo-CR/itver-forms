@@ -9,6 +9,8 @@ use Livewire\Volt\Volt;
 
 //Rutas Egresado quimica y bioquimica
 
+Route::post('/quibio/store', [QuiBioController::class, 'store'])->name('quibio.store');
+
 //Rutas datos personales
 Route::get('/quibio/encuesta', [QuiBioController::class, 'encuesta'])->name('quibio.encuesta');
 //1
