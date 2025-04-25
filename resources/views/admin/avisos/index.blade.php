@@ -11,6 +11,7 @@
     
         </flux:breadcrumbs>
     
+    <a href="{{ route('admin.avisos.export') }}" class="btn btn-blue">Exportar Avisos</a>
     
     <a href="{{ route('admin.avisos.create') }}" class="btn btn-blue">Nuevo</a>
     </div>

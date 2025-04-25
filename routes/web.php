@@ -3,7 +3,7 @@ use App\Http\Controllers\QuiBioController;
 use App\Http\Controllers\egresado\egresadoController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-
+use App\Http\Controllers\admin\AvisoController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
