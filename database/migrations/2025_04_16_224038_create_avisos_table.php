@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('contenido')->nullable();;
-            $table->string('imagen')->nullable();
+            $table->string('imagen_ruta')->nullable();
             $table->string('url')->nullable();
             $table->boolean('publicado')->default(false);
             $table->date('fecha_publicacion')->nullable();

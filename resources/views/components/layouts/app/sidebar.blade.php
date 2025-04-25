@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
+        {{-- stack para el editor de texto enrequesido --}}
+        @stack('css')
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800 h-screen">
@@ -128,5 +130,6 @@
         {{ $slot }}
 
         @fluxScripts
+        @stack('js')
     </body>
 </html>
