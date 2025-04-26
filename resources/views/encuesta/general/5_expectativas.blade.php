@@ -9,15 +9,15 @@
         <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Le gustaría tomar cursos de actualización?</label>
         <div class="grid gap-4 md:grid-cols-1">
             <div class="flex items-center">
-                <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input id="radio-compromiso" type="radio" value="1" name="respuesta[s5_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
             </div>
             <div class="flex items-center">
-                <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input id="radio-compromiso" type="radio" value="2" name="respuesta[s5_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
             </div>
             <div>
-                <textarea id="message" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                <textarea id="message" name="respuesta[s5_p2]" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                 border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Cuáles"></textarea>
             </div>
@@ -28,15 +28,15 @@
         <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Le gustaría tomar algún posgrado?</label>
         <div class="grid gap-4 md:grid-cols-1">
             <div class="flex items-center">
-                <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input id="radio-compromiso" type="radio" value="1" name="respuesta[s5_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
             </div>
             <div class="flex items-center">
-                <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input id="radio-compromiso" type="radio" value="2" name="respuesta[s5_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
             </div>
             <div>
-                <textarea id="message" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                <textarea id="message" name="respuesta[s5_p4]" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                 border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Cuál?"></textarea>
             </div>
@@ -49,15 +49,15 @@
             <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Pertenece a organizaciones sociales?</label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="1" name="respuesta[s5_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="2" name="respuesta[s5_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
                 </div>
                 <div>
-                    <textarea id="message" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                    <textarea id="message" name="respuesta[s5_p6]" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                     border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Cuáles?"></textarea>
                 </div>
@@ -68,15 +68,15 @@
             <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Pertenece a organismos de profesionistas?</label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="1" name="respuesta[s5_p7]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="2" name="respuesta[s5_p7]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
                 </div>
                 <div>
-                    <textarea id="message" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                    <textarea id="message" name="respuesta[s5_p8]" rows="1" class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                     border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="¿Cuál?"></textarea>
                 </div>
@@ -87,11 +87,11 @@
             <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Pertenece a la asociación de egresados?</label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="1" name="respuesta[s5_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="radio-compromiso" type="radio" value="compromiso" name="obstaculo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="radio-compromiso" type="radio" value="2" name="respuesta[s5_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
                 </div>
             </div>
@@ -101,7 +101,7 @@
             <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">COMENTARIOS Y SUGERENCIAS</label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div>
-                    <textarea id="message" rows="1" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border 
+                    <textarea id="message" name="respuesta[s5_p10]" rows="1" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border 
                     border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máx 100 palabras"></textarea>
                 </div>

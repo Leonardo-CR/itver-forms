@@ -22,7 +22,7 @@
         <p class="flex-1 text-base"><span class="italic font-semibold">El egresado explica</span> su situación laboral/profesional actual.</p>
         <div class="flex items-center gap-2 text-sm shrink-0">
           <span class="bg-orange-500 text-white px-2 py-1 rounded flex items-center gap-1">Pendiente <span>🕒</span></span>
-            <a href="{{ route('general.datos_personales') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
+            <a href="{{ route("general.datos_personales") }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
               Responder <span>✍️</span>
             </a>
             
@@ -38,7 +38,7 @@
         <p class="flex-1 text-base"><span class="italic font-semibold">El egresado explica</span> su situación laboral/profesional actual.</p>
         <div class="flex items-center gap-2 text-sm shrink-0">
           <span class="bg-orange-500 text-white px-2 py-1 rounded flex items-center gap-1">Pendiente <span>🕒</span></span>
-            <a href="{{ route('general.pertinencia') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
+            <a href="{{ route("general.pertinencia") }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
               Responder <span>✍️</span>
             </a>
             
@@ -54,7 +54,7 @@
         <p class="flex-1 text-base"><span class="italic font-semibold">El egresado explica</span> su situación laboral/profesional actual.</p>
         <div class="flex items-center gap-2 text-sm shrink-0">
           <span class="bg-orange-500 text-white px-2 py-1 rounded flex items-center gap-1">Pendiente <span>🕒</span></span>
-          <a href="{{ route('general.ubicacion') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
+          <a href="{{ route("general.ubicacion") }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
             Responder <span>✍️</span>
           </a>
         </div>
@@ -68,7 +68,7 @@
         <p class="flex-1 text-base"><span class="italic font-semibold">El egresado explica</span> su situación laboral/profesional actual.</p>
         <div class="flex items-center gap-2 text-sm shrink-0">
           <span class="bg-orange-500 text-white px-2 py-1 rounded flex items-center gap-1">Pendiente <span>🕒</span></span>
-          <a href="{{ route('general.desempeno') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
+          <a href="{{ route("general.desempeno") }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center gap-1">
             Responder <span>✍️</span>
           </a>
         </div>
@@ -118,7 +118,7 @@
       </div>  
 
       <div class="flex justify-end pt-2">
-      <a href="{{ route('general.expectativas') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center w-[120px] ">
+      <a href="{{ route("general.expectativas") }}" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded flex items-center w-[120px] ">
         Responder <span>✍️</span> </a>
       </div>
     </div>

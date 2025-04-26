@@ -2,32 +2,56 @@
     <div class="mb-4 flex justify-between items-left text-xs">
         <flux:breadcrumbs >
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item >Avisos</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item >Encuestas</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a href="{{ route('admin.avisos.create') }}" class="btn btn-blue">Nuevo</a>
+        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">Nuevo</a>
     </div>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">ID</th>
-                    <th scope="col" class="px-6 py-3">Title</th>
-                    <th scope="col" class="px-6 py-3">Editar</th>
+                    <th scope="col" class="px-6 py-3">Clave Única</th>
+                    <th scope="col" class="px-6 py-3">Periodo</th>
+                    <th scope="col" class="px-6 py-3">Estado</th>
+                    <th scope="col" class="px-6 py-3">Fecha de Inicio</th>
+                    <th scope="col" class="px-6 py-3">Hora de Inicio</th>
+                    <th scope="col" class="px-6 py-3">Fecha de Cierre</th>
+                    <th scope="col" class="px-6 py-3">Hora de Cierre</th>
+                    <th scope="col" class="px-6 py-3">Tipo de Encuesta</th>
+                    <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($avisos as $aviso)
+                @foreach ($encuestas as $encuesta)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                     <td class="px-6 py-4">
-                        {{ $aviso->id }}
+                        {{ $encuesta->cv_encuesta }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $aviso->titulo }}
+                        {{ $encuesta->periodo }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->is_active ? 'Activo' : 'Inactivo' }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->fecha_inicio }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->hora_inicio }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->fecha_cierre }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->hora_cierre }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $encuesta->tipo_encuesta->nombre }}
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">
-                            <a href="{{ route('admin.avisos.edit',$aviso) }}" class="btn btn-blue text-xs ">Editar</a>
-                            <form class="delete-form" action="{{ route('admin.avisos.destroy',$aviso) }}" method="POST">
+                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs ">Editar</a> 
+                            <form class="delete-form" action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-red text-xs">Eliminar</button>
@@ -40,7 +64,7 @@
         </table>
     </div>
     <div class="mt-4">
-        {{ $avisos->links() }}
+        {{ $encuestas->links() }}
     </div>
         {{-- Referenciamos el espacio que se creo en resource/views/components/app.blade
         @push('js')
