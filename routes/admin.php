@@ -4,8 +4,12 @@
 use App\Http\Controllers\admin\AvisoController;
 use Illuminate\Support\Facades\Route;
 
+use App\Imports\AvisosImport;
+
+use Illuminate\Http\Request;
+
 
 Route::resource('admin/avisos', AvisoController::class)->names('admin.avisos')->middleware('auth');
 
-Route::get('admin/avisos/export', [AvisoController::class, 'exportacion'])->name('admin.avisos.export')->middleware('auth');
+
 

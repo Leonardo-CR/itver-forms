@@ -10,8 +10,17 @@
             <flux:breadcrumbs.item >Avisos</flux:breadcrumbs.item>
     
         </flux:breadcrumbs>
-    
-    <a href="{{ route('admin.avisos.export') }}" class="btn btn-blue">Exportar Avisos</a>
+        <!-- Formulario para importar -->
+        <form action="{{ route('admin.avisos.importar') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="archivo" required>
+            <button type="submit">Importar Avisos</button>
+        </form>
+        {{-- Link para exportar --}}
+        <a href="{{ route('admin.avisos.exportar') }}" class="btn btn-blue">
+            <button>Exportar Avisos</button>
+        </a>
+        
     
     <a href="{{ route('admin.avisos.create') }}" class="btn btn-blue">Nuevo</a>
     </div>

@@ -13,37 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AvisoController extends Controller
 {
-    public function exportacion()
-    {
-        
-        $avisos = Aviso::all(['titulo']); // Obtener solo el campo 'titulo'
-
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        // Establecer los encabezados
-        $sheet->setCellValue('A1', 'Título');
-
-        // Agregar los datos de los avisos
-        $row = 2;
-        foreach ($avisos as $aviso) {
-            $sheet->setCellValue('A' . $row, $aviso->titulo);
-            $row++;
-        }
-
-        // Crear el archivo Excel
-        $writer = new Xlsx($spreadsheet);
-        $fileName = 'avisos.xlsx';
-
-        // Guardar el archivo en un stream para descarga
-        return response()->stream(function () use ($writer) {
-            $writer->save('php://output');
-        }, 200, [
-            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'Content-Disposition' => 'attachment;filename="avisos.xlsx"',
-            'Cache-Control' => 'max-age=0',
-        ]);
-    }
     /**
      * Display a listing of the resource.
      */
