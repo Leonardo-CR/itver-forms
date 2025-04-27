@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Http\Controllers\Controller;
 use App\Models\Aviso;
 use Illuminate\Http\Request;
