@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\QuiBioController;
-use App\Http\Controllers\egresado\egresadoController;
+use App\Http\Controllers\egresado\egresadosController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\admin\AvisoController;
@@ -32,9 +32,9 @@ Route::get('/', function () {
 
 //Rutas Egresado 
 
-Route::get('/bienvenida', [EgresadoController::class, 'bienvenida'])->name('egresado.bienvenida');
+Route::get('/bienvenida', [EgresadosController::class, 'bienvenida'])->name('egresado.bienvenida');
 
-Route::get('/instrucciones', [EgresadoController::class, 'instrucciones'])->name('egresado.instrucciones');
+Route::get('/instrucciones', [EgresadosController::class, 'instrucciones'])->name('egresado.instrucciones');
 
 
 
