@@ -5,7 +5,7 @@ namespace App\Http\Controllers\egresado;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class EgresadoController extends Controller
+class EgresadosController extends Controller
 {
     public function instrucciones()
     {

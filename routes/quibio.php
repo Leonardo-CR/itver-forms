@@ -1,6 +1,6 @@
 <?php
 //En este archivo estan las rutas de la encuesta quimica/bioquimica
-use App\Http\Controllers\egresado\egresadoController;
+use App\Http\Controllers\egresado\egresadosController;
 use App\Http\Controllers\egresado\QuiBioController;
 
 
