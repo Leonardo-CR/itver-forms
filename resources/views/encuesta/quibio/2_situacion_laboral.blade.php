@@ -70,8 +70,8 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white"> ¿Después de egresar, en cuanto tiempo conseguiste trabajo relacionado con tu carrera?</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input id="radio-compromiso" type="radio" value="Al egresar ya contaba con un trabajo" name="respuesta[s9_p4]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Al egresar ya contaba con un trabajo</label>
+                  <input id="radio-compromis" type="radio" value="Al egresar ya contaba con un trabajo" name="respuesta[s9_p4]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="radio-compromis" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Al egresar ya contaba con un trabajo</label>
               </div>
           <div class="flex items-center">
               <input id="radio-apoyo" type="radio" value="Menos de 9 meses" name="respuesta[s9_p4]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -88,7 +88,7 @@
           {{-- TextArea --}}
           <div>
               <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que la pregunta anterior sea "aún no lo consigo", ¿cuál es la razón?</label>
-              <textarea id="message" rows="4"  name="respuesta[s9_p4]"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
+              <textarea id="message" rows="4"  name="respuesta[s9_p5]"  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
           </div>
           </div>
       </div>
@@ -241,7 +241,7 @@
       <!-- Botón al final -->
       <div class="flex justify-end mt-8">
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:px-4 sm:py-2">
-          Enviar ➡️
+          Terminar Sección
         </button>
       </div>
     
