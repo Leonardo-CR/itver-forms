@@ -8,6 +8,7 @@ use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 use App\Models\Carrera;
+use Database\Seeders\RoleSeeder;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     public string $name = '';
@@ -40,6 +41,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered(($user = User::create($validated))));
+
+        // Asignar rol basado en el ID de la carrera
+        $quibioIds = [1, 2]; // <- aquí pon los IDs de química y bioquímica
+
+        if (in_array((int)$this->cv_carrera, $quibioIds)) {
+            $user->assignRole('egresado_quibio');
+        } else {
+            $user->assignRole('egresado_general');
+        }
 
         Auth::login($user);
 

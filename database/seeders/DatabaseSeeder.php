@@ -10,6 +10,7 @@ use App\Models\Carrera;
 use App\Models\Egresado;
 use App\Models\Encuesta;
 use App\Models\TipoEncuesta;
+use Database\Seeders\RoleSeeder;
 
 use function Pest\Laravel\call;
 
@@ -23,20 +24,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {        
-        
+        // Ejecutamos el seeder de roles
+        $this->call(RoleSeeder::class);
 
         Aviso::factory(20)->create();
         Admin::factory(20)->create();
-        Carrera::factory(20)->create();
-        Egresado::factory(20)->create();
+        //Carrera::factory(20)->create();
+        //Egresado::factory(20)->create();
         TipoEncuesta::factory(3)->create();
         Encuesta::factory(5)->create();
 
-        User::factory()->create([
-            'name' => 'Leo Rosas',
-            'email' => 'leo@leo.com',
-            'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
-            'password' => bcrypt('12345'),
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Leo Rosas',
+        //     'email' => 'leo@leo.com',
+        //     'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
+        //     'password' => bcrypt('12345'),
+        // ]);
     }
 }
