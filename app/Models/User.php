@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'cv_carrera',
         'password',
     ];
 
@@ -57,4 +58,16 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+    /**
+     * Define the relationship with the Carrera model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'cv_carrera', 'cv_carrera');
+        // Primero se indica la columna foránea 'cv_carrera' en el modelo User
+        // Luego la columna de la tabla relacionada 'cv_carrera' en el modelo Carrera
+    }
+
 }

@@ -14,4 +14,14 @@ class Carrera extends Model
     protected $primaryKey = 'cv_carrera'; 
     public $incrementing = false;
     public $timestamps = false;
+
+     /**
+     * La relación inversa de los usuarios.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class, 'cv_carrera', 'cv_carrera');
+    }
 }

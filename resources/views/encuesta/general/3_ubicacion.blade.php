@@ -28,7 +28,7 @@
           </div>
         </div>
         <!-- FILA 2-->
-        <div class="mb-6">
+        <div class="content-option Estudia Estudia-y-trabaja mb-6 hidden">
           <label for="ans5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Si estudia, indicar si es:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -60,8 +60,8 @@
           </div>
         </div>
         <!-- FILA 3-->
-        <div class="mb-6">
-          <label for="ans9" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de trabajar. Tiempo Transcurrido para obtener el primer empleo:</label>
+        <div class="content-option Trabaja mb-6 hidden Estudia-y-trabaja">
+          <label for="ans9" class="  block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de trabajar. Tiempo Transcurrido para obtener el primer empleo:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
               <input id="ans9" type="radio" value="Antes de Egresar" name="respuesta[s3_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -82,52 +82,56 @@
           </div>
         </div>
         <!-- FILA 4-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="ans13" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medio para Obtener el Empleo:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
-              <input id="ans13" type="radio" value="Bolsa de trabajo del plantel" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="option1" type="radio" value="Bolsa de trabajo del plantel" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans13" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bolsa de trabajo del plantel</label>
             </div>
             <div>
-              <input id="ans14" type="radio" value="Contactos personales" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="option2" type="radio" value="Contactos personales" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans14" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contactos personales</label>
             </div>
             <div>
-              <input id="ans15" type="radio" value="Residencia Profesional" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="option3" type="radio" value="Residencia Profesional" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans15" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Residencia Profesional</label>
             </div>
             <div>
-              <input id="ans16" type="radio" value="Medios masivos de comunicación" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="option4" type="radio" value="Medios masivos de comunicación" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans16" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Medios masivos de comunicación</label>
+            </div>
+            <div>
+              <input id="optionMostrar" type="radio" value="Medios masivos de comunicación" name="respuesta[s3_p6]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="ans16" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Otro</label>
             </div>
           </div>
         </div>
         <!-- FILA 5-->
-        <div class="mb-6">
-            <label for="otro2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otros:</label>
-            <input type="text" name="respuesta[s3_p7]" id="otro2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Recomendación profesional" required />
+        <div id="contentDiv" class="content-option hidden mb-6">
+            <label for="otro2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Especifique:</label>
+            <input type="text" name="respuesta[s3_p7]" id="ans_s3_p7" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Recomendación profesional" required />
         </div>  
         <!-- FILA 6-->
        
          <!-- FILA 1-->
-      <div class="mb-6">
+      <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="ans1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Requisitos de contratación:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
-              <input id="ans1" type="radio" value="Competencias laborales" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="op" type="radio" value="Competencias laborales" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Competencias laborales</label>
             </div>
             <div>
-              <input id="ans2" type="radio" value="Título Profesional" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="opa" type="radio" value="Título Profesional" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Título Profesional</label>
             </div>
             <div>
-              <input id="ans3" type="radio" value="Examen de selección" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="opc" type="radio" value="Examen de selección" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Examen de selección</label>
             </div>
             <div>
-              <input id="ans4" type="radio" value="Idioma Extranjero" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input id="opax" type="radio" value="Idioma Extranjero" name="respuesta[s3_p8]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans4" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Idioma Extranjero</label>
             </div>
             <div>
@@ -145,8 +149,8 @@
           </div>
         </div>
         <!-- FILA 2-->
-        <div class="mb-6">
-          <label for="ans7" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Idioma que utiliza en su trabajo</label>
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
+          <label for="ans7" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Idioma que utiliza en su trabajo</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
               <input id="ans7" type="radio" value="Inglés" name="respuesta[s3_p10]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -165,13 +169,13 @@
               <label for="ans10" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Japonés</label>
             </div>   
           </div>
-          <div>
-              <label for="otro2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
+          <div class="content-option Trabaja Estudia-y-trabaja hidden" >
+              <label for="otro2" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
               <input type="text" name="respuesta[s3_p11]" id="otro2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Turco" required />
           </div>
         </div>
         <!-- FILA 3-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="hablar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En qué proporción utiliza en el desempeño de sus actividades laborales cada una de las habilidades del  idioma extranjero</label>
           <div class="grid gap-6 mb-6 md:grid-cols-4">
             <div>
@@ -207,7 +211,7 @@
         <!-- FILA 6-->
       
          <!-- FILA 1-->
-      <div class="mb-6">
+      <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="ans1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Antigüedad en el empleo:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -231,13 +235,13 @@
               <label for="ans5" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Más de tres años</label>
             </div>
           </div>
-          <div>
+          <div class="content-option Trabaja Estudia-y-trabaja hidden">
             <label for="otro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Año de ingreso:</label>
             <input type="text" id="otro" name="respuesta[s3_p17]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2016" required />
           </div>
         </div>
         <!-- FILA 2-->
-        <div class="mb-4">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-4">
           <label for="ans6" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingreso (salario mínimo diario):</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -259,7 +263,7 @@
           </div>
         </div>
         <!-- FILA 3-->
-        <div class="mb-4">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-4">
           <label for="ans10" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nivel jerárquico en el trabajo:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -289,7 +293,7 @@
           </div>
         </div>
         <!-- FILA 4-->
-        <div class="mb-4">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-4">
           <label for="ans16" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condición de Trabajo:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -306,7 +310,7 @@
             </div>
           </div>
           <div>
-            <label for="otro2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
+            <label for="otro2" class="content-option Trabaja Estudia-y-trabaja hidden block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
             <input type="text" id="otro2" name="respuesta[s3_p21]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Auxiliar" required />
           </div>
         </div>
@@ -314,8 +318,8 @@
         <div class="flex">
         </div>
         <!-- FILA 1-->
-      <div class="mb-6">
-          <label for="ans1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Relación del trabajo con su área de formación:</label>
+      <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
+          <label for="ans1" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Relación del trabajo con su área de formación:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
               <input id="ans1" type="radio" value=0 name="respuesta[s3_p22]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -337,14 +341,14 @@
               <input id="ans5" type="radio" value=80 name="respuesta[s3_p22]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans5" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">80%</label>
             </div>
-            <div>
+            <div class="content-option Trabaja Estudia-y-trabaja hidden">
               <input id="ans6" type="radio" value=100 name="respuesta[s3_p22]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans6" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">100%</label>
             </div>
           </div>
         </div>
         <!-- FILA 1-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6 ">
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Datos de la empresa u organismo:</label>
           <label for="ans7" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Organismo:</label>
           <div class="flex flex-col mb-4 sexo">
@@ -363,17 +367,17 @@
           </div>
         </div>
         <!-- FILA 5-->
-        <div class="mb-6">
+        <div class=" content-option Trabaja Estudia-y-trabaja hidden mb-6 ">
           <label for="giro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giro o actividad principal de la empresa u organismo:</label>
           <input type="text" id="giro" name="respuesta[s3_p24]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Imprenta" required />
         </div>
         <!-- FILA 5-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="razon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Razón  Social:</label>
           <input type="text" id="razon" name="respuesta[s3_p25]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Impresos Creativos del Golfo, S.A. de C.V." required />
         </div>
         <!-- FILA 5-->
-        <div class="grid gap-6 mb-6 md:grid-cols-3">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden grid gap-6 mb-6 md:grid-cols-3">
           <div>
             <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
             <input type="text" id="estado" name="respuesta[s3_p26]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
@@ -388,7 +392,7 @@
           </div>
         </div>
         <!-- FILA 6-->
-        <div class="grid gap-6 mb-6 md:grid-cols-4">
+        <div class="grid gap-6 mb-6 md:grid-cols-4 content-option Trabaja Estudia-y-trabaja hidden">
           <div>
             <label for="colonia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Colonia:</label>
             <input type="text" id="colonia" name="respuesta[s3_p29]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Infonavit Buenavista" required />
@@ -407,7 +411,7 @@
           </div>
         </div>
         <!-- FILA 7-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <div class="flex w-full gap-4">
             <div class="basis-[30%]">
               <label for="lada" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lada:</label>
@@ -424,7 +428,7 @@
           </div>  
         </div>
         <!-- FILA 7-->
-        <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo electronico:</label>
             <input type="text" id="correo" name="respuesta[s3_p36]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="aaronsalasn@gmail.com" required />
@@ -434,7 +438,7 @@
             <input type="text" id="web" name="respuesta[s3_p37]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="https://creativosgolfo.com/" required />
           </div>
         </div>
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <div>
             <label for="jefe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre y Puesto del  Jefe Inmediato:</label>
             <input type="text" id="jefe" name="respuesta[s3_p38]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bruno Diaz, CEO" required />
@@ -443,7 +447,7 @@
         <!-- FILA 5-->
         
          <!-- FILA 1-->
-      <div class="mb-6">
+      <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="ans1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sector Económico de la Empresa u Organización</label>
           <p class="block mb-2 text-sm uppercase font-medium text-gray-900 dark:text-white">sector primario:</p>
           <div class="flex flex-col mb-4 sexo">
@@ -466,7 +470,7 @@
           </div>    
         </div>
         <!-- FILA 2-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <p class="block mb-2 text-sm uppercase font-medium text-gray-900 dark:text-white">sector secundario:</p>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -488,7 +492,7 @@
           </div>
         </div>
         <!-- FILA 2-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <p class="block mb-2 text-sm uppercase font-medium text-gray-900 dark:text-white">sector terciario:</p>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -514,7 +518,7 @@
           </div>
         </div>
         <!-- FILA 2-->
-        <div class="mb-6">
+        <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="ans14" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tamaño de la empresa u organización</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
@@ -541,4 +545,67 @@
         </div>
       </form>
     </div>
+
+    <script>
+   // Función que oculta todos los divs con la clase "content-option"
+function hideAllDivs() {
+    const allDivs = document.querySelectorAll('.content-option');
+    allDivs.forEach(div => {
+        div.classList.add('hidden');
+    });
+}
+
+// Función que muestra el div correspondiente según la clase
+function showDiv(className) {
+    const divs = document.querySelectorAll('.content-option');
+    divs.forEach((div) => {
+        if (div.classList.contains(className)) {
+            div.classList.remove('hidden');
+        }
+    });
+}
+
+// Añadir eventos a los radio buttons
+document.querySelectorAll('input[name="respuesta[s3_p1]"]').forEach((radio) => {
+    radio.addEventListener('change', function() {
+        hideAllDivs();
+        // Se pasa la clase del valor del radio
+        showDiv(this.value.replace(/\s+/g, '-')); // Reemplazamos los espacios por guiones en caso de que el valor tenga varios términos
+    });
+});
+
+      </script>
+
+      {{-- SCRIPT PARA OCULTAR O MOSTRAR CUANDO SE DA CLICK A LA OPCION OTRO --}}
+<script>
+  const optionMostrarRadio = document.getElementById('optionMostrar');// Este es el que muestra el div
+    const option1Radio = document.getElementById('option1');  
+    const option2Radio = document.getElementById('option2');
+    const option3Radio = document.getElementById('option3');
+    const option4Radio = document.getElementById('option4');
+
+    const contentDiv = document.getElementById('contentDiv');
+
+    // Función para mostrar u ocultar el div según la opción seleccionada
+    function toggleDivVisibility() {
+      if (optionMostrarRadio.checked) {
+        contentDiv.classList.remove('hidden');
+        contentDiv.classList.add('block');
+      } else {
+        contentDiv.classList.remove('block');
+        contentDiv.classList.add('hidden');
+      }
+    }
+
+    // Agregar eventos para las opciones
+    optionMostrarRadio.addEventListener('change', toggleDivVisibility);
+    option1Radio.addEventListener('change', toggleDivVisibility);
+    option2Radio.addEventListener('change', toggleDivVisibility);
+    option3Radio.addEventListener('change', toggleDivVisibility);
+    option4Radio.addEventListener('change', toggleDivVisibility);
+
+    // Llamar a la función al inicio para verificar si hay alguna opción seleccionada
+    toggleDivVisibility(); 
+</script>
+      </script>
   </x-layouts.app>

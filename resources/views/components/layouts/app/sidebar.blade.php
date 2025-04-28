@@ -1,3 +1,45 @@
+@php
+    //Rutas del proyecto separadas en grupos
+    $groups = [
+        'Plataforma' => [
+            [
+                'name' => 'Dashboard',
+                'icon' => 'home',
+                'url' =>  route('dashboard'),
+                'current' => request()->routeIs('dashboard')
+            ],
+            [
+                'name' => 'Avisos',
+                'icon' => 'chat-bubble-left-ellipsis',
+                'url' =>  route('admin.avisos.index'),
+                'current' => request()->routeIs('admin.avisos.*')
+            ],
+            [
+                'name' => 'Egresados',
+                'icon' => 'academic-cap',
+                'url' =>  route('admin.egresados.index'),
+                'current' => request()->routeIs('admin.avisos.*')
+            ],
+            [
+                'name' => 'Adminstradores',
+                'icon' => 'key',
+                'url' =>  route('admin.admins.index'),
+                'current' => request()->routeIs('admin.admins.*')
+            ],
+            [
+                'name' => 'Encuestas',
+                'icon' => 'pencil-square',
+                'url' =>  route('admin.encuestas.index'),
+                'current' => request()->routeIs('admin.encuestas.*')
+            ],
+            
+
+        ],
+               
+    ];
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
@@ -14,10 +56,25 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+
+            @foreach ($groups as $group=>$links)
+                
+                                     
+
+                <flux:navlist.group heading="{{ $group }}" class="grid">
+
+                    @foreach ($links as $link)
+
+                    <flux:navlist.item icon="{{ $link['icon'] }}" :href="$link['url']" :current="$link['current']" wire:navigate>{{ $link['name'] }}</flux:navlist.item>
+                                       
+                    @endforeach
+                    
                 </flux:navlist.group>
+
+            @endforeach
+
             </flux:navlist>
+
 
             <flux:spacer />
 

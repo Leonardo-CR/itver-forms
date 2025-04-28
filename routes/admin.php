@@ -3,16 +3,13 @@
 
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 
-=======
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AvisoController;
 use App\Http\Controllers\admin\EgresadoController;
 use App\Http\Controllers\admin\EncuestaController;
 use App\Imports\AvisosImport;
 use Illuminate\Http\Request;
->>>>>>> 505f82649996fa1b8a4cf67523fc2abc4a1b0bd3
 
 Route::resource('admin/avisos', AvisoController::class)->names('admin.avisos')->middleware('auth');
 Route::resource('admin/egresados', EgresadoController::class)->names('admin.egresados')->middleware('auth');

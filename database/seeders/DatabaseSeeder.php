@@ -23,11 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {        
-        User::factory()->create([
-            'name' => 'Leo Rosas',
-            'email' => 'leo@leo.com',
-            'password' => bcrypt('12345'),
-        ]);
+        
 
         Aviso::factory(20)->create();
         Admin::factory(20)->create();
@@ -35,5 +31,12 @@ class DatabaseSeeder extends Seeder
         Egresado::factory(20)->create();
         TipoEncuesta::factory(3)->create();
         Encuesta::factory(5)->create();
+
+        User::factory()->create([
+            'name' => 'Leo Rosas',
+            'email' => 'leo@leo.com',
+            'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
+            'password' => bcrypt('12345'),
+        ]);
     }
 }

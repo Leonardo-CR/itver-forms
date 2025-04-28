@@ -18,6 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->unsignedBigInteger('cv_carrera');
+            $table->foreign('cv_carrera')->references('cv_carrera')->on('carrera');
+            
             $table->timestamps();
         });
 
@@ -35,6 +39,7 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+        
     }
 
     /**

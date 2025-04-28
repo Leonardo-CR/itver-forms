@@ -7,12 +7,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use App\Models\Carrera;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     public string $name = '';
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+
+    public $carreras;
+
+    public string $cv_carrera = ''; // Variable para almacenar la carrera seleccionada
+
+    public function mount()
+    {
+        // Obtener todas las carreras de la base de datos
+        $this->carreras = Carrera::all();
+    }
 
     /**
      * Handle an incoming registration request.
@@ -22,6 +33,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'cv_carrera' => ['required', 'exists:carrera,cv_carrera'], // Validar que exista en la tabla 'carreras' en la columna 'cv_carrera'
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -62,6 +74,16 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="email"
             placeholder="email@example.com"
         />
+         <!-- Carrera (Seleccionar Carrera) -->
+         <div class="relative">
+            <label for="carrera" class="block text-sm font-medium text-gray-700">{{ __('Select your career') }}</label>
+            <select wire:model="cv_carrera" id="carrera" name="cv_carrera" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option value="">{{ __('Choose a career') }}</option>
+                @foreach ($carreras as $carrera)
+                    <option value="{{ $carrera->cv_carrera }}">{{ $carrera->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
 
         <!-- Password -->
         <flux:input
