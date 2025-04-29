@@ -18,14 +18,13 @@ class EncuestaFactory extends Factory
     public function definition(): array
     {
         return [
-            'cv_encuesta' => fake()->unique()->numberBetween(0, 99),
             'periodo' => fake()->word(),
             'is_active' => fake()->boolean(),
             'fecha_inicio' => fake()->dateTime(),
             'fecha_cierre' => fake()->dateTime(),
             'hora_inicio' => fake()->time(),
             'hora_cierre' => fake()->time(),
-            'cv_tipo_encuesta' => TipoEncuesta::factory(),
+            'cv_tipo_encuesta' => TipoEncuesta::inRandomOrder()->first()->cv_tipo_encuesta,
         ];
     }
 }

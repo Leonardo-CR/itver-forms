@@ -1,5 +1,5 @@
 <x-layouts.app>
-<div class="h-full bg-gradient-to-b from-[#f9f9f9] to-[#bcbcbc] py-4">
+<div class="h-screen from-[#f9f9f9] to-[#bcbcbc] bg-gradient-to-b  py-4">
   <div class=" block mx-auto my-auto w-full text-black  max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
     <!-- FILA 1-->
     <div class="flex gap-2">
@@ -83,14 +83,6 @@
           </div>
         </div>  
       </div>
-   
-
-
-    
-
-  
-    
-   
   </div>
 </div>
 </x-layouts.app>

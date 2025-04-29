@@ -11,7 +11,6 @@ class Encuesta extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cv_encuesta',
         'periodo',
         'is_active',
         'fecha_inicio',
@@ -22,12 +21,20 @@ class Encuesta extends Model
     ];
 
     protected $table = 'encuesta';    
-    protected $primaryKey = 'cv_encuesta'; 
-    protected $keyType = 'string';
-    public $incrementing = false;
+    protected $primaryKey = 'cv_encuesta';
     public $timestamps = false;
 
     public function tipo_encuesta(){
         return $this->belongsTo(TipoEncuesta::class, 'cv_tipo_encuesta');
+    }
+
+    public function secciones()
+    {
+        return $this->hasMany(Seccion::class, 'cv_encuesta', 'cv_encuesta');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'cv_encuesta';
     }
 }

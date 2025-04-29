@@ -50,7 +50,8 @@
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">
-                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs ">Editar</a> 
+                            <a href="{{ route('admin.secciones.index', $encuesta) }}" class="btn btn-green text-xs">Gráficas</a>
+                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a> 
                             <form class="delete-form" action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
