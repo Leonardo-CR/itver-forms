@@ -3,7 +3,7 @@
 <!-- Contenedor principal Seccion 12-->
 <div class="block mx-auto my-auto w-full text-black max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800"> 
     <h5 class="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Desempeño Laboral</h5>
-    <form action="{{ route('quibio.store') }}" method="POST">
+    <form action="{{ route('quibio.store') }}" method="POST"  id="formulario">
         @csrf
         @method('POST')     
     <!-- Pregunta 1-->
@@ -294,4 +294,34 @@
       </div>
     </form>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('formulario');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evitamos que envíe *automáticamente* (por ahora)
+    
+            // Validamos manualmente el formulario usando HTML5
+            if (!form.checkValidity()) {
+                form.reportValidity(); // Muestra los mensajes nativos
+                return;
+            }
+    
+            // Si es válido, mostramos SweetAlert
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Deseas enviar este formulario?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, enviar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Ahora sí enviamos el formulario
+                }
+            });
+        });
+    });
+    </script>
 </x-layouts.app>

@@ -9,6 +9,8 @@ use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 use App\Models\Carrera;
 use Database\Seeders\RoleSeeder;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCreatedMail;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     public string $name = '';
@@ -52,8 +54,14 @@ new #[Layout('components.layouts.auth')] class extends Component {
         }
 
         Auth::login($user);
+        //Mail::to('prueba@prueba.com')->send(new UserCreatedMail);
+        //Mail::to($user->email)->send(new UserCreatedMail);
+        $user->sendEmailVerificationNotification();
 
-        $this->redirectIntended(route('dashboard', absolute: false), navigate: true);
+
+        $this->redirect(route('verification.notice'), navigate: true);// Redirigir a la página de verificación de correo electrónico
+
+        //$this->redirectIntended(route('dashboard', absolute: false), navigate: true); // Redirigir a la página dashboard
     }
 }; ?>
 
@@ -84,16 +92,30 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="email"
             placeholder="email@example.com"
         />
-         <!-- Carrera (Seleccionar Carrera) -->
+         {{-- <!-- Carrera (Seleccionar Carrera) -->
          <div class="relative">
             <label for="carrera" class="block text-sm font-medium text-gray-700">{{ __('Select your career') }}</label>
-            <select wire:model="cv_carrera" id="carrera" name="cv_carrera" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+            <select required wire:model="cv_carrera" id="carrera" name="cv_carrera" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="">{{ __('Choose a career') }}</option>
                 @foreach ($carreras as $carrera)
                     <option value="{{ $carrera->cv_carrera }}">{{ $carrera->nombre }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> --}}
+
+        
+
+        <flux:select wire:model="cv_carrera" id="carrera"
+                 name="cv_carrera" 
+                 placeholder="Selecciona la carrera de la cual egresaste:" 
+                 label="Selecciona la carrera de la cual egresaste:" >
+            @foreach ($carreras as $carrera)
+            <flux:select.option value="{{  $carrera->cv_carrera }}">
+                {{ $carrera->nombre }}
+            </flux:select.option>
+            @endforeach
+        </flux:select>
 
         <!-- Password -->
         <flux:input

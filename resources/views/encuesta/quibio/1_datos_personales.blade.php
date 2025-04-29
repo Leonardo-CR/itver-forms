@@ -1,5 +1,5 @@
 <x-layouts.app>
-<form action="{{ route('quibio.store') }}" method="POST">
+<form action="{{ route('quibio.store') }}" method="POST" id="formulario">
   @csrf
 
 <!-- Contenedor principal -->
@@ -147,5 +147,34 @@
 
 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Terminar Sección</button>
 </form>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('formulario');
+  
+      form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Evitamos que envíe *automáticamente* (por ahora)
+  
+          // Validamos manualmente el formulario usando HTML5
+          if (!form.checkValidity()) {
+              form.reportValidity(); // Muestra los mensajes nativos
+              return;
+          }
+  
+          // Si es válido, mostramos SweetAlert
+          Swal.fire({
+              title: '¿Estás seguro?',
+              text: "¿Deseas enviar este formulario?",
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Sí, enviar'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  form.submit(); // Ahora sí enviamos el formulario
+              }
+          });
+      });
+  });
+  </script>
 </x-layouts.app>

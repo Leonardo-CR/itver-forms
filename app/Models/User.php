@@ -71,4 +71,6 @@ class User extends Authenticatable
         // Luego la columna de la tabla relacionada 'cv_carrera' en el modelo Carrera
     }
 
+    
+
 }

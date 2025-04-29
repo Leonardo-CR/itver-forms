@@ -27,12 +27,12 @@ class DatabaseSeeder extends Seeder
         // Ejecutamos el seeder de roles
         $this->call(RoleSeeder::class);
 
-        Aviso::factory(20)->create();
-        Admin::factory(20)->create();
+        //Aviso::factory(20)->create();
+        //Admin::factory(20)->create();
         //Carrera::factory(20)->create();
         //Egresado::factory(20)->create();
-        TipoEncuesta::factory(3)->create();
-        Encuesta::factory(5)->create();
+        //TipoEncuesta::factory(3)->create();
+        //Encuesta::factory(5)->create();
 
         // User::factory()->create([
         //     'name' => 'Leo Rosas',

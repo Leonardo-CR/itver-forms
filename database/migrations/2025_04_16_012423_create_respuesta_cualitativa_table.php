@@ -18,8 +18,9 @@ return new class extends Migration
             $table->text('valor');
             
             //Foraneas
-            $table->char('no_control', 11);
-            $table->foreign('no_control')->references('no_control')->on('egresado');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->unsignedBigInteger('cv_pregunta');
             $table->foreign('cv_pregunta')->references('cv_pregunta')->on('pregunta');
         });
