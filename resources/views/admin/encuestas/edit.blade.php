@@ -32,6 +32,25 @@
                     <flux:select.option value="{{ $tipo_encuesta->cv_tipo_encuesta }}" :selected="old('cv_tipo_encuesta', $encuesta->cv_tipo_encuesta) == $tipo_encuesta->cv_tipo_encuesta">{{ $tipo_encuesta->nombre }}</flux:select.option>
                 @endforeach
             </flux:select>              
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Estado de la encuesta</label>
+                <div class="flex items-center gap-6">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="1" class="form-radio text-blue-600"
+                            {{ old('is_active', $encuesta->is_active) == '1' ? 'checked' : '' }}>
+                        <span class="ml-2">Activa</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="0" class="form-radio text-red-600"
+                            {{ old('is_active', $encuesta->is_active) == '0' ? 'checked' : '' }}>
+                        <span class="ml-2">Inactiva</span>
+                    </label>
+                </div>
+                @error('is_active')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+            
 
             <div class="flex justify-end">
                 <flux:button variant="primary" type="Submit">Enviar</flux:button>         
@@ -39,18 +58,7 @@
         </div>
     </form>
 
-    @push('js')
-        <!-- Include the Quill library -->
-        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        <script>
-            const quill = new Quill('#editor', {
-              theme: 'snow'
-            });
-            quill.on('text-change',function(){
-                document.querySelector('#content').value = quill.root.innerHTML;
-            });
-        </script>
-    @endpush
+   
 </x-layouts.administrarum>
 
 

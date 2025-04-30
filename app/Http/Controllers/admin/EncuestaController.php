@@ -32,19 +32,43 @@ class EncuestaController extends Controller
             'hora_cierre' => 'required',
             'cv_tipo_encuesta' => 'required|integer',
         ]);
-        
-        // Crear DateTimes completos (fecha + hora)
+    
+        // Crear DateTimes completos
         $inicio = \Carbon\Carbon::parse($data['fecha_inicio'] . ' ' . $data['hora_inicio']);
         $cierre = \Carbon\Carbon::parse($data['fecha_cierre'] . ' ' . $data['hora_cierre']);
-        $now = now(); // Fecha y hora actual
-
-        // Evaluamos si la fecha-hora actual está entre inicio y cierre
+        $now = now();
+    
         $data['is_active'] = $now->between($inicio, $cierre);
-
+    
+        // 👉 Primero validamos que no se solape
+        $existeSolapamiento = Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
+            ->where(function ($query) use ($inicio, $cierre) {
+                $query->where(function ($q) use ($inicio, $cierre) {
+                    $q->where('fecha_inicio', '<=', $cierre)
+                       ->where('fecha_cierre', '>=', $inicio);
+                });
+            })
+            ->exists();
+    
+        if ($existeSolapamiento) {
+            return back()->withErrors([
+                'fecha_inicio' => 'Ya existe una encuesta del mismo tipo que se cruza en fechas con esta.',
+            ])->withInput();
+        }
+    
+        // 👉 Si estará activa, desactivamos otras
+        if ($data['is_active']) {
+            Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
+                ->where('is_active', true)
+                ->update(['is_active' => false]);
+        }
+    
         Encuesta::create($data);
     
         return redirect()->route('admin.encuestas.index');
     }
+    
+    
 
     public function show(string $id)
     {
@@ -57,28 +81,53 @@ class EncuestaController extends Controller
     }
 
     public function update(Request $request, Encuesta $encuesta)
-    {
-        $data = $request->validate([
-            'periodo' => 'required|string|max:12',
-            'fecha_inicio' => 'required|date', 
-            'fecha_cierre' => 'required|date|after_or_equal:fecha_inicio', 
-            'hora_inicio' => 'required', 
-            'hora_cierre' => 'required',
-            'cv_tipo_encuesta' => 'required|integer',
-        ]);
-        
-        // Crear DateTimes completos (fecha + hora)
-        $inicio = \Carbon\Carbon::parse($data['fecha_inicio'] . ' ' . $data['hora_inicio']);
-        $cierre = \Carbon\Carbon::parse($data['fecha_cierre'] . ' ' . $data['hora_cierre']);
-        $now = now(); // Fecha y hora actual
+{
+    $data = $request->validate([
+        'periodo' => 'required|string|max:12',
+        'fecha_inicio' => 'required|date', 
+        'fecha_cierre' => 'required|date|after_or_equal:fecha_inicio', 
+        'hora_inicio' => 'required', 
+        'hora_cierre' => 'required',
+        'cv_tipo_encuesta' => 'required|integer',
+    ]);
 
-        // Evaluamos si la fecha-hora actual está entre inicio y cierre
-        $data['is_active'] = $now->between($inicio, $cierre);
+    // Crear DateTimes completos
+    $inicio = \Carbon\Carbon::parse($data['fecha_inicio'] . ' ' . $data['hora_inicio']);
+    $cierre = \Carbon\Carbon::parse($data['fecha_cierre'] . ' ' . $data['hora_cierre']);
+    $now = now();
 
-        $encuesta->update($data);
-    
-        return redirect()->route('admin.encuestas.edit', $encuesta);
+    $data['is_active'] = $now->between($inicio, $cierre);
+
+    // Si estará activa, desactivamos cualquier otra activa del mismo tipo (excepto esta misma)
+    if ($data['is_active']) {
+        Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
+            ->where('is_active', true)
+            ->where('cv_encuesta', '!=', $encuesta->cv_encuesta)
+            ->update(['is_active' => false]);
     }
+
+    $existeSolapamiento = Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
+        ->where('cv_encuesta', '!=', $encuesta->cv_encuesta)
+        ->where(function ($query) use ($inicio, $cierre) {
+            $query->where(function ($q) use ($inicio, $cierre) {
+                $q->where('fecha_inicio', '<=', $cierre)
+                ->where('fecha_cierre', '>=', $inicio);
+            });
+        })
+        ->exists();
+
+    if ($existeSolapamiento) {
+        return back()->withErrors([
+            'fecha_inicio' => 'Ya existe una encuesta del mismo tipo que se cruza en fechas con esta.',
+        ])->withInput();
+    }
+
+
+    $encuesta->update($data);
+
+    return redirect()->route('admin.encuestas.edit', $encuesta);
+}
+
 
     public function destroy(Encuesta $encuesta)
     {

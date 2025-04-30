@@ -1,99 +1,89 @@
-<x-layouts.administrarum >
-    <div class="mb-4 flex justify-between items-left text-xs">
-        <flux:breadcrumbs >
+<x-layouts.administrarum>
+    <div class="mb-4 flex justify-between items-center text-xs">
+        <flux:breadcrumbs>
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item >Encuestas</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>Encuestas</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">Nuevo</a>
+        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">+ Nueva Encuesta</a>
     </div>
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+    <div class="relative overflow-x-auto bg-white shadow rounded-lg">
+        <table class="w-full text-sm text-left text-gray-600">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                 <tr>
-                    <th scope="col" class="px-6 py-3">Clave Única</th>
-                    <th scope="col" class="px-6 py-3">Periodo</th>
-                    <th scope="col" class="px-6 py-3">Estado</th>
-                    <th scope="col" class="px-6 py-3">Fecha de Inicio</th>
-                    <th scope="col" class="px-6 py-3">Hora de Inicio</th>
-                    <th scope="col" class="px-6 py-3">Fecha de Cierre</th>
-                    <th scope="col" class="px-6 py-3">Hora de Cierre</th>
-                    <th scope="col" class="px-6 py-3">Tipo de Encuesta</th>
-                    <th scope="col" class="px-6 py-3">Acciones</th>
+                    <th class="px-4 py-3">Clave</th>
+                    <th class="px-4 py-3">Periodo</th>
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Inicio</th>
+                    <th class="px-4 py-3">Cierre</th>
+                    <th class="px-4 py-3">Tipo</th>
+                    <th class="px-4 py-3 text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($encuestas as $encuesta)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                    <td class="px-6 py-4">
-                        {{ $encuesta->cv_encuesta }}
+                @forelse ($encuestas as $encuesta)
+                <tr class="border-t hover:bg-gray-50">
+                    <td class="px-4 py-2">{{ $encuesta->cv_encuesta }}</td>
+                    <td class="px-4 py-2">{{ $encuesta->periodo }}</td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $encuesta->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $encuesta->is_active ? 'Activa' : 'Inactiva' }}
+                        </span>
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->periodo }}
+                    <td class="px-4 py-2">
+                        {{ \Carbon\Carbon::parse($encuesta->fecha_inicio)->format('d/m/Y') }} 
+                        <span class="text-xs text-gray-500">({{ $encuesta->hora_inicio }})</span>
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->is_active ? 'Activo' : 'Inactivo' }}
+                    <td class="px-4 py-2">
+                        {{ \Carbon\Carbon::parse($encuesta->fecha_cierre)->format('d/m/Y') }} 
+                        <span class="text-xs text-gray-500">({{ $encuesta->hora_cierre }})</span>
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->fecha_inicio }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->hora_inicio }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->fecha_cierre }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->hora_cierre }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->tipo_encuesta->nombre }}
-                    </td>
-                    <td class="px-6 py-4" width="10px">
-                        <div class="flex space-x-2">
-                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs ">Editar</a> 
-                            <form class="delete-form" action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-red text-xs">Eliminar</button>
+                    <td class="px-4 py-2">{{ $encuesta->tipo_encuesta->nombre }}</td>
+                    <td class="px-4 py-2 text-center">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a>
+                            <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-red text-xs">Eliminar</button>
                             </form>
                         </div>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="7" class="px-4 py-6 text-center text-gray-500">No hay encuestas registradas.</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
+
     <div class="mt-4">
         {{ $encuestas->links() }}
     </div>
-        {{-- Referenciamos el espacio que se creo en resource/views/components/app.blade
-        @push('js')
-            <script>
-                forms = document.querySelectorAll('.delete-form');
-    
-                forms.forEach(form => {
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
-    
-                        Swal.fire({
-                            title: "¿Estás seguro?",
-                            text: "¡El registro se eliminara para siempre!",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            cancelButtonText: "Cancelar",
-                            confirmButtonText: "Si, eliminalo!"
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                form.submit();
-                                
-                            }
-                            });
-    
-                    });
+
+    @push('js')
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡El registro se eliminará permanentemente!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Sí, eliminar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
                 });
-    
-            </script>
-        @endpush --}}
+            });
+        });
+    </script>
+    @endpush
 </x-layouts.administrarum>
