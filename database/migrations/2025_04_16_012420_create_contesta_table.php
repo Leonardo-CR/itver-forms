@@ -1,5 +1,5 @@
 <?php
-
+//Aqui de maneja cuando termina el uusuario de contestar la encuesta
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('contesta', function (Blueprint $table) {
             $table->id('cv_contesta');
 
-            //Llaves foraneas
-            $table->char('no_control', 11);
-            $table->foreign('no_control')->references('no_control')->on('egresado');
+            //Foraneas
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('cv_encuesta');
             $table->foreign('cv_encuesta')->references('cv_encuesta')->on('encuesta');

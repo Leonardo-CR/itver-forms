@@ -12,11 +12,11 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿La institución se ha contactado anteriormente contigo?</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input id="si" type="radio" value="Si" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="si" type="radio" value="Si" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="si" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
               </div>
               <div class="flex items-center">
-                  <input id="no" type="radio" value="No" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="no" type="radio" value="No" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="no" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
               </div>
           </div>
@@ -27,11 +27,11 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white"> ¿Te gustaría participar con la Institución aportando tu experiencia profesional? </label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input id="si_dos" type="radio" value="Si" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="si_dos" type="radio" value="Si" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="si_dos" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
               </div>
               <div class="flex items-center">
-                  <input id="no_dos" type="radio" value="No" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="no_dos" type="radio" value="No" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="no_dos" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
               </div>
           </div>
