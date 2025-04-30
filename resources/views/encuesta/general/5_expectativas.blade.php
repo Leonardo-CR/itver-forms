@@ -3,7 +3,7 @@
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">EXPECTATIVAS DE DESARROLLO</h5>
         <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">Marcar los campos que correspondan a su trayectoria profesional</label>
 
-    <form id="formulario" method="POST" action="{{ route('quibio.store') }}">
+    <form id="formulario" method="POST" action="{{ route('general.store') }}">
         @csrf
         @method('POST')
         {{-- PREGUNTA 1 --}}

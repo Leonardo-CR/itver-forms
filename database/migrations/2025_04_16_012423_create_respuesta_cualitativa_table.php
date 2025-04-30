@@ -23,6 +23,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('cv_pregunta');
             $table->foreign('cv_pregunta')->references('cv_pregunta')->on('pregunta');
+
+            $table->unsignedBigInteger('cv_encuesta');
+            $table->foreign('cv_encuesta')->references('cv_encuesta')->on('encuesta');
         });
 
         

@@ -2,7 +2,7 @@
 
   <div href="#" class=" block mx-auto my-auto w-full text-black  max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
       <h5 class="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">ubicación laboral de los egresados</h5>   
-      <form id="formulario" action="{{ route('quibio.store') }}" method="POST">
+      <form id="formulario" action="{{ route('general.store') }}" method="POST">
         @csrf
         @method('POST')
         <!-- FILA 1-->

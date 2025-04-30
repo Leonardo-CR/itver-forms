@@ -1,5 +1,5 @@
 <x-layouts.app>
-  <form action="{{ route('quibio.store') }}" method="POST"  id="formulario">
+  <form action="{{ route('general.store') }}" method="POST"  id="formulario">
     @csrf
     @method('POST')
   <!-- Contenedor principal -->

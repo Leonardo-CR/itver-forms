@@ -1,7 +1,7 @@
 <x-layouts.app>
   <div href="#" class=" block mx-auto my-auto w-full text-black  max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
       <h5 class="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">Pertinencia y disponibilidad de medios y recursos para el aprendizaje</h5>
-      <form method="POST" action="{{ route('quibio.store') }}" id="formulario">
+      <form method="POST" action="{{ route('general.store') }}" id="formulario">
         @method('POST')
         @csrf
         <!-- FILA 1-->

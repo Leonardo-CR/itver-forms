@@ -6,40 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
-class QuiBioController extends Controller
+class GeneralController extends Controller
 {
-    public function encuesta()
-    {
-        return view('encuesta.quibio.encuesta');
-    }
-    public function datos_personales()
-    {
-        return view('encuesta.quibio.1_datos_personales');
-    }
-    public function situacion_laboral()
-    {
-        return view('encuesta.quibio.2_situacion_laboral');
-    }
-    public function plan_estudios()
-    {
-        return view('encuesta.quibio.3_plan_estudios');
-    }
-    public function institucion()
-    {
-        return view('encuesta.quibio.4_institucion');
-    }
-    public function desempeno_laboral()
-    {
-        return view('encuesta.quibio.5_desempeno_laboral');
-    }
-    public function store(Request $request)
+    public function store(Request $request) //Este metodo guarda las respuestas de la encuesta General
 {
     $user_id = auth()->id(); // o como lo manejes tú
 
     // 1. Buscar la encuesta activa del tipo QUIBIO
     $encuestaActiva = DB::table('encuesta')
-        ->where('cv_tipo_encuesta', 2) // el id 2 corresponde a QUIBIO
+        ->where('cv_tipo_encuesta', 1) // el id 1 corresponde a Encuesta General
         ->where('is_active', true)
         ->first();
 
@@ -116,7 +91,4 @@ class QuiBioController extends Controller
 
     return redirect()->back()->with('success', 'Encuesta enviada correctamente.');
 }
-
-
-
 }

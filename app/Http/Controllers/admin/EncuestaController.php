@@ -24,7 +24,7 @@ class EncuestaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'cv_encuesta' => 'unique:encuesta,cv_encuesta|required|string|max:20',
+            
             'periodo' => 'required|string|max:12',
             'fecha_inicio' => 'required|date', 
             'fecha_cierre' => 'required|date|after_or_equal:fecha_inicio', 
@@ -81,53 +81,50 @@ class EncuestaController extends Controller
     }
 
     public function update(Request $request, Encuesta $encuesta)
-{
-    $data = $request->validate([
-        'periodo' => 'required|string|max:12',
-        'fecha_inicio' => 'required|date', 
-        'fecha_cierre' => 'required|date|after_or_equal:fecha_inicio', 
-        'hora_inicio' => 'required', 
-        'hora_cierre' => 'required',
-        'cv_tipo_encuesta' => 'required|integer',
-    ]);
-
-    // Crear DateTimes completos
-    $inicio = \Carbon\Carbon::parse($data['fecha_inicio'] . ' ' . $data['hora_inicio']);
-    $cierre = \Carbon\Carbon::parse($data['fecha_cierre'] . ' ' . $data['hora_cierre']);
-    $now = now();
-
-    $data['is_active'] = $now->between($inicio, $cierre);
-
-    // Si estará activa, desactivamos cualquier otra activa del mismo tipo (excepto esta misma)
-    if ($data['is_active']) {
-        Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
-            ->where('is_active', true)
+    {
+        $data = $request->validate([
+            'periodo' => 'required|string|max:12',
+            'fecha_inicio' => 'required|date', 
+            'fecha_cierre' => 'required|date|after_or_equal:fecha_inicio', 
+            'hora_inicio' => 'required', 
+            'hora_cierre' => 'required',
+            'cv_tipo_encuesta' => 'required|integer',
+            'is_active' => 'nullable|boolean',
+        ]);
+    
+        // Crear DateTimes completos
+        $inicio = \Carbon\Carbon::parse($data['fecha_inicio'] . ' ' . $data['hora_inicio']);
+        $cierre = \Carbon\Carbon::parse($data['fecha_cierre'] . ' ' . $data['hora_cierre']);
+    
+        $existeSolapamiento = Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
             ->where('cv_encuesta', '!=', $encuesta->cv_encuesta)
-            ->update(['is_active' => false]);
+            ->where(function ($query) use ($inicio, $cierre) {
+                $query->where(function ($q) use ($inicio, $cierre) {
+                    $q->where('fecha_inicio', '<=', $cierre)
+                      ->where('fecha_cierre', '>=', $inicio);
+                });
+            })
+            ->exists();
+    
+        if ($existeSolapamiento) {
+            return back()->withErrors([
+                'fecha_inicio' => 'Ya existe una encuesta del mismo tipo que se cruza en fechas con esta.',
+            ])->withInput();
+        }
+    
+        // Si el usuario activó esta encuesta, desactiva las demás del mismo tipo
+        if (!empty($data['is_active'])) {
+            Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
+                ->where('is_active', true)
+                ->where('cv_encuesta', '!=', $encuesta->cv_encuesta)
+                ->update(['is_active' => false]);
+        }
+    
+        $encuesta->update($data);
+    
+        return redirect()->route('admin.encuestas.edit', $encuesta);
     }
-
-    $existeSolapamiento = Encuesta::where('cv_tipo_encuesta', $data['cv_tipo_encuesta'])
-        ->where('cv_encuesta', '!=', $encuesta->cv_encuesta)
-        ->where(function ($query) use ($inicio, $cierre) {
-            $query->where(function ($q) use ($inicio, $cierre) {
-                $q->where('fecha_inicio', '<=', $cierre)
-                ->where('fecha_cierre', '>=', $inicio);
-            });
-        })
-        ->exists();
-
-    if ($existeSolapamiento) {
-        return back()->withErrors([
-            'fecha_inicio' => 'Ya existe una encuesta del mismo tipo que se cruza en fechas con esta.',
-        ])->withInput();
-    }
-
-
-    $encuesta->update($data);
-
-    return redirect()->route('admin.encuestas.edit', $encuesta);
-}
-
+    
 
     public function destroy(Encuesta $encuesta)
     {

@@ -42,6 +42,8 @@
                     <td class="px-4 py-2">{{ $encuesta->tipo_encuesta->nombre }}</td>
                     <td class="px-4 py-2 text-center">
                         <div class="flex justify-center space-x-2">
+                            <a href="" class="btn text-white bg-[#00c014] text-xs">Indicadores</a>
+                            <a href="" class="btn text-white bg-[#b900fa] text-xs">Graficas</a>
                             <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a>
                             <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
                                 @csrf @method('DELETE')

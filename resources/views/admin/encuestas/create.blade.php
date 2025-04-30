@@ -14,15 +14,7 @@
         @csrf
         <div class="card mt-4 space-y-6">
     
-            <flux:input 
-                label="Clave Única de la encuesta" 
-                name="cv_encuesta" 
-                type="text"
-                placeholder="Ej. ENC-2025-01"
-                value="{{ old('cv_encuesta') }}" />
-            @error('cv_encuesta') 
-                <span class="text-sm text-red-500">{{ $message }}</span> 
-            @enderror
+            
     
             <flux:input 
                 label="Periodo" 

@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\egresado\AvisosController;
 use App\Http\Controllers\egresado\EgresadosController;
+use App\Http\Controllers\egresado\GeneralController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -28,6 +29,7 @@ Route::get('/general/participacion-social', [EgresadosController::class, 'partic
 
 Route::get('/general/comentarios-sugerencias', [EgresadosController::class, 'comentarios_sugerencias'])->name('general.comentarios');
 
+Route::post('/general/store', [GeneralController::class, 'store'])->name('general.store');//Esta ruta registra las respuestas de la encuesta GENERAL
 
 
 require __DIR__.'/auth.php';
