@@ -1,6 +1,7 @@
 <?php
 //En este archivo estan las rutas de la encuesta general
 
+use App\Http\Controllers\admin\GraficasController;
 use App\Http\Controllers\egresado\AvisosController;
 use App\Http\Controllers\egresado\EgresadosController;
 use App\Http\Controllers\egresado\GeneralController;
@@ -31,5 +32,6 @@ Route::get('/general/comentarios-sugerencias', [EgresadosController::class, 'com
 
 Route::post('/general/store', [GeneralController::class, 'store'])->name('general.store');//Esta ruta registra las respuestas de la encuesta GENERAL
 
+Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'reporte_generales'])->name('admin.general.graficas');
 
 require __DIR__.'/auth.php';
