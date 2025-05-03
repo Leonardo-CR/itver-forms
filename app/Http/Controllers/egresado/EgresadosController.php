@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\egresado;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrera;
+use App\Models\DatosGeneralesEgresado;
 use Illuminate\Http\Request;
 
 class EgresadosController extends Controller
@@ -21,10 +23,7 @@ class EgresadosController extends Controller
     }
     //Metodos para controlar la encuesta general
     //Primera parte datos personales
-    public function datospersonales()
-    {
-        return view('encuesta.general.1_datos_generales');
-    }
+    
     public function pertinencia()
     {
         return view('encuesta.general.2_pertinencia');
@@ -49,4 +48,13 @@ class EgresadosController extends Controller
     {
         return view('encuesta.general.7_comentarios_sugerencias');
     }
+    public function datospersonales()
+    {
+        $carreras = Carrera::all();
+        
+
+        return view('encuesta.general.1_datos_generales', compact('carreras'));
+    }
+
+
 }

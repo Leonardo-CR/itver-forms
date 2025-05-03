@@ -3,7 +3,7 @@
 use App\Http\Controllers\egresado\egresadosController;
 use App\Http\Controllers\egresado\QuiBioController;
 
-
+use App\Http\Controllers\admin\GraficasController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -25,6 +25,7 @@ Route::get('/quibio/institucion', [QuiBioController::class, 'institucion'])->nam
 //5
 Route::get('/quibio/desempeno-laboral', [QuiBioController::class, 'desempeno_laboral'])->name('quibio.desempeno_laboral');
 
+Route::get('admin/quibio/{encuesta}/graficas',[GraficasController::class, 'reporte_quibio'])->name('admin.quibio.graficas');
 
 
 require __DIR__.'/auth.php';

@@ -1,8 +1,8 @@
 <x-layouts.app>
-    
+
   <div href="#" class=" block mx-auto my-auto w-full text-black  max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
       <h5 class="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">ubicación laboral de los egresados</h5>   
-      <form action="{{ route('quibio.store') }}" method="POST">
+      <form id="formulario" action="{{ route('general.store') }}" method="POST">
         @csrf
         @method('POST')
         <!-- FILA 1-->
@@ -10,19 +10,19 @@
           <label for="ans1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actividad a la que se dedica actualmente:</label>
           <div class="flex flex-col mb-4 sexo">
             <div>
-              <input id="ans1" type="radio" value="Trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="ans1" type="radio" value="Trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Trabaja</label>
             </div>
             <div>
-              <input id="ans2" type="radio" value="Estudia" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="ans2" type="radio" value="Estudia" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Estudia</label>
             </div>
             <div>
-              <input id="ans3" type="radio" value="Estudia y trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="ans3" type="radio" value="Estudia y trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Estudia y trabaja</label>
             </div>
             <div>
-              <input id="ans4" type="radio" value="No estudia ni trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="ans4" type="radio" value="No estudia ni trabaja" name="respuesta[s3_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="ans4" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No estudia ni trabaja</label>
             </div>
           </div>
@@ -51,11 +51,11 @@
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <label for="otro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
-                <input type="text" name="respuesta[s3_p3]" id="otro" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Matricula" required />
+                <input type="text" name="respuesta[s3_p3]" id="otro" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Matricula"  />
             </div>  
             <div>
                 <label for="esp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Especialidad e Institución:</label>
-                <input type="text" name="respuesta[s3_p4]" id="esp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Unitec" required />
+                <input type="text" name="respuesta[s3_p4]" id="esp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Unitec"  />
             </div>  
           </div>
         </div>
@@ -110,7 +110,7 @@
         <!-- FILA 5-->
         <div id="contentDiv" class="content-option hidden mb-6">
             <label for="otro2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Especifique:</label>
-            <input type="text" name="respuesta[s3_p7]" id="ans_s3_p7" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Recomendación profesional" required />
+            <input type="text" name="respuesta[s3_p7]" id="ans_s3_p7" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Recomendación profesional"  />
         </div>  
         <!-- FILA 6-->
        
@@ -145,7 +145,7 @@
           </div>
           <div>
             <label for="otro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
-            <input type="text" name="respuesta[s3_p9]" id="otro" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Conocimientos técnicos especificos tales como ..." required />
+            <input type="text" name="respuesta[s3_p9]" id="otro" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Conocimientos técnicos especificos tales como ..."  />
           </div>
         </div>
         <!-- FILA 2-->
@@ -171,7 +171,7 @@
           </div>
           <div class="content-option Trabaja Estudia-y-trabaja hidden" >
               <label for="otro2" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
-              <input type="text" name="respuesta[s3_p11]" id="otro2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Turco" required />
+              <input type="text" name="respuesta[s3_p11]" id="otro2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Turco"  />
           </div>
         </div>
         <!-- FILA 3-->
@@ -181,28 +181,28 @@
             <div>
               <label for="hablar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hablar:</label>
               <div class="flex w-full gap-4">
-                <input type="number" id="hablar" name="respuesta[s3_p12]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="50" required />
+                <input type="number" id="hablar" name="respuesta[s3_p12]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="50"  />
                 <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
               </div>
             </div>
             <div>
               <label for="escribir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Escribir:</label>
               <div class="flex w-full gap-4">
-                <input type="number" id="escribir" name="respuesta[s3_p13]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="10" required />
+                <input type="number" id="escribir" name="respuesta[s3_p13]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="10"  />
                 <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
               </div>          
             </div>
             <div>
               <label for="leer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Leer:</label>
               <div class="flex w-full gap-4">
-                <input type="number" id="leer" name="respuesta[s3_p14]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20" required />
+                <input type="number" id="leer" name="respuesta[s3_p14]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20"  />
                 <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
               </div>
             </div>
             <div>
               <label for="escuchar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Escuchar:</label>
               <div class="flex w-full gap-4">
-                <input type="number" id="escuchar" name="respuesta[s3_p15]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20" required />
+                <input type="number" id="escuchar" name="respuesta[s3_p15]" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20"  />
                 <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
               </div>          
             </div>
@@ -237,7 +237,7 @@
           </div>
           <div class="content-option Trabaja Estudia-y-trabaja hidden">
             <label for="otro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Año de ingreso:</label>
-            <input type="text" id="otro" name="respuesta[s3_p17]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2016" required />
+            <input type="text" id="otro" name="respuesta[s3_p17]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2016"  />
           </div>
         </div>
         <!-- FILA 2-->
@@ -311,7 +311,7 @@
           </div>
           <div>
             <label for="otro2" class="content-option Trabaja Estudia-y-trabaja hidden block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
-            <input type="text" id="otro2" name="respuesta[s3_p21]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Auxiliar" required />
+            <input type="text" id="otro2" name="respuesta[s3_p21]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Auxiliar"  />
           </div>
         </div>
         <!-- FILA 5-->
@@ -369,45 +369,45 @@
         <!-- FILA 5-->
         <div class=" content-option Trabaja Estudia-y-trabaja hidden mb-6 ">
           <label for="giro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giro o actividad principal de la empresa u organismo:</label>
-          <input type="text" id="giro" name="respuesta[s3_p24]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Imprenta" required />
+          <input type="text" id="giro" name="respuesta[s3_p24]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Imprenta"  />
         </div>
         <!-- FILA 5-->
         <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <label for="razon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Razón  Social:</label>
-          <input type="text" id="razon" name="respuesta[s3_p25]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Impresos Creativos del Golfo, S.A. de C.V." required />
+          <input type="text" id="razon" name="respuesta[s3_p25]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Impresos Creativos del Golfo, S.A. de C.V."  />
         </div>
         <!-- FILA 5-->
         <div class="content-option Trabaja Estudia-y-trabaja hidden grid gap-6 mb-6 md:grid-cols-3">
           <div>
             <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
-            <input type="text" id="estado" name="respuesta[s3_p26]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            <input type="text" id="estado" name="respuesta[s3_p26]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz"  />
           </div>
           <div>
             <label for="municipio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Municipio:</label>
-            <input type="text" id="municipio" name="respuesta[s3_p27]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            <input type="text" id="municipio" name="respuesta[s3_p27]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz"  />
           </div>
           <div>
             <label for="ciudad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ciudad:</label>
-            <input type="text" id="ciudad" name="respuesta[s3_p28]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            <input type="text" id="ciudad" name="respuesta[s3_p28]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz"  />
           </div>
         </div>
         <!-- FILA 6-->
         <div class="grid gap-6 mb-6 md:grid-cols-4 content-option Trabaja Estudia-y-trabaja hidden">
           <div>
             <label for="colonia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Colonia:</label>
-            <input type="text" id="colonia" name="respuesta[s3_p29]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Infonavit Buenavista" required />
+            <input type="text" id="colonia" name="respuesta[s3_p29]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Infonavit Buenavista"  />
           </div>
           <div>
             <label for="cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">C.P.:</label>
-            <input type="text" id="cp" name="respuesta[s3_p30]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="91850" required />
+            <input type="text" id="cp" name="respuesta[s3_p30]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="91850"  />
           </div>
           <div>
             <label for="calle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Calle:</label>
-            <input type="text" id="calle" name="respuesta[s3_p31]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ahuehuete" required />
+            <input type="text" id="calle" name="respuesta[s3_p31]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ahuehuete"  />
           </div>
           <div>
             <label for="no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.:</label>
-            <input type="text" id="no" name="respuesta[s3_p32]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="44" required />
+            <input type="text" id="no" name="respuesta[s3_p32]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="44"  />
           </div>
         </div>
         <!-- FILA 7-->
@@ -415,15 +415,15 @@
           <div class="flex w-full gap-4">
             <div class="basis-[30%]">
               <label for="lada" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lada:</label>
-              <input type="text" id="lada" name="respuesta[s3_p33]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+52" required />
+              <input type="text" id="lada" name="respuesta[s3_p33]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+52"  />
             </div>
             <div class="basis-[50%]">
               <label for="tel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono:</label>
-              <input type="text" id="tel" name="respuesta[s3_p34]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2291411203" required />
+              <input type="text" id="tel" name="respuesta[s3_p34]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2291411203"  />
             </div>
             <div class="basis-[20%]">
               <label for="ext" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ext.:</label>
-              <input type="text" id="ext" name="respuesta[s3_p35]" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="800" required />
+              <input type="text" id="ext" name="respuesta[s3_p35]" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="800"  />
             </div>
           </div>  
         </div>
@@ -431,17 +431,17 @@
         <div class="content-option Trabaja Estudia-y-trabaja hidden grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo electronico:</label>
-            <input type="text" id="correo" name="respuesta[s3_p36]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="aaronsalasn@gmail.com" required />
+            <input type="text" id="correo" name="respuesta[s3_p36]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="aaronsalasn@gmail.com"  />
           </div>
           <div>
             <label for="web" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Página Web:</label>
-            <input type="text" id="web" name="respuesta[s3_p37]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="https://creativosgolfo.com/" required />
+            <input type="text" id="web" name="respuesta[s3_p37]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="https://creativosgolfo.com/"  />
           </div>
         </div>
         <div class="content-option Trabaja Estudia-y-trabaja hidden mb-6">
           <div>
             <label for="jefe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre y Puesto del  Jefe Inmediato:</label>
-            <input type="text" id="jefe" name="respuesta[s3_p38]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bruno Diaz, CEO" required />
+            <input type="text" id="jefe" name="respuesta[s3_p38]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bruno Diaz, CEO"  />
           </div>
         </div>
         <!-- FILA 5-->
@@ -607,5 +607,35 @@ document.querySelectorAll('input[name="respuesta[s3_p1]"]').forEach((radio) => {
     // Llamar a la función al inicio para verificar si hay alguna opción seleccionada
     toggleDivVisibility(); 
 </script>
-      </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('formulario');
+  
+      form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Evitamos que envíe *automáticamente* (por ahora)
+  
+          // Validamos manualmente el formulario usando HTML5
+          if (!form.checkValidity()) {
+              form.reportValidity(); // Muestra los mensajes nativos
+              return;
+          }
+  
+          // Si es válido, mostramos SweetAlert
+          Swal.fire({
+              title: '¿Estás seguro?',
+              text: "¿Deseas enviar este formulario?",
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Sí, enviar'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  form.submit(); // Ahora sí enviamos el formulario
+              }
+          });
+      });
+  });
+  </script>
   </x-layouts.app>

@@ -3,7 +3,7 @@
 <!-- Contenedor principal Seccion 12-->
 <div class="block mx-auto my-auto w-full text-black max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800"> 
     <h5 class="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Desempeño Laboral</h5>
-    <form action="{{ route('quibio.store') }}" method="POST">
+    <form action="{{ route('quibio.store') }}" method="POST"  id="formulario">
         @csrf
         @method('POST')     
     <!-- Pregunta 1-->
@@ -38,43 +38,109 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white"> ¿Colaboras actualmente en proyectos de investigación y/o desarrollo?</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input id="si" type="radio" value="Si" name="respuesta[s12_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="si" type="radio" value="Si" name="respuesta[s12_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="si" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
               </div>
           <div class="flex items-center">
-              <input id="no" type="radio" value="No" name="respuesta[s12_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="no" type="radio" value="No" name="respuesta[s12_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="no" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
           </div>
           </div>
       </div>
   
-      <!-- Pregunta 3-->
-      <div class="my-6">
-          <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">En caso de ser POSITIVA la respuesta anterior, especifique el tipo de investigación 
-              y/o desarrollo</label>
-          <div class="grid gap-4 md:grid-cols-1">
-              <div class="flex items-center">
-                  <input id="aplicada" type="radio" value="Aplicada" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="aplicada" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aplicada</label>
-              </div>
-              <div class="flex items-center">
-                  <input id="experimental" type="radio" value="Experimental" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="experimental" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Experimental</label>
-              </div>
-              <div class="flex items-center">
-                  <input id="documental" type="radio" value="Documental" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="documental" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Documental</label>
-              </div>
-              <div class="flex items-center">
-                  <input id="descriptiva" type="radio" value="Descriptiva" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="descriptiva" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Descriptiva</label>
-              </div>
-              <div class="flex items-center">
-                  <input id="otras2" type="radio" value="Otras" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="otras2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Otras</label>
-              </div>
-          </div>
-      </div>
+      
+
+<!-- Pregunta 3 - Oculto inicialmente -->
+<div id="tipo-investigacion-container" class="hidden my-6">
+    <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">En caso de ser POSITIVA la respuesta anterior, especifique el tipo de investigación y/o desarrollo</label>
+    <div class="grid gap-4 md:grid-cols-1">
+        <div class="flex items-center">
+            <input id="aplicada" type="radio" value="Aplicada" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="aplicada" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aplicada</label>
+        </div>
+        <div class="flex items-center">
+            <input id="experimental" type="radio" value="Experimental" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="experimental" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Experimental</label>
+        </div>
+        <div class="flex items-center">
+            <input id="documental" type="radio" value="Documental" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="documental" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Documental</label>
+        </div>
+        <div class="flex items-center">
+            <input id="descriptiva" type="radio" value="Descriptiva" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="descriptiva" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Descriptiva</label>
+        </div>
+        <div class="flex items-center">
+            <input id="otras2" type="radio" value="Otras" name="respuesta[s12_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="otras2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Otras</label>
+        </div>
+        
+        <!-- Campo de texto para "Otras" (oculto inicialmente) -->
+        <div id="otras-especificacion-container" class="hidden mt-2">
+            <label for="otras-especificacion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Especifique otro tipo de investigación:</label>
+            <input type="text" id="otras-especificacion" name="respuesta[s12_p3_otras]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Especifique aquí">
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos de la pregunta 2
+    const radioSi = document.getElementById('si');
+    const radioNo = document.getElementById('no');
+    const tipoInvestigacionContainer = document.getElementById('tipo-investigacion-container');
+    
+    // Elementos de la pregunta 3 (otras)
+    const radioOtras = document.getElementById('otras2');
+    const otrasEspecificacionContainer = document.getElementById('otras-especificacion-container');
+    const radiosTipoInvestigacion = document.querySelectorAll('input[name="respuesta[s12_p3]"]');
+    
+    // Función para manejar cambios en la pregunta 2
+    function handleInvestigacionChange() {
+        if (radioSi.checked) {
+            tipoInvestigacionContainer.classList.remove('hidden');
+        } else {
+            tipoInvestigacionContainer.classList.add('hidden');
+            // Limpiar selecciones si se elige "No"
+            radiosTipoInvestigacion.forEach(radio => {
+                radio.checked = false;
+            });
+            otrasEspecificacionContainer.classList.add('hidden');
+            document.getElementById('otras-especificacion').value = '';
+        }
+    }
+    
+    // Función para manejar cambios en la pregunta 3 (otras)
+    function handleOtrasChange() {
+        if (radioOtras.checked) {
+            otrasEspecificacionContainer.classList.remove('hidden');
+        } else {
+            otrasEspecificacionContainer.classList.add('hidden');
+            document.getElementById('otras-especificacion').value = '';
+        }
+    }
+    
+    // Event listeners para pregunta 2
+    radioSi.addEventListener('change', handleInvestigacionChange);
+    radioNo.addEventListener('change', handleInvestigacionChange);
+    
+    // Event listeners para pregunta 3
+    radioOtras.addEventListener('change', handleOtrasChange);
+    radiosTipoInvestigacion.forEach(radio => {
+        if (radio.id !== 'otras2') {
+            radio.addEventListener('change', function() {
+                otrasEspecificacionContainer.classList.add('hidden');
+                document.getElementById('otras-especificacion').value = '';
+            });
+        }
+    });
+    
+    // Establecer estado inicial
+    handleInvestigacionChange();
+    handleOtrasChange();
+});
+</script>
+
   
       <!-- Pregunta 4-->
       <div class="my-6">
@@ -92,25 +158,52 @@
       </div>
   
       <!-- Pregunta 5-->
-      <div class="my-6">
-          <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Cuenta con alguna certificación vigente nacional y/o internacional?</label>
-          <div class="grid gap-4 md:grid-cols-1">
-              <div class="flex items-center">
-                  <input id="si_tres" type="radio" value="Si" name="respuesta[s12_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="si_tres" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
-              </div>
-          <div class="flex items-center">
-              <input id="no_tres" type="radio" value="No" name="respuesta[s12_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-              <label for="no_tres" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
-          </div>
-          </div>
-      </div>
-  
-      <!-- Pregunta 6-->
-      <div>
-          <label for="mensaje" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que la respuesta anterior sea POSITIVA, especifica.</label>
-          <textarea id="mensaje" name= "respuesta[s12_p6]" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
-      </div>
+<div class="my-6">
+    <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Cuenta con alguna certificación vigente nacional y/o internacional?</label>
+    <div class="grid gap-4 md:grid-cols-1">
+        <div class="flex items-center">
+            <input id="si_tres" type="radio" value="Si" name="respuesta[s12_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="si_tres" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
+        </div>
+        <div class="flex items-center">
+            <input id="no_tres" type="radio" value="No" name="respuesta[s12_p5]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="no_tres" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+        </div>
+    </div>
+</div>
+
+<!-- Pregunta 6-->
+<div id="certificacion-especificacion-container" class="hidden my-6">
+    <label for="mensaje" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que la respuesta anterior sea POSITIVA, especifica.</label>
+    <textarea id="mensaje" name="respuesta[s12_p6]" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener elementos relevantes
+    const radioSi = document.getElementById('si_tres');
+    const radioNo = document.getElementById('no_tres');
+    const especificacionContainer = document.getElementById('certificacion-especificacion-container');
+    
+    // Función para manejar cambios en los radio buttons
+    function handleCertificacionChange() {
+        if (radioSi.checked) {
+            especificacionContainer.classList.remove('hidden');
+        } else {
+            especificacionContainer.classList.add('hidden');
+            // Opcional: Limpiar el textarea cuando se selecciona "No"
+            document.getElementById('mensaje').value = '';
+        }
+    }
+    
+    // Añadir event listeners a los radio buttons
+    radioSi.addEventListener('change', handleCertificacionChange);
+    radioNo.addEventListener('change', handleCertificacionChange);
+    
+    // Ejecutar al cargar la página para establecer el estado inicial
+    handleCertificacionChange();
+});
+</script>
   
       <!-- Pregunta 7-->
       <div class="my-6">
@@ -167,25 +260,54 @@
       </div>
   
       <!-- Pregunta 9 -->
-      <div class="my-6">
-          <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Has realizado o colaborado con alguna publicación de un artículo en revista científica y/o de divulgación? </label>
-          <div class="grid gap-4 md:grid-cols-1">
-              <div class="flex items-center">
-                  <input id="si_cuatro" type="radio" value="Si" name="respuesta[s12_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="si_cuatro" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
-              </div>
-          <div class="flex items-center">
-              <input id="no_cuatro" type="radio" value="No" name="respuesta[s12_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-              <label for="no_cuatro" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
-          </div>
-          </div>
-      </div>
-  
-      <!-- Pregunta 10 -->
-      <div>
-          <label for="mensaje_dos" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que la respuesta anterior sea POSITIVA, especifica.</label>
-          <textarea id="mendaje_dos" name= "respuesta[s12_p10]" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
-      </div>
+<div class="my-6">
+    <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Has realizado o colaborado con alguna publicación de un artículo en revista científica y/o de divulgación?</label>
+    <div class="grid gap-4 md:grid-cols-1">
+        <div class="flex items-center">
+            <input id="si_cuatro" type="radio" value="Si" name="respuesta[s12_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="si_cuatro" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
+        </div>
+        <div class="flex items-center">
+            <input id="no_cuatro" type="radio" value="No" name="respuesta[s12_p9]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="no_cuatro" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+        </div>
+    </div>
+</div>
+
+<!-- Pregunta 10 - Oculto inicialmente -->
+<div id="publicacion-especificacion-container" class="hidden my-6">
+    <label for="mensaje_dos" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que la respuesta anterior sea POSITIVA, especifica.</label>
+    <textarea id="mensaje_dos" name="respuesta[s12_p10]" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos de la pregunta 9
+    const radioSiPublicacion = document.getElementById('si_cuatro');
+    const radioNoPublicacion = document.getElementById('no_cuatro');
+    const publicacionEspecContainer = document.getElementById('publicacion-especificacion-container');
+    
+    // Función para manejar cambios en la pregunta 9
+    function handlePublicacionChange() {
+        if (radioSiPublicacion.checked) {
+            publicacionEspecContainer.classList.remove('hidden');
+        } else {
+            publicacionEspecContainer.classList.add('hidden');
+            // Limpiar el textarea cuando se selecciona "No"
+            document.getElementById('mensaje_dos').value = '';
+        }
+    }
+    
+    // Event listeners para pregunta 9
+    radioSiPublicacion.addEventListener('change', handlePublicacionChange);
+    radioNoPublicacion.addEventListener('change', handlePublicacionChange);
+    
+    // Establecer estado inicial
+    handlePublicacionChange();
+});
+
+// Nota: Corregí el ID del textarea de "mendaje_dos" a "mensaje_dos" para coincidir con el "for" del label
+</script>
   
       <!-- Pregunta 11 -->
       <div class="my-6">
@@ -238,26 +360,53 @@
           </div>
       </div>
   
-      <!-- Pregunta 13 -->
-      <div class="my-6">
-          <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Perteneces a alguna asociación profesional relacionada con tu carrera?</label>
-          <div class="grid gap-4 md:grid-cols-1">
-              <div class="flex items-center">
-                  <input id="si_cinco" type="radio" value="Si" name="respuesta[s12_p13]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="si_cinco" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
-              </div>
-              <div class="flex items-center">
-                  <input id="no_cinco" type="radio" value="No" name="respuesta[s12_p13]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="no_cinco" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
-              </div>
-          </div>
-      </div>
-  
-      <!-- Pregunta 14 -->
-      <div>
-          <label for="mensaje_tres" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que tu respuesta de la pregunta anterior sea POSITIVA, especifica a que asociación perteneces.</label>
-          <textarea id="mensaje_tres" name="respuesta[s12_p14]" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
-      </div>
+     <!-- Pregunta 13 -->
+<div class="my-6">
+    <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Perteneces a alguna asociación profesional relacionada con tu carrera?</label>
+    <div class="grid gap-4 md:grid-cols-1">
+        <div class="flex items-center">
+            <input id="si_cinco" type="radio" value="Si" name="respuesta[s12_p13]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="si_cinco" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
+        </div>
+        <div class="flex items-center">
+            <input id="no_cinco" type="radio" value="No" name="respuesta[s12_p13]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="no_cinco" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
+        </div>
+    </div>
+</div>
+
+<!-- Pregunta 14 -->
+<div id="asociacion-especificacion-container" class="hidden my-6">
+    <label for="mensaje_tres" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">En caso de que tu respuesta de la pregunta anterior sea POSITIVA, especifica a que asociación perteneces.</label>
+    <textarea id="mensaje_tres" name="respuesta[s12_p14]" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máximo 100 palabras"></textarea>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener elementos relevantes
+    const radioSi = document.getElementById('si_cinco');
+    const radioNo = document.getElementById('no_cinco');
+    const especificacionContainer = document.getElementById('asociacion-especificacion-container');
+    
+    // Función para manejar cambios en los radio buttons
+    function handleAsociacionChange() {
+        if (radioSi.checked) {
+            especificacionContainer.classList.remove('hidden');
+        } else {
+            especificacionContainer.classList.add('hidden');
+            // Limpiar el textarea cuando se selecciona "No"
+            document.getElementById('mensaje_tres').value = '';
+        }
+    }
+    
+    // Añadir event listeners a los radio buttons
+    radioSi.addEventListener('change', handleAsociacionChange);
+    radioNo.addEventListener('change', handleAsociacionChange);
+    
+    // Ejecutar al cargar la página para establecer el estado inicial
+    handleAsociacionChange();
+});
+</script>
   
       <!-- Pregunta 15 -->
       <div class="my-6">
@@ -294,4 +443,34 @@
       </div>
     </form>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('formulario');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evitamos que envíe *automáticamente* (por ahora)
+    
+            // Validamos manualmente el formulario usando HTML5
+            if (!form.checkValidity()) {
+                form.reportValidity(); // Muestra los mensajes nativos
+                return;
+            }
+    
+            // Si es válido, mostramos SweetAlert
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Deseas enviar este formulario?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, enviar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Ahora sí enviamos el formulario
+                }
+            });
+        });
+    });
+    </script>
 </x-layouts.app>

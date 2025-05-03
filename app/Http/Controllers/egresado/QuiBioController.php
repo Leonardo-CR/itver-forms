@@ -34,10 +34,23 @@ class QuiBioController extends Controller
         return view('encuesta.quibio.5_desempeno_laboral');
     }
     public function store(Request $request)
-    {
-        $no_control = '22020879'; // o como lo manejes tú
-    
-            // Recorremos todas las respuestas del formulario
+{
+    $user_id = auth()->id(); // o como lo manejes tú
+
+    // 1. Buscar la encuesta activa del tipo QUIBIO
+    $encuestaActiva = DB::table('encuesta')
+        ->where('cv_tipo_encuesta', 2) // el id 2 corresponde a QUIBIO
+        ->where('is_active', true)
+        ->first();
+
+    //return dd($encuestaActiva);  
+    //return dd(DB::table('encuesta')->get());
+    ;
+
+    if (!$encuestaActiva) {
+        return redirect()->back()->withErrors(['encuesta' => 'No hay una encuesta QUIBIO activa.']);
+    }
+
     foreach ($request->input('respuesta') as $clave => $valor) {
         // Extrae el número de sección y número de pregunta desde la clave
         if (preg_match('/s(\d+)_p(\d+)/', $clave, $match)) {
@@ -51,39 +64,50 @@ class QuiBioController extends Controller
                 ->first();
 
             if (!$pregunta) {
-                continue; // Si no existe la pregunta, pasa a la siguiente
+                continue;
             }
 
-            // Si es un arreglo, significa que hay múltiples respuestas (checkboxes)
+            // Verificamos si la respuesta está vacía
             if (is_array($valor)) {
                 foreach ($valor as $respuesta_multiple) {
+                    if (empty($respuesta_multiple)) {
+                        continue;
+                    }
+
                     if ($pregunta->tipo === 'cuantitativa') {
                         DB::table('respuesta_cuantitativa')->insert([
                             'valor' => intval($respuesta_multiple),
-                            'no_control' => $no_control,
-                            'cv_pregunta' => $pregunta->cv_pregunta
+                            'user_id' => $user_id,
+                            'cv_pregunta' => $pregunta->cv_pregunta,
+                            'cv_encuesta' => $encuestaActiva->cv_encuesta
                         ]);
                     } elseif ($pregunta->tipo === 'cualitativa') {
                         DB::table('respuesta_cualitativa')->insert([
                             'valor' => $respuesta_multiple,
-                            'no_control' => $no_control,
-                            'cv_pregunta' => $pregunta->cv_pregunta
+                            'user_id' => $user_id,
+                            'cv_pregunta' => $pregunta->cv_pregunta,
+                            'cv_encuesta' => $encuestaActiva->cv_encuesta
                         ]);
                     }
                 }
             } else {
-                // Si no es arreglo, es una sola respuesta (radio, select, input, textarea)
+                if (empty($valor)) {
+                    continue;
+                }
+
                 if ($pregunta->tipo === 'cuantitativa') {
                     DB::table('respuesta_cuantitativa')->insert([
                         'valor' => intval($valor),
-                        'no_control' => $no_control,
-                        'cv_pregunta' => $pregunta->cv_pregunta
+                        'user_id' => $user_id,
+                        'cv_pregunta' => $pregunta->cv_pregunta,
+                        'cv_encuesta' => $encuestaActiva->cv_encuesta
                     ]);
                 } elseif ($pregunta->tipo === 'cualitativa') {
                     DB::table('respuesta_cualitativa')->insert([
                         'valor' => $valor,
-                        'no_control' => $no_control,
-                        'cv_pregunta' => $pregunta->cv_pregunta
+                        'user_id' => $user_id,
+                        'cv_pregunta' => $pregunta->cv_pregunta,
+                        'cv_encuesta' => $encuestaActiva->cv_encuesta
                     ]);
                 }
             }
@@ -92,5 +116,7 @@ class QuiBioController extends Controller
 
     return redirect()->back()->with('success', 'Encuesta enviada correctamente.');
 }
+
+
 
 }

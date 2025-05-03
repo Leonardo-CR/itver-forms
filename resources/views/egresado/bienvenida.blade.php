@@ -16,7 +16,7 @@
           <div class="text-center p-4 flex flex-col items-center w-full">
             <h2 class="text-2xl font-bold">Bienvenido</h2>
             <p class="mt-2 text-lg">{{ auth()->user()->name }}</p>
-            <p class="text-md">22020879</p>
+            
           </div>
         </div>
 
