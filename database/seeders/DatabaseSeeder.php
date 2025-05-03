@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         // Ejecutamos el seeder de roles
         $this->call(RoleSeeder::class);
 
+        /*
         Aviso::factory(20)->create();
         Admin::factory(20)->create();
         Carrera::factory(20)->create();
@@ -48,5 +49,6 @@ class DatabaseSeeder extends Seeder
              'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
              'password' => bcrypt('12345'),
         ]);
+        */
     }
 }

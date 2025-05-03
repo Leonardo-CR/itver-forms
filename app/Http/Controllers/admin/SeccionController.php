@@ -23,7 +23,9 @@ class SeccionController extends Controller
         if($seccion->cv_seccion==9){
             $preguntas = Pregunta::whereBetween('no', [1, 6])->where('cv_seccion', 2)->get();
         }else if($seccion->cv_seccion==7){
-            $preguntas = Pregunta::whereIn('no', [5, 6, 1, 16, 18, 19, 8, 23, 39, 40, 41, 42])->where('cv_seccion', 7)->get();
+            $preguntas = Pregunta::whereIn('no', [5, 6, 1, 16, 18, 19, 8, 23, 39, 40, 41, 42])->where('cv_seccion', 3)->get();
+        }else if($seccion->cv_seccion==7){
+            $preguntas = Pregunta::whereIn('no', [5, 6, 1, 16, 18, 19, 8, 23, 39, 40, 41, 42])->where('cv_seccion', 3)->get();
         }
 
 
