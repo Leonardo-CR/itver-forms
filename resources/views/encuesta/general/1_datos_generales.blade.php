@@ -3,7 +3,9 @@
 
     <div href="#" class=" block mx-auto my-auto w-full text-black  max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
         <h5 class="mb-2 text-2xl uppercase font-bold tracking-tight text-gray-900 dark:text-white">Perfil del egresado</h5>   
-        <form  id="formulario">
+        <form  id="formulario"  >
+          @csrf
+          @method('POST')
           <!-- FILA 1-->
           <div class="mb-6">
             <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre:</label>
@@ -38,9 +40,9 @@
               <label for="masculino" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sexo:</label>
               <!-- SEXO RADIO BUTTONS -->
               <div class="flex items-center mb-4">
-                <input required id="masculino" type="radio" value="" name="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input required id="masculino" type="radio" value="Masculino" name="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="masculino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Masculino</label>
-                <input required id="femenino" type="radio" value="" name="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <input required id="femenino" type="radio" value="Femenino" name="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="femenino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Femenino</label>
               </div>
             </div>    
@@ -88,40 +90,47 @@
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label for="carrera" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Carrera:</label>
+              
               <select required id="carrera" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Seleccione una carrera</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
+                <option value="">Seleccione una carrera</option>
+
+                @foreach ($carreras as $carrera)
+                <option value="{{ $carrera->cv_carrera }}">{{ $carrera->nombre }}</option>                          
+
+                @endforeach
+                
               </select>
+
             </div>
             <div>
-              <label for="especialidad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Especialidad:</label>
-              <select  required id="especialidad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Seleccione una especialidad</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-              </select>
+              <label for="especialidad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingrese su Especialidad:</label>
+              <input type="text" id="especialidad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Redes y telecomunicaciones" required />
             </div>
           </div>
           <!-- FILA 7-->
           <div class="grid gap-6 mb-6 md:grid-cols-3">
             <div>
               <label for="mes_egreso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mes de egreso:</label>
-              <select required id="mes_egreso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Seleccione un mes</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-              </select>
+              <select required id="mes_egreso" name="mes_egreso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected disabled>Seleccione un mes</option>
+                <option value="Enero">Enero</option>
+                <option value="Febrero">Febrero</option>
+                <option value="Marzo">Marzo</option>
+                <option value="Abril">Abril</option>
+                <option value="Mayo">Mayo</option>
+                <option value="Junio">Junio</option>
+                <option value="Julio">Julio</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Septiembre">Septiembre</option>
+                <option value="Octubre">Octubre</option>
+                <option value="Noviembre">Noviembre</option>
+                <option value="Diciembre">Diciembre</option>
+            </select>
+            
             </div>
             <div>
-              <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Año de egreso::</label>
-              <input required type="number"  id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Felipe" required />
+              <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Año de egreso:</label>
+              <input required type="number"  id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ejemplo:2025" required />
             
             </div>
             <!-- TELEFONO CELULAR -->
@@ -190,13 +199,7 @@
               <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
             </div>
           </div>
-          <div>
-            <label for="otro" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Otro:</label>
-            <div class="flex w-full gap-4">
-              <input required type="text" id="otro" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="15" required />
-              <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
-            </div>          
-          </div>
+          
         </div>
       </div>
     </div>

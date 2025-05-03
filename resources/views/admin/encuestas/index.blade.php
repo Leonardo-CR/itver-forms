@@ -42,7 +42,7 @@
                     <td class="px-4 py-2">{{ $encuesta->tipo_encuesta->nombre }}</td>
                     <td class="px-4 py-2 text-center">
                         <div class="flex justify-center space-x-2">
-                            <a href="" class="btn text-white bg-[#00c014] text-xs">Indicadores</a>
+                            <a href="{{ route('admin.general.indicadores', $encuesta) }}" class="btn text-white bg-[#00c014] text-xs">Indicadores</a>
                             <a href="{{ $encuesta->cv_tipo_encuesta === 1 
                                 ? route('admin.general.graficas', $encuesta) 
                                 : route('admin.quibio.graficas', $encuesta) }}" 

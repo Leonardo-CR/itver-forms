@@ -2,9 +2,11 @@
 //En este archivo estan las rutas de la encuesta general
 
 use App\Http\Controllers\admin\GraficasController;
+use App\Http\Controllers\admin\IndicadoresController;
 use App\Http\Controllers\egresado\AvisosController;
 use App\Http\Controllers\egresado\EgresadosController;
 use App\Http\Controllers\egresado\GeneralController;
+use App\Http\Controllers\egresado\PerfilEgresadoController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -33,5 +35,13 @@ Route::get('/general/comentarios-sugerencias', [EgresadosController::class, 'com
 Route::post('/general/store', [GeneralController::class, 'store'])->name('general.store');//Esta ruta registra las respuestas de la encuesta GENERAL
 
 Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'reporte_generales'])->name('admin.general.graficas');
+
+Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores');
+
+// Rutas para apartado de perfil egresado
+Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado
+Route::get('egresado/perfil', [PerfilEgresadoController::class, 'datospersonales'])->name('egresado.perfil.mostrar'); //muestra el perfil del egresado
+
+
 
 require __DIR__.'/auth.php';
