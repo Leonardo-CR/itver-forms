@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         //Roles de administrador
-        $dba = Role::create(['name' => 'admin', 'guard_name' => 'web',]);
+        $dba = Role::create(['name' => 'dba', 'guard_name' => 'web',]);
         $jefe_de_departamento = Role::create(['name' => 'jefe_de_departamento', 'guard_name' => 'web',]);
 
         //Roles de usuario

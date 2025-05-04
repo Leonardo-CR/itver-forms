@@ -18,7 +18,7 @@
                 'name' => 'Egresados',
                 'icon' => 'academic-cap',
                 'url' =>  route('admin.egresados.index'),
-                'current' => request()->routeIs('admin.avisos.*')
+                'current' => request()->routeIs('admin.egresados.*')
             ],
             [
                 'name' => 'Adminstradores',
