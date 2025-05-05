@@ -17,7 +17,6 @@ class TipoEncuestaFactory extends Factory
     public function definition(): array
     {
         return [
-            'cv_tipo_encuesta' => fake()->unique()->numberBetween(0, 99),
             'nombre' => fake()->name(),
             'descripcion' => fake()->text(80),
         ];

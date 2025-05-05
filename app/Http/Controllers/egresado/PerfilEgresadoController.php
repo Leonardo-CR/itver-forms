@@ -7,15 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Carrera;
 use App\Models\DatosGeneralesEgresado;
 
+use function Ramsey\Uuid\v1;
+
 class PerfilEgresadoController extends Controller
 {
     public function index()
-    {
-        $perfil = DatosGeneralesEgresado::where('user_id', auth()->id())->first();
-        return view('egresado.perfil.index', compact('perfil'));
-    }
-
-    public function datospersonales()
     {
         $carreras = Carrera::all();
         $datos = DatosGeneralesEgresado::where('user_id', auth()->id())->first();
@@ -23,35 +19,57 @@ class PerfilEgresadoController extends Controller
         return view('encuesta.general.1_datos_generales', compact('carreras', 'datos'));
     }
 
+    public function index2()
+    {
+        $carreras = Carrera::all();
+        $datos = DatosGeneralesEgresado::where('user_id', auth()->id())->first();
+        
+        return view('encuesta.quibio.1_datos_personales', compact('carreras', 'datos'));
+    }
+
     public function guardarDatosGenerales(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'ap_paterno' => 'required|string|max:255',
-            'ap_materno' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date',
-            'sexo' => 'required|in:Masculino,Femenino',
-            'curp' => 'required|string|max:18',
-            'estado' => 'required|string|max:255',
-            'municipio' => 'required|string|max:255',
-            'ciudad' => 'required|string|max:255',
-            'colonia' => 'required|string|max:255',
-            'cp' => 'required|string|max:10',
-            'calle' => 'required|string|max:255',
-            'numero' => 'required|string|max:255',
-            'cv_carrera' => 'required|exists:carreras,cv_carrera',
+        $val = $request->validate([
+            'nombre' => 'nullable|string|max:255',
+            'ap_paterno' => 'nullable|string|max:255',
+            'ap_materno' => 'nullable|string|max:255',
+            'fecha_nac' => 'nullable|date',
+            'sexo' => 'nullable|in:Masculino,Femenino',
+            'curp' => 'nullable|string',
+            'estado' => 'nullable|string|max:255',
+            'municipio' => 'nullable|string|max:255',
+            'ciudad' => 'nullable|string|max:255',
+            'colonia' => 'nullable|string|max:255',
+            'cp' => 'nullable|string|max:10',
+            'calle' => 'nullable|string|max:255',
+            'no' => 'nullable|string|max:255',
+            'cv_carrera' => 'nullable|string|max:255',
+            'especialidad' => 'nullable|string|max:255',
+            'mes_egreso' => 'nullable|string|max:255',
+            'anio_ingreso' => 'nullable|integer|min:1900|max:'.(date('Y')+1),
+            'anio_egreso' => 'nullable|integer|min:1900|max:'.(date('Y')+1),
+            'lada_celular' => 'nullable|string|max:10',
+            'tel_celular' => 'nullable|string|max:10',
+            'estado_civil' => 'nullable|string|max:255',
+            'lada_casa_paterna' => 'nullable|string|max:10',
+            'tel_casa_paterna' => 'nullable|string|max:10',
+            'correo' => 'nullable|email|max:255',
+            'red_social' => 'nullable|string|max:255',
+            'no_control' => 'nullable|string|max:255',
+            'titulado' => 'nullable|integer',
+            'dominio_ingles' => 'nullable|integer|min:0|max:100',
+            'manejo_paquetes' => 'nullable|string',
+            'obstaculo' => 'nullable|string|max:255',
+            'explicate' => 'nullable|string|max:255',
+            'relacion' => 'nullable|integer',
         ]);
-
+        $val['user_id'] = auth()->id();
         DatosGeneralesEgresado::updateOrCreate(
             ['user_id' => auth()->id()],
-            $request->only([
-                'nombre', 'ap_paterno', 'ap_materno', 'fecha_nacimiento',
-                'sexo', 'curp', 'estado', 'municipio', 'ciudad',
-                'colonia', 'cp', 'calle', 'numero', 'cv_carrera'
-            ])
+            $val
         );
 
-        return redirect()->route('egresado.instrucciones')->with('success', 'Datos guardados correctamente.');
+        return redirect()->route('egresado.encuesta')->with('success', 'Datos guardados correctamente.');
     }
 
     public function show($id)

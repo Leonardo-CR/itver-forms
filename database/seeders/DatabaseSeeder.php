@@ -7,15 +7,19 @@ use App\Models\Admin;
 use App\Models\Aviso;
 use App\Models\Carrera;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Seccion;
 use App\Models\Egresado;
 use App\Models\Encuesta;
+use App\Models\Pregunta;
 use App\Models\TipoEncuesta;
+use function Pest\Laravel\call;
+use Illuminate\Database\Seeder;
+
 use Database\Seeders\RoleSeeder;
 
-use function Pest\Laravel\call;
-
-use Illuminate\Database\Seeder;
+use App\Models\RespuestaCualitativa;
 use Illuminate\Validation\Rules\Can;
+use App\Models\RespuestaCuantitativa;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,18 +31,24 @@ class DatabaseSeeder extends Seeder
         // Ejecutamos el seeder de roles
         $this->call(RoleSeeder::class);
 
-        //Aviso::factory(20)->create();
-        //Admin::factory(20)->create();
-        //Carrera::factory(20)->create();
-        //Egresado::factory(20)->create();
-        //TipoEncuesta::factory(3)->create();
-        //Encuesta::factory(5)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Leo Rosas',
-        //     'email' => 'leo@leo.com',
-        //     'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
-        //     'password' => bcrypt('12345'),
-        // ]);
+        /*
+        Aviso::factory(20)->create();
+        Admin::factory(20)->create();
+        Carrera::factory(20)->create();
+        Egresado::factory(20)->create();
+        TipoEncuesta::factory(3)->create();
+        Encuesta::factory(2)->create();
+        Seccion::factory(10)->create();
+        Pregunta::factory(20)->create();
+        RespuestaCuantitativa::factory(1000)->create();
+        RespuestaCualitativa::factory(1000)->create();
+        
+        User::factory()->create([
+             'name' => 'Leo Rosas',
+             'email' => 'leo@leo.com',
+             'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
+             'password' => bcrypt('12345'),
+        ]);
+        */
     }
 }

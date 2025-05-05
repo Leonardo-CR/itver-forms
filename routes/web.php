@@ -1,14 +1,15 @@
 <?php
-use App\Http\Controllers\QuiBioController;
-use App\Http\Controllers\egresado\egresadosController;
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\admin\AvisoController;
-
-use App\Exports\AvisosExport;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\AvisosImport;
 use Illuminate\Http\Request;
+use App\Exports\AvisosExport;
+use App\Imports\AvisosImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuiBioController;
+use App\Http\Controllers\admin\AvisoController;
+use App\Http\Controllers\admin\SeccionController;
+use App\Http\Controllers\egresado\egresadosController;
 
 Route::get('admin/avisos/exportar', function () {
     return Excel::download(new AvisosExport, 'avisos.xlsx');
@@ -51,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
+
+//Rutas para ver las grafiacas
+Route::get('admin/secciones/{encuesta}', [SeccionController::class, 'index'])->name('admin.secciones.index');
+Route::get('admin/secciones/graficas/{seccion}', [SeccionController::class, 'graficas'])->name('admin.secciones.graficas');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/general.php';

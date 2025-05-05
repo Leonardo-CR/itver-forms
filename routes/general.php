@@ -17,7 +17,10 @@ Route::get('/general/encuesta', [EgresadosController::class, 'encuesta'])->name(
 //Rutas Egresado general
 
 //Rutas datos personales
-Route::get('/general/datos-personales', [EgresadosController::class, 'datospersonales'])->name('general.datos_personales');
+Route::get('/general/datos-personales', [PerfilEgresadoController::class, 'index'])->name('general.datos_personales');
+Route::post('/general/datos-personales/guardarDatosGenerales', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('general.datos_personales.guardarDatosGenerales');
+
+//Route::post('/guardar-datos-generales', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('general.guardar');
 
 //Pertinencia
 Route::get('/general/pertinencia', [EgresadosController::class, 'pertinencia'])->name('general.pertinencia');
@@ -39,8 +42,8 @@ Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'repo
 Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores');
 
 // Rutas para apartado de perfil egresado
-Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado
-Route::get('egresado/perfil', [PerfilEgresadoController::class, 'datospersonales'])->name('egresado.perfil.mostrar'); //muestra el perfil del egresado
+//Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado
+//Route::get('egresado/perfil', [PerfilEgresadoController::class, 'datospersonales'])->name('egresado.perfil.mostrar'); //muestra el perfil del egresado
 
 
 

@@ -11,7 +11,6 @@ class TipoEncuesta extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cv_tipo_encuesta',
         'nombre',
         'descripcion',
     ];
@@ -19,6 +18,6 @@ class TipoEncuesta extends Model
     protected $table = 'tipo_encuesta';    
     protected $primaryKey = 'cv_tipo_encuesta'; 
     protected $keyType = 'string';
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = true;
 }

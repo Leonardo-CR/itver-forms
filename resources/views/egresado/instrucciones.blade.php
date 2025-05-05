@@ -3,8 +3,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script> --}}
 
-<div class="h-screen bg-gradient-to-b from-[#f9f9f9] to-[#bcbcbc]">
-  <div class=" block mx-auto my-auto w-full text-black  max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
+<div class="h-screen bg-gradient-to-b from-[#f9f9f9] to-[#bcbcbc]  py-4">
+  <div class="block mx-auto my-auto w-full text-black  max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 ">
     <!-- FILA 1-->
     <div class="flex gap-2">
       <div class="flex flex-col basis-[80%]">
@@ -42,11 +42,6 @@
           <img src="{{ asset('img/instrucciones/colabora.png') }}" class="w-34 h-30" alt="">
         </div>
       </div>      
-    </div>
-    <!-- FILA 5-->
-    <div class="flex">
-      <button type="submit" class="ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Terminar Sección</button>
-    </div>
   </div>
 </div>
 </x-layouts.app>

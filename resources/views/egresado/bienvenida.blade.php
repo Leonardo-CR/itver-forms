@@ -4,9 +4,9 @@
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script> --}}
 
 <!-- Contenedor principal -->
-<div class="flex h-full w-full items-center justify-center p-2">
-  <div class="bg-gray-200 p-4 sm:p-6 rounded-lg w-full max-w-7xl">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-200 p-2 rounded-lg shadow-md">
+<div class="h-screen bg-gradient-to-b from-[#f9f9f9] to-[#bcbcbc]  py-4">
+
+  <div class="block mx-auto my-auto w-full text-black  max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4 p-2 rounded-lg shadow-md">
 
       <!-- Columna izquierda: Bienvenido y Opinión -->
       <div class="flex flex-col gap-4 col-span-1">

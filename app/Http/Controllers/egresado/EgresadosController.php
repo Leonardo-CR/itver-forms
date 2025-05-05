@@ -73,8 +73,6 @@ class EgresadosController extends Controller
     public function datospersonales()
     {
         $carreras = Carrera::all();
-        
-
         return view('encuesta.general.1_datos_generales', compact('carreras'));
     }
 

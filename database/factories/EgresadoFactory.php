@@ -27,7 +27,7 @@ class EgresadoFactory extends Factory
             'apm' => fake()->lastName(),
             'correo' => fake()->unique()->safeEmail(),
             'password' => bcrypt(fake()->password()),
-            'cv_carrera' => Carrera::factory(),
+            'cv_carrera' => Carrera::inRandomOrder()->first()->cv_carrera,
         ];
     }
 }
