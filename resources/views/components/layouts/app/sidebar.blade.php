@@ -1,42 +1,57 @@
 @php
-    //Rutas del proyecto separadas en grupos
-    $groups = [
-        'Plataforma' => [
-            [
-                'name' => 'Dashboard',
-                'icon' => 'home',
-                'url' =>  route('dashboard'),
-                'current' => request()->routeIs('dashboard')
-            ],
-            [
-                'name' => 'Avisos',
-                'icon' => 'chat-bubble-left-ellipsis',
-                'url' =>  route('admin.avisos.index'),
-                'current' => request()->routeIs('admin.avisos.*')
-            ],
-            [
-                'name' => 'Egresados',
-                'icon' => 'academic-cap',
-                'url' =>  route('admin.egresados.index'),
-                'current' => request()->routeIs('admin.egresados.*')
-            ],
-            [
-                'name' => 'Adminstradores',
-                'icon' => 'key',
-                'url' =>  route('admin.admins.index'),
-                'current' => request()->routeIs('admin.admins.*')
-            ],
-            [
-                'name' => 'Encuestas',
-                'icon' => 'pencil-square',
-                'url' =>  route('admin.encuestas.index'),
-                'current' => request()->routeIs('admin.encuestas.*')
-            ],
-            
+    $user = auth()->user();
 
-        ],
-               
-    ];
+    $links = [];
+
+    if ($user->hasRole('dba')) {
+        
+        $links[] = [
+            'name' => 'Avisos',
+            'icon' => 'chat-bubble-left-ellipsis',
+            'url' => route('admin.avisos.index'),
+            'current' => request()->routeIs('admin.avisos.*')
+        ];
+        $links[] = [
+            'name' => 'Egresados',
+            'icon' => 'academic-cap',
+            'url' => route('admin.egresados.index'),
+            'current' => request()->routeIs('admin.egresados.*')
+        ];
+        $links[] = [
+            'name' => 'Administradores',
+            'icon' => 'key',
+            'url' => route('admin.admins.index'),
+            'current' => request()->routeIs('admin.admins.*')
+        ];
+        $links[] = [
+            'name' => 'Encuestas',
+            'icon' => 'pencil-square',
+            'url' => route('admin.encuestas.index'),
+            'current' => request()->routeIs('admin.encuestas.*')
+        ];
+    }
+    if ($user->hasRole('jefe_de_departamento')) {
+        
+        $links[] = [
+            'name' => 'Avisos',
+            'icon' => 'chat-bubble-left-ellipsis',
+            'url' => route('admin.avisos.index'),
+            'current' => request()->routeIs('admin.avisos.*')
+        ];
+        $links[] = [
+            'name' => 'Egresados',
+            'icon' => 'academic-cap',
+            'url' => route('admin.egresados.index'),
+            'current' => request()->routeIs('admin.egresados.*')
+        ];
+       
+        $links[] = [
+            'name' => 'Encuestas',
+            'icon' => 'pencil-square',
+            'url' => route('admin.encuestas.index'),
+            'current' => request()->routeIs('admin.encuestas.*')
+        ];
+    }
 @endphp
 
 
@@ -58,11 +73,11 @@
 
             <flux:navlist variant="outline">
 
-            @foreach ($groups as $group=>$links)
+            
                 
                                      
 
-                <flux:navlist.group heading="{{ $group }}" class="grid">
+                <flux:navlist.group heading="Panel" class="grid">
 
                     @foreach ($links as $link)
 
@@ -72,22 +87,14 @@
                     
                 </flux:navlist.group>
 
-            @endforeach
+           
 
             </flux:navlist>
 
 
             <flux:spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
-            </flux:navlist>
+            
 
             <!-- Desktop User Menu -->
             <flux:dropdown position="bottom" align="start">

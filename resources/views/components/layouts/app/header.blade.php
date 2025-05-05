@@ -1,54 +1,105 @@
 @php
-    //Rutas del proyecto separadas en grupos
-    $links = [
-        
-            [
-                'name' => 'Dashboard',
-                'icon' => 'home',
-                'url' =>  route('dashboard'),
-                'current' => request()->routeIs('dashboard')
-            ],
-            [
-                'name' => 'Bienvenida',
-                'icon' => 'home',
-                'url' =>  route('egresado.bienvenida'),
-                'current' => request()->routeIs('egresado.bienvenida.*')
-            ],
-            [
-                'name' => 'Instrucciones',
-                'icon' => 'clipboard-document-list',
-                'url' =>  route('egresado.instrucciones'),
-                'current' => request()->routeIs('egresado.instrucciones.*')
-            ],
-            [
-                'name' => 'Encuesta',
-                'icon' => 'academic-cap',
-                'url' =>  route('egresado.encuesta'),
-                'current' => request()->routeIs('egresado.encuesta.*')
-            ],
-            [
-                'name' => 'Encuesta QuiBio',
-                'icon' => 'academic-cap',
-                'url' =>  route('quibio.encuesta'),
-                'current' => request()->routeIs('quibio.*')
-            ],
-            [
-                'name' => 'Avisos',
-                'icon' => 'inbox',
-                'url' =>  route('avisos'),
-                'current' => request()->routeIs('avisos.*')
-            ],
-            
-            
-            
-];
-        
-        
-        
+    $user = auth()->user();
 
+    $links = [];
+
+    if ($user->hasRole('dba') || $user->hasRole('jefe_de_departamento')) {
+       
+
+        $links[] = [
+            'name' => 'Avisos',
+            'icon' => 'inbox',
+            'url' =>  route('avisos'),
+            'current' => request()->routeIs('avisos.*'),
+        ];
+        $links[] = [
+            'name' => 'Bienvenida',
+            'icon' => 'home',
+            'url' =>  route('egresado.bienvenida'),
+            'current' => request()->routeIs('egresado.bienvenida.*'),
+        ];
+        $links[] = [
+            'name' => 'Instrucciones',
+            'icon' => 'clipboard-document-list',
+            'url' =>  route('egresado.instrucciones'),
+            'current' => request()->routeIs('egresado.instrucciones.*'),
+        ];
+        $links[] = [
+            'name' => 'Encuesta',
+            'icon' => 'academic-cap',
+            'url' =>  route('egresado.encuesta'),
+            'current' => request()->routeIs('egresado.encuesta.*'),
+        ];
+        $links[] = [
+            'name' => 'Encuesta QuiBio',
+            'icon' => 'academic-cap',
+            'url' =>  route('quibio.encuesta'),
+            'current' => request()->routeIs('quibio.*'),
+        ];
+        $links[] = [
+            'name' => 'Panel Administrativo',
+            'icon' => 'presentation-chart-line',
+            'url' =>  route('admin.avisos.index'),
+            'current' => request()->routeIs('quibio.*'),
+        ];
+    }
+
+    if ($user->hasRole('egresado_general')) {
+        $links[] = [
+            'name' => 'Bienvenida',
+            'icon' => 'home',
+            'url' =>  route('egresado.bienvenida'),
+            'current' => request()->routeIs('egresado.bienvenida.*'),
+        ];
+        $links[] = [
+            'name' => 'Instrucciones',
+            'icon' => 'clipboard-document-list',
+            'url' =>  route('egresado.instrucciones'),
+            'current' => request()->routeIs('egresado.instrucciones.*'),
+        ];
+        $links[] = [
+            'name' => 'Encuesta',
+            'icon' => 'academic-cap',
+            'url' =>  route('egresado.encuesta'),
+            'current' => request()->routeIs('egresado.encuesta.*'),
+        ];
+        $links[] = [
+            'name' => 'Avisos',
+            'icon' => 'inbox',
+            'url' =>  route('avisos'),
+            'current' => request()->routeIs('avisos.*'),
+        ];
+    }
+
+    if ($user->hasRole('egresado_quibio')) {
         
-    
+        $links[] = [
+            'name' => 'Bienvenida',
+            'icon' => 'home',
+            'url' =>  route('egresado.bienvenida'),
+            'current' => request()->routeIs('egresado.bienvenida.*'),
+        ];
+        $links[] = [
+            'name' => 'Instrucciones',
+            'icon' => 'clipboard-document-list',
+            'url' =>  route('egresado.instrucciones'),
+            'current' => request()->routeIs('egresado.instrucciones.*'),
+        ];
+        $links[] = [
+            'name' => 'Encuesta QuiBio',
+            'icon' => 'academic-cap',
+            'url' =>  route('quibio.encuesta'),
+            'current' => request()->routeIs('quibio.*'),
+        ];
+        $links[] = [
+            'name' => 'Avisos',
+            'icon' => 'inbox',
+            'url' =>  route('avisos'),
+            'current' => request()->routeIs('avisos.*'),
+        ];
+    }
 @endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>

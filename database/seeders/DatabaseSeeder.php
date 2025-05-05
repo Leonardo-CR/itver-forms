@@ -20,6 +20,8 @@ use Database\Seeders\RoleSeeder;
 use App\Models\RespuestaCualitativa;
 use Illuminate\Validation\Rules\Can;
 use App\Models\RespuestaCuantitativa;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +32,17 @@ class DatabaseSeeder extends Seeder
     {        
         // Ejecutamos el seeder de roles
         $this->call(RoleSeeder::class);
+
+        // Crear el usuario y asignarle el rol 'dba'
+        $user = User::create([
+            'name' => 'Administrador',
+            'email' => 'admin@itverforms.com',
+            'cv_carrera'=> 1,
+            'password' => Hash::make('Leonardo2004'), // Usa una contraseña segura
+        ]);
+
+        // Asignar el rol al usuario
+        $user->assignRole('dba');
 
         /*
         Aviso::factory(20)->create();

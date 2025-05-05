@@ -13,7 +13,7 @@ use App\Http\Controllers\egresado\egresadosController;
 
 Route::get('admin/avisos/exportar', function () {
     return Excel::download(new AvisosExport, 'avisos.xlsx');
-})->name('admin.avisos.exportar');
+})->name('admin.avisos.exportar')->middleware(['auth', 'role:dba|jefe_de_departamento']);
 
 Route::post('admin/avisos/importar', function (Request $request) {
     $request->validate([
@@ -23,7 +23,7 @@ Route::post('admin/avisos/importar', function (Request $request) {
     Excel::import(new AvisosImport, $request->file('archivo'));
 
     return redirect()->back()->with('success', 'Avisos importados correctamente.');
-})->name('admin.avisos.importar');
+})->name('admin.avisos.importar')->middleware(['auth', 'role:dba|jefe_de_departamento']);
 
 
 
@@ -33,9 +33,9 @@ Route::get('/', function () {
 
 //Rutas Egresado 
 
-Route::get('/bienvenida', [EgresadosController::class, 'bienvenida'])->name('egresado.bienvenida');
+Route::get('/bienvenida', [EgresadosController::class, 'bienvenida'])->name('egresado.bienvenida')->middleware('auth');
 
-Route::get('/instrucciones', [EgresadosController::class, 'instrucciones'])->name('egresado.instrucciones');
+Route::get('/instrucciones', [EgresadosController::class, 'instrucciones'])->name('egresado.instrucciones')->middleware('auth');
 
 
 
@@ -44,6 +44,8 @@ Route::get('/instrucciones', [EgresadosController::class, 'instrucciones'])->nam
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::redirect('/dashboard', '/bienvenida')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -54,8 +56,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //Rutas para ver las grafiacas
-Route::get('admin/secciones/{encuesta}', [SeccionController::class, 'index'])->name('admin.secciones.index');
-Route::get('admin/secciones/graficas/{seccion}', [SeccionController::class, 'graficas'])->name('admin.secciones.graficas');
+Route::get('admin/secciones/{encuesta}', [SeccionController::class, 'index'])->name('admin.secciones.index')->middleware(['auth', 'role:dba|jefe_de_departamento']);
+Route::get('admin/secciones/graficas/{seccion}', [SeccionController::class, 'graficas'])->name('admin.secciones.graficas')->middleware(['auth', 'role:dba|jefe_de_departamento']);
 
 require __DIR__.'/auth.php';
 require __DIR__.'/general.php';

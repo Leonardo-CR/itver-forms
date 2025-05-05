@@ -39,32 +39,14 @@
                         {{ \Carbon\Carbon::parse($encuesta->fecha_cierre)->format('d/m/Y') }} 
                         <span class="text-xs text-gray-500">({{ $encuesta->hora_cierre }})</span>
                     </td>
-<<<<<<< HEAD
-                    <td class="px-6 py-4">
-                        {{ $encuesta->fecha_inicio }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->hora_inicio }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->fecha_cierre }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $encuesta->hora_cierre }}
-                    </td>
+
+                    
                     <td class="px-6 py-4">
                         {{ $encuesta->tipo_encuesta->nombre }}
                     </td>
-                    <td class="px-6 py-4" width="10px">
-                        <div class="flex space-x-2">
-                            <a href="{{ route('admin.secciones.index', $encuesta) }}" class="btn btn-green text-xs">Gráficas</a>
-                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a> 
-                            <form class="delete-form" action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-red text-xs">Eliminar</button>
-=======
-                    <td class="px-4 py-2">{{ $encuesta->tipo_encuesta->nombre }}</td>
+                    
+
+                    
                     <td class="px-4 py-2 text-center">
                         <div class="flex justify-center space-x-2">
                             <a href="{{ route('admin.general.indicadores', $encuesta) }}" class="btn text-white bg-[#00c014] text-xs">Indicadores</a>
@@ -74,12 +56,14 @@
                                 class="btn text-white bg-[#b900fa] text-xs">
                                     Gráficas
                             </a>
-                            <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a>
-                            <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-red text-xs">Eliminar</button>
->>>>>>> 4a8558864c265c91da156e85aa90ae620c2e0071
-                            </form>
+                            {{-- Mostrar solo si el usuario tiene el rol dba --}}
+                            @if(auth()->user()->hasRole('dba'))
+                                <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a>
+                                <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-red text-xs">Eliminar</button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
