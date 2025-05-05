@@ -110,7 +110,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+        <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 pt-2" >
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
             {{-- Logo y titulo --}}
@@ -190,24 +190,20 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')">
-                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
-                    </flux:navlist.item>
+                <flux:navlist.group :heading="__('Menú')">
+                    @foreach ($links as $link)
+                        <flux:navlist.item icon="{{ $link['icon'] }}" href="{{ $link['url'] }}" :current="$link['current']" wire:navigate>
+                            {{ $link['name'] }}
+                        </flux:navlist.item>
+                    @endforeach
                 </flux:navlist.group>
             </flux:navlist>
+            
 
+            
             <flux:spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
-            </flux:navlist>
+           
         </flux:sidebar>
 
         {{ $slot }}

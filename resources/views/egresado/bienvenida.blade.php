@@ -31,7 +31,7 @@
       </div>
 
       <!-- Columna derecha: Participar es muy fácil -->
-      <div class="col-span-1 md:col-span-2 rounded-lg bg-[#0081B4] text-white shadow-md flex items-center justify-center">
+      <div class="col-span-1 md:col-span-2 rounded-lg bg-[#0081B4] text-white shadow-md  items-center justify-center">
         <div class="flex flex-col h-full">
           <div class="text-5xl sm:text-6xl mb-6 mt-10">
             <p class="py-4 ml-10 font-bold">¡Participar es muy fácil!</p>
@@ -42,11 +42,9 @@
             <div class="basis-[73%] bg-[#0081B4]">
               <p class="text-base sm:text-2xl ml-10">A través de tus respuestas, podemos identificar áreas de oportunidad y mejorar continuamente.</p>
               <p class="text-base sm:text-2xl ml-10 py-6">¡Tu participación es fundamental!</p>
-              <button class="px-6 py-2.5 bg-white text-black rounded-lg border hover:bg-gray-100 font-semibold flex items-center gap-2 ml-10">
-                      Responder →
-              </button>
+              
             </div>
-            <div class="basis-[27%]  flex">
+            <div class="basis-[27%]  md:flex hidden ">
               <img src="{{ asset('img/egresado/participar.png') }}" alt="Encuesta" class="w-30 sm:w-40 h-auto"/>
             </div>
           </div>

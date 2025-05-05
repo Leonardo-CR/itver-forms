@@ -23,6 +23,6 @@ class Seccion extends Model
         return $this->belongsTo(Encuesta::class, 'cv_encuesta');
     }
 
-    protected $table = 'seccion';
+    
 
 }
