@@ -5,15 +5,36 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Carrera;
 use App\Models\Egresado;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EgresadoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $egresados = Egresado::with('carrera')->paginate();
+        $egresados = User::with('carrera')
+            ->whereHas('roles', function ($q) {
+                $q->whereIn('name', ['egresado_general', 'egresado_quibio']);
+            })
+            ->when($request->nombre, function ($query, $nombre) {
+                $query->where('name', 'like', '%' . $nombre . '%');
+            })
+            ->when($request->email, function ($query, $email) {
+                $query->where('email', 'like', '%' . $email . '%');
+            })
+            ->when($request->verificado !== null, function ($query) use ($request) {
+                if ($request->verificado == '1') {
+                    $query->whereNotNull('email_verified_at');
+                } elseif ($request->verificado == '0') {
+                    $query->whereNull('email_verified_at');
+                }
+            })
+            ->paginate(10)
+            ->appends($request->all());
+    
         return view('admin.egresados.index', compact('egresados'));
     }
+    
 
     public function create()
     {
@@ -43,7 +64,7 @@ class EgresadoController extends Controller
     {
     }
 
-    public function edit(Egresado $egresado)
+    public function edit(User $egresado)
     {
         $carreras = Carrera::all();
         return view('admin.egresados.edit', compact('egresado', 'carreras'));
@@ -64,7 +85,7 @@ class EgresadoController extends Controller
         return redirect()->route('admin.egresados.edit', $egresado);
     }
 
-    public function destroy(Egresado $egresado)
+    public function destroy(User $egresado)
     {
         $egresado->delete();
         return redirect()->route('admin.egresados.index');

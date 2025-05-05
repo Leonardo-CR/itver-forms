@@ -12,16 +12,10 @@
         @csrf
         @method('PUT')
         <div class="card mt-4 space-y-4">
-           <flux:input label="Nombre" name="nombre" value="{{ old('nombre', $egresado->nombre) }}"             
+           <flux:input label="Nombre" name="nombre" value="{{ old('nombre', $egresado->name) }}"             
                placeholder="Escribe el nombre del alumno" type="text" class="mb-2"/>
-   
-           <flux:input label="Appellido Paterno" name="app" value="{{ old('app', $egresado->app) }}"             
-               placeholder="Escribe el apellido paterno del alumno" type="text" class="mb-2"/>
-   
-           <flux:input label="Appellido Materno" name="apm" value="{{ old('apm', $egresado->apm) }}"             
-               placeholder="Escribe el apellido materno del alumno" type="text" class="mb-2"/>
-   
-           <flux:input label="Correo Electrónico" name="correo" value="{{ old('correo', $egresado->correo) }}"             
+      
+           <flux:input label="Correo Electrónico" name="correo" value="{{ old('correo', $egresado->email) }}"             
                placeholder="Escribe el correo electrónico del alumno" type="email" class="mb-2"/>
    
            <flux:select label="Carrera" placeholder="Elige una carrera" name="cv_carrera">

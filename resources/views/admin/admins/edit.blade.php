@@ -12,16 +12,17 @@
         @csrf
         @method('PUT')
         <div class="card mt-4 space-y-4">
-            <flux:input label="Nombre" name="nombre" value="{{ old('nombre', $admin->nombre) }}"
+            <flux:input label="Nombre" name="nombre" value="{{ old('nombre', $admin->name) }}"
                 placeholder="Nombre del usuario administrador" type="text" class="mb-2"/>
             
-            <flux:input label="Correo Electrónico" name="correo" value="{{ old('correo', $admin->correo) }}"
+            <flux:input label="Correo Electrónico" name="correo" value="{{ old('correo', $admin->email) }}"
                 placeholder="Correo del administrador" type="email" class="mb-2"/>
 
-            <flux:select label="Tipo" placeholder="Elige un tipo" name="tipo">
-                <flux:select.option value="DBA" :selected="old('tipo', $admin->tipo) == 'DBA'">DBA</flux:select.option>
-                <flux:select.option value="Jefe de Departamento" :selected="old('tipo', $admin->tipo) == 'Jefe de Departamento'">Jefe de Departamento</flux:select.option>
-            </flux:select>
+                <flux:select label="Tipo" placeholder="Elige un tipo" name="tipo">
+                    <flux:select.option value="DBA" :selected="old('tipo', $tipo) == 'DBA'">DBA</flux:select.option>
+<flux:select.option value="Jefe de Departamento" :selected="old('tipo', $tipo) == 'Jefe de Departamento'">Jefe de Departamento</flux:select.option>
+
+                </flux:select>
 
             <div class="flex justify-end">
                 <flux:button variant="primary" type="Submit">Enviar</flux:button>         
@@ -29,18 +30,7 @@
         </div>
     </form>
 
-    @push('js')
-        <!-- Include the Quill library -->
-        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        <script>
-            const quill = new Quill('#editor', {
-              theme: 'snow'
-            });
-            quill.on('text-change',function(){
-                document.querySelector('#content').value = quill.root.innerHTML;
-            });
-        </script>
-    @endpush
+   
 </x-layouts.administrarum>
 
 

@@ -5,14 +5,34 @@ namespace App\Http\Controllers\egresado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\EncuestaRespuestas;
+
 
 
 class QuiBioController extends Controller
 {
     public function encuesta()
-    {
-        return view('encuesta.quibio.encuesta');
+{
+    $userId = auth()->id();
+
+    // Encuesta QUIBIO activa
+    $encuestaActiva = DB::table('encuesta')
+        ->where('cv_tipo_encuesta', 2) // 2 corresponde a QUIBIO
+        ->where('is_active', true)
+        ->first();
+
+    $seccionesRespondidas = [];
+
+    if ($encuestaActiva) {
+        $seccionesRespondidas = EncuestaRespuestas::where('user_id', $userId)
+            ->where('cv_encuesta', $encuestaActiva->cv_encuesta)
+            ->pluck('cv_seccion')
+            ->toArray();
     }
+
+    return view('encuesta.quibio.encuesta', compact('seccionesRespondidas'));
+}
+
     public function datos_personales()
     {
         return view('encuesta.quibio.1_datos_personales');
@@ -37,42 +57,30 @@ class QuiBioController extends Controller
 {
     $user_id = auth()->id(); // o como lo manejes tú
 
-    // 1. Buscar la encuesta activa del tipo QUIBIO
     $encuestaActiva = DB::table('encuesta')
         ->where('cv_tipo_encuesta', 2) // el id 2 corresponde a QUIBIO
         ->where('is_active', true)
         ->first();
-
-    //return dd($encuestaActiva);  
-    //return dd(DB::table('encuesta')->get());
-    ;
 
     if (!$encuestaActiva) {
         return redirect()->back()->withErrors(['encuesta' => 'No hay una encuesta QUIBIO activa.']);
     }
 
     foreach ($request->input('respuesta') as $clave => $valor) {
-        // Extrae el número de sección y número de pregunta desde la clave
         if (preg_match('/s(\d+)_p(\d+)/', $clave, $match)) {
             $cv_seccion = intval($match[1]);
             $no = intval($match[2]);
 
-            // Busca la pregunta en la base de datos
             $pregunta = DB::table('pregunta')
                 ->where('cv_seccion', $cv_seccion)
                 ->where('no', $no)
                 ->first();
 
-            if (!$pregunta) {
-                continue;
-            }
+            if (!$pregunta) continue;
 
-            // Verificamos si la respuesta está vacía
             if (is_array($valor)) {
                 foreach ($valor as $respuesta_multiple) {
-                    if (empty($respuesta_multiple)) {
-                        continue;
-                    }
+                    if (empty($respuesta_multiple)) continue;
 
                     if ($pregunta->tipo === 'cuantitativa') {
                         DB::table('respuesta_cuantitativa')->insert([
@@ -91,9 +99,7 @@ class QuiBioController extends Controller
                     }
                 }
             } else {
-                if (empty($valor)) {
-                    continue;
-                }
+                if (empty($valor)) continue;
 
                 if ($pregunta->tipo === 'cuantitativa') {
                     DB::table('respuesta_cuantitativa')->insert([
@@ -114,8 +120,29 @@ class QuiBioController extends Controller
         }
     }
 
-    return redirect()->back()->with('success', 'Encuesta enviada correctamente.');
+    // Lógica agregada: registrar secciones como respondidas
+    $seccionesRespondidas = collect($request->input('respuesta'))
+        ->keys()
+        ->map(function ($clave) {
+            if (preg_match('/s(\d+)_p(\d+)/', $clave, $match)) {
+                return intval($match[1]);
+            }
+            return null;
+        })
+        ->filter()
+        ->unique();
+
+    foreach ($seccionesRespondidas as $cv_seccion) {
+        EncuestaRespuestas::firstOrCreate([
+            'user_id' => $user_id,
+            'cv_encuesta' => $encuestaActiva->cv_encuesta,
+            'cv_seccion' => $cv_seccion,
+        ]);
+    }
+
+    return redirect()->route('quibio.encuesta');
 }
+
 
 
 
