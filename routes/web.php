@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuiBioController;
 use App\Http\Controllers\admin\AvisoController;
 use App\Http\Controllers\admin\SeccionController;
-use App\Http\Controllers\egresado\egresadosController;
+use App\Http\Controllers\egresado\EgresadosController;
 
 Route::get('admin/avisos/exportar', function () {
     return Excel::download(new AvisosExport, 'avisos.xlsx');
