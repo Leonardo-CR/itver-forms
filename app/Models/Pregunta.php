@@ -16,15 +16,11 @@ class Pregunta extends Model
 
     public function respuestasCuantitativas()
     {
-        return $this->hasMany(RespuestaCuantitativa::class, 'cv_pregunta', 'cv_pregunta')->withDefault([
-            'valor' => 'No hay respuesta'
-        ]);
+        return $this->hasMany(RespuestaCuantitativa::class, 'cv_pregunta', 'cv_pregunta');
     }
 
     public function respuestasCualitativas()
     {
-        return $this->hasMany(RespuestaCualitativa::class, 'cv_pregunta', 'cv_pregunta')->withDefault([
-            'valor' => 'No hay respuesta'
-        ]);
+        return $this->hasMany(RespuestaCualitativa::class, 'cv_pregunta', 'cv_pregunta');
     }
 }

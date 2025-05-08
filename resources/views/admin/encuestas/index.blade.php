@@ -39,16 +39,12 @@
                         {{ \Carbon\Carbon::parse($encuesta->fecha_cierre)->format('d/m/Y') }} 
                         <span class="text-xs text-gray-500">({{ $encuesta->hora_cierre }})</span>
                     </td>
-
-                    
                     <td class="px-6 py-4">
                         {{ $encuesta->tipo_encuesta->nombre }}
                     </td>
-                    
-
-                    
                     <td class="px-4 py-2 text-center">
                         <div class="flex justify-center space-x-2">
+                            <a href="{{ route('admin.general.respuestas', $encuesta) }}" class="btn text-white bg-[#00c014] text-xs">Respuestas</a>
                             <a href="{{ route('admin.general.indicadores', $encuesta) }}" class="btn text-white bg-[#00c014] text-xs">Indicadores</a>
                             <a href="{{ $encuesta->cv_tipo_encuesta === 1 
                                 ? route('admin.general.graficas', $encuesta) 

@@ -54,10 +54,10 @@ class EgresadosController extends Controller
         $respuestas = [];
         foreach ($preguntas as $pregunta) {
             if ($pregunta->tipo === 'cuantitativa') {
-                $resp = RespuestaCuantitativa::where('cv_pregunta', $pregunta->cv_pregunta)->orderBy('cv_encuesta', 'DESC')->first();
+                $resp = RespuestaCuantitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->orderBy('cv_encuesta', 'DESC')->first();
                 $respuestas['s'.$seccion.'_p'.$pregunta->no] = $resp ? $resp->valor : null;
             } elseif ($pregunta->tipo === 'cualitativa') {
-                $resp = RespuestaCualitativa::where('cv_pregunta', $pregunta->cv_pregunta)->orderBy('cv_encuesta', 'DESC')->first();
+                $resp = RespuestaCualitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->orderBy('cv_encuesta', 'DESC')->first();
                 $respuestas['s'.$seccion.'_p'.$pregunta->no] = $resp ? $resp->valor : null;
             }
         }

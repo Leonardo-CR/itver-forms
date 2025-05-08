@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Encuesta;
+use App\Models\Pregunta;
+use App\Models\TipoEncuesta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\TipoEncuesta;
+use App\Models\RespuestaCualitativa;
+use App\Models\RespuestaCuantitativa;
 
 class EncuestaController extends Controller
 {
@@ -68,10 +71,38 @@ class EncuestaController extends Controller
         return redirect()->route('admin.encuestas.index');
     }
     
-    
-
-    public function show(string $id)
+    public function show(Encuesta $encuesta)
     {
+        $rangoSecciones = ($encuesta->cv_tipo_encuesta == 1) ? [1, 7] : [8, 12];
+        
+        // Obtener preguntas con eager loading para optimizar consultas
+        $preguntas = Pregunta::whereBetween('cv_seccion', $rangoSecciones)
+            ->with(['respuestasCuantitativas', 'respuestasCualitativas' => function($query) use ($encuesta) {
+                $query->where('cv_encuesta', $encuesta->cv_encuesta);
+            }])
+            ->get();
+        
+        $respuestasAgrupadas = [];
+        foreach ($preguntas as $pregunta) {
+            $respuestas = [];            
+            if ($pregunta->tipo === 'cuantitativa') {
+                // Agrupar respuestas cuantitativas por valor
+                $respuestas = $pregunta->respuestasCuantitativas
+                    ->groupBy('valor')
+                    ->map->count();
+            } elseif ($pregunta->tipo === 'cualitativa') {
+                // Agrupar respuestas cualitativas por valor
+                $respuestas = $pregunta->respuestasCualitativas
+                    ->groupBy('valor')
+                    ->map->count();
+            }            
+            $respuestasAgrupadas[$pregunta->descripcion] = $respuestas;
+        }
+
+        return view('admin.encuestas.respuestas', [
+            'respuestas' => json_encode($respuestasAgrupadas, JSON_PRETTY_PRINT),
+            'respuestasAgrupadas' => $respuestasAgrupadas
+        ]);
     }
 
     public function edit(Encuesta $encuesta)

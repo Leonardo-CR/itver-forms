@@ -1,14 +1,15 @@
 <?php
 //En este archivo estan las rutas de la encuesta general
 
-use App\Http\Controllers\admin\GraficasController;
-use App\Http\Controllers\admin\IndicadoresController;
-use App\Http\Controllers\egresado\AvisosController;
-use App\Http\Controllers\egresado\EgresadosController;
-use App\Http\Controllers\egresado\GeneralController;
-use App\Http\Controllers\egresado\PerfilEgresadoController;
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\EncuestaController;
+use App\Http\Controllers\admin\GraficasController;
+use App\Http\Controllers\egresado\AvisosController;
+use App\Http\Controllers\egresado\GeneralController;
+use App\Http\Controllers\admin\IndicadoresController;
+use App\Http\Controllers\egresado\EgresadosController;
+use App\Http\Controllers\egresado\PerfilEgresadoController;
 
 //ruta avisos
 Route::get('/avisos', [AvisosController::class, 'avisos'])
@@ -44,6 +45,7 @@ Route::post('/general/store', [GeneralController::class, 'store'])->name('genera
 Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'reporte_generales'])->name('admin.general.graficas')->middleware(['auth', 'role:dba|jefe_de_departamento']);
 
 Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores')->middleware(['auth', 'role:dba|jefe_de_departamento']);
+Route::get('admin/general/{encuesta}/respuestas',[EncuestaController::class, 'show'])->name('admin.general.respuestas')->middleware(['auth', 'role:dba|jefe_de_departamento']);
 
 // Rutas para apartado de perfil egresado
 //Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado
