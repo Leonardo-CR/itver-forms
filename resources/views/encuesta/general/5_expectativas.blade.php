@@ -13,11 +13,11 @@
             </label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s5_p1]" value="Si" class="radio-toggle" data-target="s5_p2">
+                    <input required type="radio" name="respuesta[s5_p1]" @if(old('s5_p1', optional($respuestas)['s5_p1']) == "Si") checked @endif value="Si" class="radio-toggle" data-target="s5_p2">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">Sí</label>
                 </div>
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s5_p1]" value="No" class="radio-toggle" data-target="s5_p2">
+                    <input required type="radio" name="respuesta[s5_p1]" @if(old('s5_p1', optional($respuestas)['s5_p1']) == "No") checked @endif value="No" class="radio-toggle" data-target="s5_p2">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">No</label>
                 </div>
                 <div class="detalle-container hidden" data-target="s5_p2">
@@ -25,7 +25,7 @@
                     <textarea name="respuesta[s5_p2]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: Diplomado en educación..."></textarea>
+                        placeholder="Ejemplo: Diplomado en educación...">{{ old('s5_p2', optional($respuestas)['s5_p2']) }}</textarea>
                 </div>
             </div>
         </div>
@@ -37,11 +37,11 @@
             </label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s5_p3]" value="Si" class="radio-toggle" data-target="s5_p4">
+                    <input required type="radio" name="respuesta[s5_p3]" @if(old('s5_p3', optional($respuestas)['s5_p3']) == "Si") checked @endif value="Si" class="radio-toggle" data-target="s5_p4">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">Sí</label>
                 </div>
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s5_p3]" value="No" class="radio-toggle" data-target="s5_p4">
+                    <input required type="radio" name="respuesta[s5_p3]" @if(old('s5_p3', optional($respuestas)['s5_p3']) == "No") checked @endif value="No" class="radio-toggle" data-target="s5_p4">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">No</label>
                 </div>
                 <div class="detalle-container hidden" data-target="s5_p4">
@@ -49,7 +49,7 @@
                     <textarea name="respuesta[s5_p4]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: Maestría en educación..."></textarea>
+                        placeholder="Ejemplo: Maestría en educación...">{{ old('s5_p4', optional($respuestas)['s5_p4']) }}</textarea>
                 </div>
             </div>
         </div>
@@ -61,19 +61,19 @@
             </label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p1]" value="Si" class="radio-toggle" data-target="s5_p6">
+                    <input required type="radio" name="respuesta[s6_p1]" @if(old('s6_p1', optional($respuestas)['s6_p1']) == "Si") checked @endif value="Si" class="radio-toggle" data-target="s6_p2">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">Sí</label>
                 </div>
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p1]" value="No" class="radio-toggle" data-target="s5_p6">
+                    <input required type="radio" name="respuesta[s6_p1]" @if(old('s6_p1', optional($respuestas)['s6_p1']) == "No") checked @endif value="No" class="radio-toggle" data-target="s6_p2">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">No</label>
                 </div>
-                <div class="detalle-container hidden" data-target="s5_p6">
+                <div class="detalle-container hidden" data-target="s6_p2">
                     <label class="block mb-2 text-sm text-gray-900 dark:text-white">¿A cuál?</label>
                     <textarea name="respuesta[s6_p2]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: CBTIS 110..."></textarea>
+                        placeholder="Ejemplo: CBTIS 110...">{{ old('s6_p2', optional($respuestas)['s6_p2']) }}</textarea>
                 </div>
             </div>
         </div>
@@ -86,19 +86,19 @@
             </label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p3]" value="Si" class="radio-toggle" data-target="s5_p8">
+                    <input required type="radio" name="respuesta[s6_p3]" @if(old('s6_p3', optional($respuestas)['s6_p3']) == "Si") checked @endif value="Si" class="radio-toggle" data-target="s6_p4">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">Sí</label>
                 </div>
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p3]" value="No" class="radio-toggle" data-target="s5_p8">
+                    <input required type="radio" name="respuesta[s6_p3]" @if(old('s6_p3', optional($respuestas)['s6_p3']) == "No") checked @endif value="No" class="radio-toggle" data-target="s6_p4">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">No</label>
                 </div>
-                <div class="detalle-container hidden" data-target="s5_p8">
+                <div class="detalle-container hidden" data-target="s6_p4">
                     <label class="block mb-2 text-sm text-gray-900 dark:text-white">¿A cuál?</label>
                     <textarea name="respuesta[s6_p4]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: Ingeniería Industrial..."></textarea>
+                        placeholder="Ejemplo: Ingeniería Industrial...">{{ old('s6_p4', optional($respuestas)['s6_p4']) }}</textarea>
                 </div>
             </div>
         </div>
@@ -109,19 +109,19 @@
             </label>
             <div class="grid gap-4 md:grid-cols-1">
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p5]" value="Si" class="" data-target="s5_p8">
+                    <input required type="radio" name="respuesta[s6_p5]" @if(old('s6_p5', optional($respuestas)['s6_p5']) == "Si") checked @endif value="Si" class="radio-toggle" data-target="s6_p6">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">Sí</label>
                 </div>
                 <div class="flex items-center">
-                    <input required type="radio" name="respuesta[s6_p5]" value="No" class="" data-target="s5_p8">
+                    <input required type="radio" name="respuesta[s6_p5]" @if(old('s6_p5', optional($respuestas)['s6_p5']) == "No") checked @endif value="No" class="radio-toggle" data-target="s6_p6">
                     <label class="ms-2 text-sm text-gray-900 dark:text-gray-300">No</label>
-                </div>
-                <div class="detalle-container hidden" data-target="s5_p8">
+                </div> 
+                <div class="detalle-container hidden" data-target="s6_p6">
                     <label class="block mb-2 text-sm text-gray-900 dark:text-white">¿A cuál?</label>
                     <textarea name="respuesta[s6_p6]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: Ingeniería Industrial..."></textarea>
+                        placeholder="Ejemplo: Ingeniería Industrial...">{{ old('s6_p6', optional($respuestas)['s6_p6']) }}</textarea>
                 </div>
             </div>
         </div>
@@ -131,17 +131,14 @@
                 
             </label>
             
-                <div class="detalle-container hidden" data-target="s5_p8">
+                <div class="detalle-container hidden" data-target="s6_p7">
                     <label class="block mb-2 text-sm text-gray-900 dark:text-white">¿A cuál?</label>
-                    <textarea name="respuesta[s7_p1]" rows="1"
+                    <textarea name="respuesta[s6_p7]" rows="1"
                         class="block p-2.5 w-70 text-sm text-gray-900 bg-gray-50 rounded-lg border 
                         border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        placeholder="Ejemplo: Ingeniería Industrial..."></textarea>
+                        placeholder="Ejemplo: Ingeniería Industrial...">{{ old('s6_p7', optional($respuestas)['s6_p7']) }}</textarea>
                 </div>
             </div>
-        
-
-
             <h6 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">PARTICIPACIÓN SOCIAL DE LOS EGRESADOS</h6>
 
         <div class="my-6">
@@ -150,7 +147,7 @@
                 <div>
                     <textarea  required id="message" name="respuesta[s7_p1]" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border 
                     border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máx 100 palabras"></textarea>
+                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Máx 100 palabras">{{ old('s7_p1', optional($respuestas)['s7_p1']) }}</textarea>
                 </div>
             </div>
         </div>

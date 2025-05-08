@@ -12,11 +12,11 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿La institución se ha contactado anteriormente contigo?</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input required id="si" type="radio" value="Si" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="si" type="radio" value="Si" @if(old('s11_p1', optional($respuestas)['s11_p1']) == "Si") checked @endif name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="si" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
               </div>
               <div class="flex items-center">
-                  <input required id="no" type="radio" value="No" name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="no" type="radio" value="No" @if(old('s11_p1', optional($respuestas)['s11_p1']) == "No") checked @endif name="respuesta[s11_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="no" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
               </div>
           </div>
@@ -27,11 +27,11 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white"> ¿Te gustaría participar con la Institución aportando tu experiencia profesional? </label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input required id="si_dos" type="radio" value="Si" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="si_dos" type="radio" value="Si" @if(old('s11_p2', optional($respuestas)['s11_p2']) == "Si") checked @endif name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="si_dos" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
               </div>
               <div class="flex items-center">
-                  <input required id="no_dos" type="radio" value="No" name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="no_dos" type="radio" value="No" @if(old('s11_p2', optional($respuestas)['s11_p2']) == "No") checked @endif name="respuesta[s11_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="no_dos" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
               </div>
           </div>
@@ -42,31 +42,38 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white"> ¿Cómo podría ser tu participación?</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input id="cursos_conferencia" type="checkbox" value="Impartiendo un curso o conferencia" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="cursos_conferencia" type="checkbox" value="Impartiendo un curso o conferencia" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s10_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Impartiendo un curso o conferencia', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="cursos_conferencia" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Impartiendo un curso o conferencia</label>
               </div>
               <div class="flex items-center">
-                  <input id="apoyo_visita" type="checkbox" value="Apoyar para una visita industrial donde laboras" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="apoyo_visita" type="checkbox" value="Apoyar para una visita industrial donde laboras" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Apoyar para una visita industrial donde laboras', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="apoyo_visita" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apoyar para una visita industrial donde laboras</label>
               </div>
               <div class="flex items-center">
-                  <input id="apoyo_jovenes" type="checkbox" value="Apoyar a jóvenes de la Institución para la realización de Residencias Profesionales" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="apoyo_jovenes" type="checkbox" value="Apoyar a jóvenes de la Institución para la realización de Residencias Profesionales" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Apoyar a jóvenes de la Institución para la realización de Residencias Profesionales', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="apoyo_jovenes" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apoyar a jóvenes de la Institución para la realización de Residencias Profesionales</label>
               </div>
               <div class="flex items-center">
-                  <input id="radio-otras" type="checkbox" value="Apoyar a jóvenes para realizar investigaciones" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="radio-otras" type="checkbox" value="Apoyar a jóvenes para realizar investigaciones" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Apoyar a jóvenes para realizar investigaciones', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="radio-otras" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apoyar a jóvenes para realizar investigaciones</label>
               </div>
               <div class="flex items-center">
-                  <input id="apoyo_dual" type="checkbox" value="Apoyar a jóvenes para realizar Educación Dual" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="apoyo_dual" type="checkbox" value="Apoyar a jóvenes para realizar Educación Dual" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Apoyar a jóvenes para realizar Educación Dual', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="apoyo_dual" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apoyar a jóvenes para realizar Educación Dual</label>
               </div>
               <div class="flex items-center">
-                  <input id="donativos" type="checkbox" value="Donativos en especie" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="donativos" type="checkbox" value="Donativos en especie" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Donativos en especie', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="donativos" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Donativos en especie</label>
               </div>
               <div class="flex items-center">
-                  <input id="otros" type="checkbox" value="Otras" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input id="otros" type="checkbox" value="Otras" name="respuesta[s11_p3][]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  @if((is_array(old('s11_p3', optional($respuestas)['s11_p3'] ?? [])) && in_array('Otras', old('s11_p3', optional($respuestas)['s11_p3'] ?? [])))) checked @endif>
                   <label for="otros" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Otras</label>
               </div>
           </div>

@@ -55,12 +55,12 @@ class EgresadoController extends Controller
         ]);
         $data['password'] = bcrypt($data['password']);
 
-        Egresado::create($data);
+        User::create($data);
     
         return redirect()->route('admin.egresados.index');
     }
 
-    public function show(Egresado $egresado)
+    public function show(User $egresado)
     {
     }
 
@@ -70,18 +70,14 @@ class EgresadoController extends Controller
         return view('admin.egresados.edit', compact('egresado', 'carreras'));
     }
 
-    public function update(Request $request, Egresado $egresado)
+    public function update(Request $request, User $egresado)
     {
         $data = $request->validate([
             'nombre' => 'required|string|max:100',
-            'app' => 'required|string|max:100',
-            'apm' => 'required|string|max:100',
             'correo' => 'required|email|max:100',
             'cv_carrera' => 'required|integer',
         ]);
-
         $egresado->update($data);
-    
         return redirect()->route('admin.egresados.edit', $egresado);
     }
 
