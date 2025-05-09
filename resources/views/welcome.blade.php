@@ -44,7 +44,6 @@
     </head>
     <body class="h-100vh">
             <header class="w-full flex justify-between items-center bg-[#014E82] p-2">
-
                 <div class="inline-flex space-x-5 ">
                     <img class="w-22 h-14 sm:w-[180px] sm:h-auto  md:w-[200px]  lg:w-[205px]  xl:w-[210px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
                     <img class="w-22 h-14 sm:w-[100px] sm:h-auto  md:w-[90px]  lg:w-[100px]  xl:w-[100px]" src="{{ asset('img/logoitv.png') }}">
@@ -123,7 +122,6 @@
             </p>
 
             <div class="text-lg flex flex-col text-justify sm:pl-[10%] sm:text-xl sm:w-1/2 sm:mx-auto md:text-xl lg:text-4xl xl:text-3xl">
-            
                 <br>
                 <p>¡Tu opinión marca la diferencia!</p>
                 <br>
@@ -131,8 +129,6 @@
                 <br>
                 <b>El equipo de ITVER-Forms</b>
             </div>
-        
-
             </div>
         </div>
         <footer class="text-white bg-[#014E82] font-bold text-center py-3 w-full">

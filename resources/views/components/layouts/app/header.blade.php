@@ -4,8 +4,6 @@
     $links = [];
 
     if ($user->hasRole('dba') || $user->hasRole('jefe_de_departamento')) {
-       
-
         $links[] = [
             'name' => 'Avisos',
             'icon' => 'inbox',
@@ -109,29 +107,24 @@
     {{-- CDN de Tailwind --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 pt-2" >
+    <body class="min-h-screen bg-[#0569ab] dark:bg-zinc-800">
+        <flux:header container class="border-b border-zinc-200 bg-[#014E82] dark:border-zinc-700 dark:bg-[#014E82] pt-2" >
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
-
             {{-- Logo y titulo --}}
             <a href="{{ route('dashboard') }}" class="ml-2 mr-5 flex items-center space-x-2 lg:ml-0" wire:navigate>
-                <x-app-logo />
+                <img class="mr-2 w-22 h-14 sm:w-[130px] sm:h-auto  md:w-[150px]  lg:w-[155px]  xl:w-[160px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
+                <img class="w-22 h-14 sm:w-[50px] sm:h-auto  md:w-[40px]  lg:w-[50px]  xl:w-[80px]" src="{{ asset('img/logoitv.png') }}">
             </a>
-
             {{-- Menu y links --}}
-            <flux:navbar class="-mb-px max-lg:hidden">
-
+            <flux:navbar class=" max-lg:hidden text-white">
                 @foreach ($links as $link)
-                <flux:navbar.item icon="{{ $link['icon'] }}" href="{{ $link['url'] }}" current="{{ $link['current'] }}" wire:navigate>
-                    {{ $link['name'] }}
+                <flux:navbar.item icon="{{ $link['icon'] }}" href="{{ $link['url'] }}" current="{{ $link['current'] }}"  wire:navigate>
+                    <span class="text-white"> {{ $link['name'] }} </span>
                 </flux:navbar.item>
                 @endforeach
             </flux:navbar>
 
             <flux:spacer />
-
-            
-
             <!-- Desktop User Menu -->
             <flux:dropdown position="top" align="end">
                 <flux:button
@@ -146,8 +139,7 @@
                             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
                                     <span
-                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
-                                    >
+                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>
@@ -182,28 +174,21 @@
         </flux:header>
 
         <!-- Mobile Menu -->
-        <flux:sidebar stashable sticky class="lg:hidden border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+        <flux:sidebar stashable sticky class="lg:hidden border-r border-zinc-200 bg-[#014E82] dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-
             <a href="{{ route('dashboard') }}" class="ml-1 flex items-center space-x-2" wire:navigate>
                 <x-app-logo />
             </a>
-
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Menú')">
                     @foreach ($links as $link)
                         <flux:navlist.item icon="{{ $link['icon'] }}" href="{{ $link['url'] }}" :current="$link['current']" wire:navigate>
-                            {{ $link['name'] }}
+                            <span class="text-white"> {{ $link['name'] }} </span>
                         </flux:navlist.item>
                     @endforeach
                 </flux:navlist.group>
             </flux:navlist>
-            
-
-            
             <flux:spacer />
-
-           
         </flux:sidebar>
 
         {{ $slot }}

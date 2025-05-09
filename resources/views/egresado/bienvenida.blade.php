@@ -12,7 +12,7 @@
       <div class="flex flex-col gap-4 col-span-1">
 
         <!-- Tarjeta de Bienvenida -->
-        <div class="rounded-lg bg-[#0081B4] text-white flex items-center justify-center">
+        <div class="rounded-lg bg-[#0569ab] text-white flex items-center justify-center">
           <div class="text-center p-4 flex flex-col items-center w-full">
             <h2 class="text-2xl font-bold">Bienvenido</h2>
             <p class="mt-2 text-lg">{{ auth()->user()->name }}</p>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Tarjeta: Tu Opinión importa -->
-        <div class="rounded-lg shadow-md bg-[#0081B4] text-white flex items-center justify-center">
+        <div class="rounded-lg shadow-md bg-[#0569ab] text-white flex items-center justify-center">
           <div class="text-center p-9 flex flex-col justify-center items-center w-full">
             <h2 class="text-2xl sm:text-5xl font-bold">¡Tu Opinión importa!</h2>
             <img src="{{ asset('img/egresado/tablero.png') }}" alt="Ícono" class="w-40 sm:w-30 h-auto mt-8 ml-6" />
@@ -31,7 +31,7 @@
       </div>
 
       <!-- Columna derecha: Participar es muy fácil -->
-      <div class="col-span-1 md:col-span-2 rounded-lg bg-[#0081B4] text-white shadow-md  items-center justify-center">
+      <div class="col-span-1 md:col-span-2 rounded-lg bg-[#0569ab] text-white shadow-md  items-center justify-center">
         <div class="flex flex-col h-full">
           <div class="text-5xl sm:text-6xl mb-6 mt-10">
             <p class="py-4 ml-10 font-bold">¡Participar es muy fácil!</p>
@@ -39,7 +39,7 @@
             </p>
           </div>
           <div class="flex">
-            <div class="basis-[73%] bg-[#0081B4]">
+            <div class="basis-[73%] bg-[#0569ab]">
               <p class="text-base sm:text-2xl ml-10">A través de tus respuestas, podemos identificar áreas de oportunidad y mejorar continuamente.</p>
               <p class="text-base sm:text-2xl ml-10 py-6">¡Tu participación es fundamental!</p>
               
@@ -52,7 +52,7 @@
       </div>
 
       <!-- Tarjeta inferior -->
-      <div class="col-span-1 md:col-span-3 rounded-lg bg-[#0081B4] text-white shadow-md flex items-center justify-center">
+      <div class="col-span-1 md:col-span-3 rounded-lg bg-[#0569ab] text-white shadow-md flex items-center justify-center">
         <div class="text-white p-4 flex flex-col md:flex-row justify-between items-center w-full">
           <div class="text-center md:text-left">
             <h2 class="text-4xl sm:text-4xl font-bold mb-6">Tu opinión nos ayuda a mejorar</h2>
