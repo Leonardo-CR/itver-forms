@@ -108,12 +108,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <body class="min-h-screen bg-[#0569ab] dark:bg-zinc-800">
-        <flux:header container class="border-b border-zinc-200 bg-[#014E82] dark:border-zinc-700 dark:bg-[#014E82] pt-2" >
+        <flux:header class="border-b border-zinc-200 bg-[#014E82] dark:border-zinc-700 dark:bg-[#014E82] pt-2" >
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
             {{-- Logo y titulo --}}
             <a href="{{ route('dashboard') }}" class="ml-2 mr-5 flex items-center space-x-2 lg:ml-0" wire:navigate>
-                <img class="mr-2 w-22 h-14 sm:w-[130px] sm:h-auto  md:w-[150px]  lg:w-[155px]  xl:w-[160px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
-                <img class="w-22 h-14 sm:w-[50px] sm:h-auto  md:w-[40px]  lg:w-[50px]  xl:w-[80px]" src="{{ asset('img/logoitv.png') }}">
+                <img class="mr-4 w-22 h-14 sm:w-[130px] md:w-[150px]  lg:w-[155px]  xl:w-[160px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
+                <img class="mr-4 w-22 h-14 sm:w-[80px] md:w-[80px] lg:w-[80px] xl:w-[80px]" src="{{ asset('img/logoitv.png') }}">
+                <x-app-logo />
             </a>
             {{-- Menu y links --}}
             <flux:navbar class=" max-lg:hidden text-white">
@@ -130,9 +131,7 @@
                 <flux:button
                     class="cursor-pointer"
                     icon="user"
-                    
                 />
-
                 <flux:menu>
                     <flux:menu.radio.group>
                         <div class="p-0 text-sm font-normal">
@@ -151,18 +150,11 @@
                             </div>
                         </div>
                     </flux:menu.radio.group>
-
                     <flux:menu.separator />
-
                     <flux:menu.radio.group>
-
                         <flux:menu.item href="/settings/profile" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
-
-
                     </flux:menu.radio.group>
-
                     <flux:menu.separator />
-
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">

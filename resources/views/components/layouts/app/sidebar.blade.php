@@ -53,8 +53,6 @@
         ];
     }
 @endphp
-
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
@@ -72,13 +70,13 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="Panel" class="grid">
                     @foreach ($links as $link)
-                        <flux:navlist.item icon="{{ $link['icon'] }}" :href="$link['url']" :current="$link['current']" wire:navigate >
+                        <flux:navlist.item icon="{{ $link['icon'] }}" :href="$link['url']" :current="$link['current']" wire:navigate>
                             <span class="text-white"> {{ $link['name'] }} </span>
                         </flux:navlist.item>
                     @endforeach
                 </flux:navlist.group>
             </flux:navlist>
-            <flux:spacer />
+            <flux:spacer/>
             <!-- Desktop User Menu -->
             <flux:dropdown position="bottom" align="start">
                 <flux:profile

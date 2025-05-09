@@ -96,8 +96,7 @@
             <div class="flex justify-start space-x-5 items-center sm:pl-[10%]">
                 
                 <div class="w-16 h-auto sm:w-16  md:w-16  lg:[100px]  xl:w-[100px] ">
-                    <img 
-                    src="{{ asset('img/itver-forms-logo.png') }}" alt="logo app" >
+                    <img src="{{ asset('img/logo.png') }}" alt="logo app" >
                 </div>
 
                 <div>

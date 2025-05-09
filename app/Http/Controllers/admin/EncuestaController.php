@@ -101,7 +101,7 @@ class EncuestaController extends Controller
 
         return view('admin.encuestas.respuestas', [
             'respuestas' => json_encode($respuestasAgrupadas, JSON_PRETTY_PRINT),
-            'respuestasAgrupadas' => $respuestasAgrupadas
+            'respuestasAgrupadas' => $respuestasAgrupadas 
         ]);
     }
 
