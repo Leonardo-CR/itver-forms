@@ -28,6 +28,7 @@
                     <th scope="col" class="px-6 py-3">Nombre</th>
                     <th scope="col" class="px-6 py-3">Correo</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
+                    <th scope="col" class="px-6 py-3">Carrera(s)</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -44,7 +45,15 @@
                         {{ $admin->email }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $admin->getRoleNames()->first() ?? 'Sin rol' }}
+                        {{ $admin->tipo }}
+                    </td>
+                    <td class="px-6 py-4">
+                        @foreach ($admin->carreras as $carrera)
+                            <span class="text-xs text-gray-500">{{ $carrera->nombre }}</span>
+                            @if (!$loop->last)
+                                <span class="text-xs text-gray-500">, </span>
+                            @endif
+                        @endforeach                    
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">
@@ -61,10 +70,7 @@
             </tbody>
         </table>
     </div>
-
     <div class="mt-4">
         {{ $admins->links() }}
     </div>
-
-    
 </x-layouts.administrarum>

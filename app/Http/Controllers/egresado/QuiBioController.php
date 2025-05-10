@@ -10,8 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Models\RespuestaCualitativa;
 use App\Models\RespuestaCuantitativa;
 
-
-
 class QuiBioController extends Controller
 {
     public function encuesta()
@@ -41,7 +39,12 @@ class QuiBioController extends Controller
         $respuestas = [];
         foreach ($preguntas as $pregunta) {
             if ($pregunta->tipo === 'cuantitativa') {                
-                $resp = RespuestaCuantitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->orderBy('cv_encuesta', 'DESC')->get();
+                 $resp = RespuestaCuantitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->where('cv_encuesta', function($query) {
+                    $query->selectRaw('MAX(cv_encuesta)')
+                            ->from('respuesta_cuantitativa')
+                            ->whereColumn('cv_pregunta', 'respuesta_cuantitativa.cv_pregunta')
+                            ->whereColumn('user_id', 'respuesta_cuantitativa.user_id');
+                    })->get();
                 if(count($resp) == 1){
                     $resp = $resp[0]->valor;
                     $respuestas['s'.$seccion.'_p'.$pregunta->no] = $resp ? $resp : null;
@@ -51,7 +54,12 @@ class QuiBioController extends Controller
                     }
                 }
             } elseif ($pregunta->tipo === 'cualitativa') {
-                $resp = RespuestaCualitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->orderBy('cv_encuesta', 'DESC')->get();
+                $resp = RespuestaCualitativa::where('cv_pregunta', $pregunta->cv_pregunta)->where('user_id', auth()->id())->where('cv_encuesta', function($query) {
+                    $query->selectRaw('MAX(cv_encuesta)')
+                            ->from('respuesta_cualitativa')
+                            ->whereColumn('cv_pregunta', 'respuesta_cualitativa.cv_pregunta')
+                            ->whereColumn('user_id', 'respuesta_cualitativa.user_id');
+                    })->get();
                 if(count($resp) == 1){
                     $resp = $resp[0]->valor;
                     $respuestas['s'.$seccion.'_p'.$pregunta->no] = $resp ? $resp : null;

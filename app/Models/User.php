@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'cv_carrera',
         'password',
+        'tipo',
     ];
 
     /**
@@ -71,6 +72,8 @@ class User extends Authenticatable
         // Luego la columna de la tabla relacionada 'cv_carrera' en el modelo Carrera
     }
 
-    
-
+    public function carreras()
+    {
+        return $this->belongsToMany(Carrera::class, 'user_carrera', 'id', 'cv_carrera');
+    }
 }

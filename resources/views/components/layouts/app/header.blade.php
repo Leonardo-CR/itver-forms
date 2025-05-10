@@ -3,7 +3,7 @@
 
     $links = [];
 
-    if ($user->hasRole('dba') || $user->hasRole('jefe_de_departamento')) {
+    if ($user->hasRole('DBA') || $user->hasRole('jefe_de_departamento')) {
         $links[] = [
             'name' => 'Avisos',
             'icon' => 'inbox',
@@ -107,7 +107,7 @@
     {{-- CDN de Tailwind --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <body class="min-h-screen bg-[#0569ab] dark:bg-zinc-800">
+    <body class="min-h-screen from-[#f9f9f9] to-[#bcbcbc] dark:bg-zinc-800">
         <flux:header class="border-b border-zinc-200 bg-[#014E82] dark:border-zinc-700 dark:bg-[#014E82] pt-2" >
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
             {{-- Logo y titulo --}}
@@ -181,6 +181,7 @@
                 </flux:navlist.group>
             </flux:navlist>
             <flux:spacer />
+            <img class="mr-4 w-22 h-14 sm:w-[160px] md:w-[160px]  lg:w-[160px]  xl:w-[160px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
         </flux:sidebar>
 
         {{ $slot }}

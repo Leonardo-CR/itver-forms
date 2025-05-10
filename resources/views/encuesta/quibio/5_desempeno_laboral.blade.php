@@ -357,7 +357,6 @@ document.addEventListener('DOMContentLoaded', function() {
                    @if((is_array(old('s12_p11', optional($respuestas)['s12_p11'] ?? [])) && in_array('Otros', old('s12_p11', optional($respuestas)['s12_p11'] ?? [])))) checked @endif>
                   <label for="otras5" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Otros</label>
               </div>
-          
           </div>
       </div>
   

@@ -3,7 +3,7 @@
 
     $links = [];
 
-    if ($user->hasRole('dba')) {
+    if ($user->hasRole('DBA')) {
         
         $links[] = [
             'name' => 'Avisos',
@@ -93,7 +93,7 @@
                                         class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-white dark:bg-neutral-700 dark:text-white">
                                         {{ auth()->user()->initials() }}
                                     </span>
-                                </span>
+                                </span>                                
                                 <div class="grid flex-1 text-left text-sm leading-tight">
                                     <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
                                     <span class="truncate text-xs">{{ auth()->user()->email }}</span>
@@ -103,13 +103,11 @@
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
-
                     <flux:menu.radio.group>
                         <flux:menu.item href="/settings/profile" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
-                    <flux:menu.separator />
-
+                    <flux:menu.separator />                    
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
                         @csrf
                         <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
@@ -118,6 +116,7 @@
                     </form>
                 </flux:menu>
             </flux:dropdown>
+            <img class="mr-4 w-22 h-14 sm:w-[160px] md:w-[160px]  lg:w-[160px]  xl:w-[160px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
         </flux:sidebar>
 
         <!-- Mobile User Menu -->

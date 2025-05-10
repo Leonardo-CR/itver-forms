@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('tipo', ['Egresado', 'DBA' , 'Jefe de Departamento']);
             $table->rememberToken();
 
             $table->unsignedBigInteger('cv_carrera');

@@ -53,7 +53,7 @@
                                     Gráficas
                             </a>
                             {{-- Mostrar solo si el usuario tiene el rol dba --}}
-                            @if(auth()->user()->hasRole('dba'))
+                            @if(auth()->user()->hasRole('DBA'))
                                 <a href="{{ route('admin.encuestas.edit', $encuesta) }}" class="btn btn-blue text-xs">Editar</a>
                                 <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
                                     @csrf @method('DELETE')
