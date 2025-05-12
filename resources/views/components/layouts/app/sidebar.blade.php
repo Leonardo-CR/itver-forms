@@ -1,10 +1,8 @@
 @php
     $user = auth()->user();
-
     $links = [];
 
     if ($user->hasRole('DBA')) {
-        
         $links[] = [
             'name' => 'Avisos',
             'icon' => 'chat-bubble-left-ellipsis',
@@ -31,7 +29,6 @@
         ];
     }
     if ($user->hasRole('jefe_de_departamento')) {
-        
         $links[] = [
             'name' => 'Avisos',
             'icon' => 'chat-bubble-left-ellipsis',
@@ -44,7 +41,6 @@
             'url' => route('admin.egresados.index'),
             'current' => request()->routeIs('admin.egresados.*')
         ];
-       
         $links[] = [
             'name' => 'Encuestas',
             'icon' => 'pencil-square',

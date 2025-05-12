@@ -46,6 +46,7 @@ Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'repo
 
 Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
 Route::get('admin/general/{encuesta}/respuestas',[EncuestaController::class, 'show'])->name('admin.general.respuestas')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
+Route::get('admin/general/respuestas/{encuesta}/{pregunta}/respuestasDetalle',[EncuestaController::class, 'respuestasDetalle'])->name('admin.general.respuestasDetalle')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
 
 // Rutas para apartado de perfil egresado
 //Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado

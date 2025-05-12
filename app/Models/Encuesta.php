@@ -11,6 +11,7 @@ class Encuesta extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cv_encuesta',
         'periodo',
         'is_active',
         'fecha_inicio',
