@@ -35,6 +35,7 @@ class AvisoController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'titulo' => 'required|string|max:255',
             'contenido' => 'required',
@@ -42,7 +43,17 @@ class AvisoController extends Controller
             'publicado' => 'required|boolean',
             'fecha_publicacion' => 'nullable|date',
         ]);
+
+        if ($request->hasFile('imagen_ruta')) {
+        // Guardar la imagen en la carpeta 'avisos' dentro de 'storage/app/public'
+        $path = $request->file('imagen_ruta')->store('avisos', 'public');
+        // Guardar la ruta del archivo en la base de datos
+        $data['imagen_ruta'] = $path;
+    }
+
         //return $data;
+        //dd($data);
+        
     
         // Procesar imagen si se subió
         if ($request->hasFile('imagen_ruta')) {
@@ -55,6 +66,8 @@ class AvisoController extends Controller
         }
     
         Aviso::create($data);
+
+        
     
         return redirect()->route('admin.avisos.index');
     }

@@ -12,7 +12,7 @@
  <form action="{{ route('admin.avisos.store') }}" method="POST" enctype="multipart/form-data">
      
      @csrf
-     @method('POST')
+     
      <div class="card mt-4 space-y-4">
         <flux:input label="Titulo del Aviso" name="titulo" value="{{ old('titulo') }}"             
             placeholder="Escribe el titulo del Aviso" type="text" class="mb-2"/>

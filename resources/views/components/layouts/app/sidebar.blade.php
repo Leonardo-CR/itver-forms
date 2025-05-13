@@ -62,11 +62,12 @@
         @stack('css')
         @include('partials.head')
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            @livewireStyles
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800 h-screen">
         <flux:sidebar sticky stashable class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-
+@livewireScripts
             <a href="{{ route('dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
                 <x-app-logo />
             </a>
