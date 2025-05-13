@@ -4,6 +4,8 @@
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item >Egresados</flux:breadcrumbs.item>
         </flux:breadcrumbs>
+        @livewireScripts
+
         {{-- <a href="{{ route('admin.egresados.create') }}" class="btn btn-blue">Nuevo</a> --}}
     </div>
     <form method="GET" action="{{ route('admin.egresados.index') }}" class="mb-4 flex flex-wrap gap-2 items-center">
@@ -85,34 +87,5 @@
     <div class="mt-4">
         {{ $egresados->links() }}
     </div>
-        {{-- Referenciamos el espacio que se creo en resource/views/components/app.blade
-        @push('js')
-            <script>
-                forms = document.querySelectorAll('.delete-form');
-    
-                forms.forEach(form => {
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
-    
-                        Swal.fire({
-                            title: "¿Estás seguro?",
-                            text: "¡El registro se eliminara para siempre!",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            cancelButtonText: "Cancelar",
-                            confirmButtonText: "Si, eliminalo!"
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                form.submit();
-                                
-                            }
-                            });
-    
-                    });
-                });
-    
-            </script>
-        @endpush --}}
+
 </x-layouts.administrarum>

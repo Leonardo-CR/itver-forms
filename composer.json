@@ -10,12 +10,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "anhskohbo/no-captcha": "^3.7",
+        "dutchcodingcompany/livewire-recaptcha": "^1.0",
         "laravel-lang/common": "^6.7",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.0",
         "livewire/volt": "^1.6.7",
         "maatwebsite/excel": "^3.1",
+        "rappasoft/laravel-livewire-tables": "^3.7",
         "spatie/laravel-permission": "^6.17"
     },
     "require-dev": {

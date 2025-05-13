@@ -17,6 +17,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public $recaptcha;
 
     public $carreras;
 
@@ -38,6 +39,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'cv_carrera' => ['required', 'exists:carrera,cv_carrera'], // Validar que exista en la tabla 'carreras' en la columna 'cv_carrera'
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'recaptcha' => ['required', 'captcha'],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
@@ -56,12 +58,12 @@ new #[Layout('components.layouts.auth')] class extends Component {
         Auth::login($user);
         //Mail::to('prueba@prueba.com')->send(new UserCreatedMail);
         //Mail::to($user->email)->send(new UserCreatedMail);
-        $user->sendEmailVerificationNotification();
+        //$user->sendEmailVerificationNotification();
 
 
-        $this->redirect(route('verification.notice'), navigate: true);// Redirigir a la página de verificación de correo electrónico
+        //$this->redirect(route('verification.notice'), navigate: true);// Redirigir a la página de verificación de correo electrónico
 
-        //$this->redirectIntended(route('dashboard', absolute: false), navigate: true); // Redirigir a la página dashboard
+        $this->redirectIntended(route('dashboard', absolute: false), navigate: true); // Redirigir a la página dashboard
     }
 }; ?>
 
@@ -137,6 +139,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
             :placeholder="__('Confirm password')"
         />
 
+        <div wire:ignore>
+            {!! NoCaptcha::renderJS() !!}
+            {!! NoCaptcha::display(['data-callback' => 'onCallback']) !!}
+        </div>
+
+    @error('recaptcha')
+        <div class="text-red-500 text-sm mt-2">
+            {{ $message }}
+        </div>
+        
+    @enderror
+
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full">
                 {{ __('Create account') }}
@@ -148,4 +162,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
         {{ __('Already have an account?') }}
         <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>
+<script>
+    var onCallback = function () {
+        @this.set('recaptcha', grecaptcha.getResponse());
+    };
+</script>
 </div>
