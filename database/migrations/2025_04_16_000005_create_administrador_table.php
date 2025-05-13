@@ -11,19 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-
         Schema::create('administrador', function (Blueprint $table) {
             $table->id('cv_administrador');
             $table->string('nombre');
             $table->string('correo')->unique();
             $table->string('password');
-            $table->enum('tipo', ["DBA" , "Jefe de Departamento"]);
+            $table->enum('tipo', ['Egresado', 'DBA' , 'Jefe de Departamento']);
         });
-
-        
-    }
-
+    }    
     /**
      * Reverse the migrations.
      */

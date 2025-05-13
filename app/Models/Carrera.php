@@ -12,7 +12,7 @@ class Carrera extends Model
 
     protected $table = 'carrera';    
     protected $primaryKey = 'cv_carrera'; 
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = false;
 
      /**
@@ -23,5 +23,10 @@ class Carrera extends Model
     public function users()
     {
         return $this->hasMany(User::class, 'cv_carrera', 'cv_carrera');
+    }
+
+    public function administradores()
+    {
+        return $this->belongsToMany(Admin::class, 'user_carrera', 'cv_carrera', 'id');
     }
 }

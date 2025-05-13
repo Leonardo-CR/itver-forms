@@ -2,16 +2,34 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
 use App\Models\Encuesta;
+use App\Models\Pregunta;
+use App\Models\UserCarrera;
+use App\Models\TipoEncuesta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\TipoEncuesta;
+use App\Models\RespuestaCualitativa;
+use App\Models\RespuestaCuantitativa;
 
 class EncuestaController extends Controller
 {
     public function index()
-    {
-        $encuestas = Encuesta::with('tipo_encuesta')->paginate();
+    {   
+        if (auth()->user()->hasRole('jefe_de_departamento')) {
+            $resp = UserCarrera::where('id', auth()->id())->get();
+            $car = [];
+            foreach($resp as $r) {
+                $car[] = $r->cv_carrera;
+            }
+            if(in_array(1, $car) || in_array(2, $car)) { // Si el jefe de departamento tiene acceso a QUIMICA(1) O BIOQUIMICA(2)
+                $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 2)->paginate(); // Solo ve las encuestas de QUIBIO
+            }else{
+                $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 1)->paginate(); // Solo ve las encuestas GENERAL
+            }
+        }else{
+            $encuestas = Encuesta::with('tipo_encuesta')->paginate(); // Si es DBA -> Ve todas las encuestas
+        }
         return view('admin.encuestas.index', compact('encuestas'));
     }
 
@@ -68,10 +86,54 @@ class EncuestaController extends Controller
         return redirect()->route('admin.encuestas.index');
     }
     
-    
-
-    public function show(string $id)
+    public function show(Encuesta $encuesta)
     {
+        $rangoSecciones = ($encuesta->cv_tipo_encuesta == 1) ? [1, 7] : [8, 12];
+        
+        // Obtener preguntas con eager loading para optimizar consultas
+        $preguntas = Pregunta::whereBetween('cv_seccion', $rangoSecciones)
+            ->with(['respuestasCuantitativas', 'respuestasCualitativas' => function($query) use ($encuesta) {
+                $query->where('cv_encuesta', $encuesta->cv_encuesta);
+            }])
+            ->get();
+        
+        $respuestasAgrupadas = [];
+        foreach ($preguntas as $pregunta) {
+            $respuestas = [];            
+            if ($pregunta->tipo === 'cuantitativa') {
+                // Agrupar respuestas cuantitativas por valor
+                $respuestas = $pregunta->respuestasCuantitativas->where('cv_encuesta', $encuesta->cv_encuesta)
+                    ->groupBy('valor')
+                    ->map->count();
+            } elseif ($pregunta->tipo === 'cualitativa') {
+                // Agrupar respuestas cualitativas por valor
+                $respuestas = $pregunta->respuestasCualitativas->where('cv_encuesta', $encuesta->cv_encuesta)
+                    ->groupBy('valor')
+                    ->map->count();
+            }
+            $respuestasAgrupadas[$pregunta->descripcion] = [$pregunta, $respuestas];
+        }
+
+        return view('admin.encuestas.respuestas', [
+            'encuesta' => $encuesta,
+            'respuestas' => json_encode($respuestasAgrupadas, JSON_PRETTY_PRINT),
+            'respuestasAgrupadas' => $respuestasAgrupadas 
+        ]);
+    }
+
+    public function respuestasDetalle(Encuesta $encuesta, Pregunta $pregunta){
+        $respuestas = [];
+        if ($pregunta->tipo === 'cualitativa') {
+            $respuestas = $pregunta->respuestasCualitativas()->where('cv_encuesta', $encuesta->cv_encuesta)->get();
+        } elseif ($pregunta->tipo === 'cuantitativa') {
+            $respuestas = $pregunta->respuestasCuantitativas()->where('cv_encuesta', $encuesta->cv_encuesta)->get();
+        }
+        $usuarios = []; 
+        foreach ($respuestas as $respuesta) {
+            $usuarios[] = User::with('carrera')->where('id', $respuesta->user_id)->first();
+        }
+        
+        return view('admin.encuestas.respuestasDetalle', compact('pregunta', 'usuarios', 'respuestas'));
     }
 
     public function edit(Encuesta $encuesta)

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Admin;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Carrera;
+use App\Models\UserCarrera;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+
 class AdminController extends Controller
 {
-
     public function index(Request $request)
     {
-        $admins = User::role(['dba', 'jefe_de_departamento']) // Ajusta a los roles que usas para administradores
+        $admins = User::role(['DBA', 'jefe_de_departamento']) // Ajusta a los roles que usas para administradores
             ->when($request->nombre, function ($query, $nombre) {
                 $query->where('name', 'like', '%' . $nombre . '%');
             })
@@ -26,90 +28,122 @@ class AdminController extends Controller
             })
             ->paginate(10)
             ->appends($request->all());
-    
-        $roles = Role::whereIn('name', ['dba', 'jefe_de_departamento'])->get();
+        
+        foreach ($admins as $admin) {
+            $carreras = $admin->carreras;
+
+            // Formatear a array como necesites
+            $carrerasArray = $admin->carreras->map(function($carrera) {
+                return [
+                    'id_carrera' => $carrera->cv_carrera,
+                    'nombre' => $carrera->nombre,
+                    'id_relacion' => $carrera->pivot->cv_user_carrera
+                ];
+            })->toArray();
+        }
+
+        $roles = Role::whereIn('name', ['DBA', 'jefe_de_departamento'])->get();
     
         return view('admin.admins.index', compact('admins', 'roles'));
     }
 
-
     public function create()
-    {
-        return view('admin.admins.create');
+    {   
+        $carreras = Carrera::all();
+        return view('admin.admins.create', compact('carreras'));
     }
 
     public function store(Request $request)
-{
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+            'tipo' => 'required|in:DBA,Jefe de Departamento',
+            'carreras' => 'array',
+            'carreras.*' => 'integer',
+        ]);
 
-    $validated = $request->validate([
-        
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:6',
-        'tipo' => 'required|in:DBA,Jefe de Departamento',
-    ]);
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'cv_carrera' => 1,
+            'tipo' => $validated['tipo'],
+        ]);
 
-    $user = User::create([
-        
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'password' => bcrypt($validated['password']),
-        'cv_carrera' => 1,
-    ]);
+        foreach ($request->input('carreras', []) as $carreraSel) {
+            UserCarrera::create([
+                'id' => $user->id,
+                'cv_carrera' => $carreraSel,
+            ]);
+        }
 
-    // Asignar rol según el tipo seleccionado
-    $rol = $validated['tipo'] === 'DBA' ? 'dba' : 'jefe_de_departamento';
-    $user->assignRole($rol);
-
-    return redirect()->route('admin.admins.index')->with('success', 'Administrador creado y rol asignado.');
-}
+        // Asignar rol según el tipo seleccionado
+        $rol = $validated['tipo'] === 'DBA' ? 'DBA' : 'jefe_de_departamento';
+        $user->assignRole($rol);
+        $user->save(); 
+        return redirect()->route('admin.admins.index')->with('success', 'Administrador creado y rol asignado.');
+    }
     
     public function show(string $id)
     {
     }
 
-   
     public function edit(User $admin)
-{
-    $rol = $admin->getRoleNames()->first(); // 'dba' o 'jefe_de_departamento'
+    {
+        $rol = $admin->getRoleNames()->first(); // 'DBA' o 'jefe_de_departamento'
 
-    // Convertimos al formato que se usa en el select
-    $tipo = $rol === 'dba' ? 'DBA' : 'Jefe de Departamento';
+        // Convertimos al formato que se usa en el select
+        $tipo = $rol === 'DBA' ? 'DBA' : 'Jefe de Departamento';
 
-    return view('admin.admins.edit', compact('admin', 'tipo'));
-}
-
-   
+        $resp = UserCarrera::where('id', $admin->id)->get();
+        $car = [];
+        foreach($resp as $r) {
+            $car[] = $r->cv_carrera;
+        }
+        $carreras = Carrera::all();
+        $carrerasSelec = Carrera::whereIn('cv_carrera', $car)->get();
+        $selectedCarreras = $carrerasSelec->pluck('cv_carrera')->toArray();
+        $oldCarreras = old('carreras', []);
+        $checkedCarreras = array_unique(array_merge($selectedCarreras, $oldCarreras));
+        return view('admin.admins.edit', compact('admin', 'tipo', 'carreras', 'checkedCarreras'));
+    }
+    
     public function update(Request $request, User $admin)
-{
-    $data = $request->validate([
-        'nombre' => 'required|string|max:100',
-        'correo' => 'required|string|email|max:100',
-        'tipo'   => 'required|in:DBA,Jefe de Departamento',
-    ]);
+    {
+        $data = $request->validate([
+            'nombre' => 'required|string|max:100',
+            'correo' => 'required|string|email|max:100',
+            'tipo'   => 'required|in:DBA,Jefe de Departamento',
+        ]);
 
-    // Actualizar datos del usuario
-    $admin->update([
-        'name'  => $data['nombre'],
-        'email' => $data['correo'],
-    ]);
+        // Actualizar datos del usuario
+        $admin->update([
+            'name'  => $data['nombre'],
+            'email' => $data['correo'],
+            'tipo'  => $data['tipo'],
+        ]);
+        
+        UserCarrera::where('id', $admin->id)->delete(); // Eliminar carreras anteriores
+        foreach ($request->input('carreras', []) as $carreraSel) {
+            UserCarrera::create([
+                'id' => $admin->id,
+                'cv_carrera' => $carreraSel,
+            ]);
+        }
 
-    // Actualizar rol
-    $nuevoRol = $data['tipo'] === 'DBA' ? 'dba' : 'jefe_de_departamento';
+        $rol = $data['tipo'] === 'DBA' ? 'DBA' : 'jefe_de_departamento';
+        $admin->assignRole($rol);
+        $admin->save();
 
-    // Elimina todos los roles actuales y asigna el nuevo
-    $admin->syncRoles([$nuevoRol]);
+        return redirect()->route('admin.admins.index', $admin)->with('success', 'Administrador actualizado correctamente.');
+    }
 
-    return redirect()->route('admin.admins.edit', $admin)->with('success', 'Administrador actualizado correctamente.');
-}
-
-
-   
-public function destroy(User $admin)
-{
-    //dd($admin);  // Esto mostrará la información del objeto
-    $admin->delete();
-    return redirect()->route('admin.admins.index');
-}
-
+    public function destroy(User $admin)
+    {
+        //dd($admin);  // Esto mostrará la información del objeto
+        $admin->delete();
+        return redirect()->route('admin.admins.index');
+    }
 }

@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\AdminFactory> */
-    use HasFactory;
+    use HasFactory, HasRoles;
+
+    protected $table = 'administrador';    
+    protected $primaryKey = 'cv_administrador'; 
+    public $incrementing = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'cv_administrador',
@@ -17,10 +24,4 @@ class Admin extends Model
         'password',
         'tipo',
     ];
-
-    protected $table = 'administrador';    
-    protected $primaryKey = 'cv_administrador'; 
-    protected $keyType = 'string';
-    public $incrementing = false;
-    public $timestamps = false;
 }

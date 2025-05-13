@@ -28,6 +28,7 @@
                     <th scope="col" class="px-6 py-3">Nombre</th>
                     <th scope="col" class="px-6 py-3">Correo</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
+                    <th scope="col" class="px-6 py-3">Carrera(s)</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -44,15 +45,33 @@
                         {{ $admin->email }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $admin->getRoleNames()->first() ?? 'Sin rol' }}
+                        {{ $admin->tipo }}
+                    </td>
+                    <td class="px-6 py-4">
+                        @foreach ($admin->carreras as $carrera)
+                            <span class="text-xs text-gray-500">{{ $carrera->nombre }}</span>
+                            @if (!$loop->last)
+                                <span class="text-xs text-gray-500">, </span>
+                            @endif
+                        @endforeach                    
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">
-                            <a href="{{ route('admin.admins.edit', $admin->id) }}" class="btn btn-blue text-xs">Editar</a> 
+                            <!-- Boton Editar -->
+                            <a href="{{ route('admin.admins.edit', $admin->id) }}" class="btn btn-blue text-xs">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </a> 
                             <form class="delete-form" action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-red text-xs">Eliminar</button>
+                                <!-- Boton Borrar -->
+                                <button class="btn btn-red text-xs">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                </button>
                             </form>
                         </div>
                     </td>
@@ -61,10 +80,7 @@
             </tbody>
         </table>
     </div>
-
     <div class="mt-4">
         {{ $admins->links() }}
     </div>
-
-    
 </x-layouts.administrarum>

@@ -12,19 +12,19 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">Eficiencia para realizar las actividades laborales, en relación con su formación académica</label>
           <div class="grid gap-4 md:grid-cols-2">
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Muy eficiente" name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Muy eficiente" @if(old('s4_p1', optional($respuestas)['s4_p1']) == "Muy eficiente") checked @endif name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Muy eficiente</label>
               </div>
           <div class="flex items-center">
-              <input required id="radio-apoyo" type="radio" value="Eficiente" name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-apoyo" type="radio" value="Eficiente" @if(old('s4_p1', optional($respuestas)['s4_p1']) == "Eficiente") checked @endif name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-apoyo" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Eficiente</label>
           </div>
           <div class="flex items-center">
-              <input required id="radio-tiempo" type="radio" value="Poco eficiente" name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-tiempo" type="radio" value="Poco eficiente" @if(old('s4_p1', optional($respuestas)['s4_p1']) == "Poco eficiente") checked @endif name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-tiempo" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Poco eficiente</label>
           </div>
           <div class="flex items-center">
-              <input required id="radio-otras" type="radio" value="Deficiente" name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-otras" type="radio" value="Deficiente" @if(old('s4_p1', optional($respuestas)['s4_p1']) == "Deficiente") checked @endif name="respuesta[s4_p1]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-otras" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Deficiente</label>
           </div>
           </div>
@@ -34,23 +34,23 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">¿Cómo califica su formación académica con respecto a su desempeño laboral?</label>
           <div class="grid gap-4 md:grid-cols-2">
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Excelente" name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Excelente" @if(old('s4_p2', optional($respuestas)['s4_p2']) == "Excelente") checked @endif name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Excelente</label>
               </div>
           <div class="flex items-center">
-              <input required id="radio-apoyo" type="radio" value="Malo" name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-apoyo" type="radio" value="Malo" @if(old('s4_p2', optional($respuestas)['s4_p2']) == "Malo") checked @endif name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-apoyo" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Malo</label>
           </div>
           <div class="flex items-center">
-              <input required id="radio-tiempo" type="radio" value="Bueno" name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-tiempo" type="radio" value="Bueno" @if(old('s4_p2', optional($respuestas)['s4_p2']) == "Bueno") checked @endif name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-tiempo" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bueno</label>
           </div>
           <div class="flex items-center">
-              <input required id="radio-otras" type="radio" value="Pésimo" name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-otras" type="radio" value="Pésimo" @if(old('s4_p2', optional($respuestas)['s4_p2']) == "Pésimo") checked @endif name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-otras" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pésimo</label>
           </div>
           <div class="flex items-center">
-              <input required id="radio-otras" type="radio" value="Regular" name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <input required id="radio-otras" type="radio" value="Regular" @if(old('s4_p2', optional($respuestas)['s4_p2']) == "Regular") checked @endif name="respuesta[s4_p2]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="radio-otras" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Regular</label>
           </div>
           </div>
@@ -60,23 +60,23 @@
           <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional</label>
           <div class="grid gap-4 md:grid-cols-1">
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Excelente" name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Excelente" @if(old('s4_p3', optional($respuestas)['s4_p3']) == "Excelente") checked @endif name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Excelente</label>
               </div>
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Bueno" name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Bueno" @if(old('s4_p3', optional($respuestas)['s4_p3']) == "Bueno") checked @endif name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bueno</label>
               </div>
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Regular" name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Regular" @if(old('s4_p3', optional($respuestas)['s4_p3']) == "Regular") checked @endif name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Regular</label>
               </div>
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Malo" name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Malo" @if(old('s4_p3', optional($respuestas)['s4_p3']) == "Malo") checked @endif name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Malo</label>
               </div>
               <div class="flex items-center">
-                  <input required id="radio-compromiso" type="radio" value="Pésimo" name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <input required id="radio-compromiso" type="radio" value="Pésimo" @if(old('s4_p3', optional($respuestas)['s4_p3']) == "Pésimo") checked @endif name="respuesta[s4_p3]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="radio-compromiso" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pésimo</label>
               </div>
           </div>
@@ -95,11 +95,11 @@
                 focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600
                 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p4', optional($respuestas)['s4_p4']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p4', optional($respuestas)['s4_p4']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p4', optional($respuestas)['s4_p4']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p4', optional($respuestas)['s4_p4']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p4', optional($respuestas)['s4_p4']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -107,11 +107,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Titulación</label>
               <select required name="respuesta[s4_p5]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p5', optional($respuestas)['s4_p5']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p5', optional($respuestas)['s4_p5']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p5', optional($respuestas)['s4_p5']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p5', optional($respuestas)['s4_p5']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p5', optional($respuestas)['s4_p5']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -119,11 +119,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Experiencia Laboral/práctica (antes de egresar)</label>
               <select required name="respuesta[s4_p6]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p6', optional($respuestas)['s4_p6']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p6', optional($respuestas)['s4_p6']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p6', optional($respuestas)['s4_p6']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p6', optional($respuestas)['s4_p6']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p6', optional($respuestas)['s4_p6']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -131,11 +131,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Competencia Laboral: Habilidad para resolver <br> problemas, etc.</label>
               <select required name="respuesta[s4_p7]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p7', optional($respuestas)['s4_p7']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p7', optional($respuestas)['s4_p7']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p7', optional($respuestas)['s4_p7']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p7', optional($respuestas)['s4_p7']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p7', optional($respuestas)['s4_p7']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -143,11 +143,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Posicionamiento de la Institución de Egreso</label>
               <select required name="respuesta[s4_p8]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p8', optional($respuestas)['s4_p8']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p8', optional($respuestas)['s4_p8']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p8', optional($respuestas)['s4_p8']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p8', optional($respuestas)['s4_p8']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p8', optional($respuestas)['s4_p8']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -155,11 +155,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Conocimiento de Idiomas Extranjeros</label>
               <select required name="respuesta[s4_p9]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p9', optional($respuestas)['s4_p9']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p9', optional($respuestas)['s4_p9']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p9', optional($respuestas)['s4_p9']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p9', optional($respuestas)['s4_p9']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p9', optional($respuestas)['s4_p9']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -167,11 +167,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Recomendaciones/ referencias</label>
               <select required name="respuesta[s4_p10]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p10', optional($respuestas)['s4_p10']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p10', optional($respuestas)['s4_p10']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p10', optional($respuestas)['s4_p10']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p10', optional($respuestas)['s4_p10']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p10', optional($respuestas)['s4_p10']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -179,11 +179,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Personalidad/ Actitudes</label>
               <select required name="respuesta[s4_p11]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p11', optional($respuestas)['s4_p11']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p11', optional($respuestas)['s4_p11']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p11', optional($respuestas)['s4_p11']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p11', optional($respuestas)['s4_p11']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p11', optional($respuestas)['s4_p11']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -191,11 +191,11 @@
               <label class="w-72 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">-Capacidad de liderazgo</label>
               <select required name="respuesta[s4_p12]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p12', optional($respuestas)['s4_p12']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p12', optional($respuestas)['s4_p12']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p12', optional($respuestas)['s4_p12']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p12', optional($respuestas)['s4_p12']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p12', optional($respuestas)['s4_p12']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
         
@@ -204,18 +204,15 @@
               <select required name="respuesta[s4_p13]" class="w-52 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="Demasiado">Demasiado (5)</option>
-                <option value="Mucho">Mucho (4)</option>
-                <option value="Más o menos">Más o menos (3)</option>
-                <option value="Poco">Poco (2)</option>
-                <option value="Muy poco">Muy poco (1)</option>
+                <option value="Demasiado" @selected(old('s4_p13', optional($respuestas)['s4_p13']) == "Demasiado")>Demasiado (5)</option>
+                <option value="Mucho" @selected(old('s4_p13', optional($respuestas)['s4_p13']) == "Mucho")>Mucho (4)</option>
+                <option value="Más o menos" @selected(old('s4_p13', optional($respuestas)['s4_p13']) == "Más o menos")>Más o menos (3)</option>
+                <option value="Poco" @selected(old('s4_p13', optional($respuestas)['s4_p13']) == "Poco")>Poco (2)</option>
+                <option value="Muy poco" @selected(old('s4_p13', optional($respuestas)['s4_p13']) == "Muy poco")>Muy poco (1)</option>
               </select>
             </div>
-        
           </div>
         </div>
-        
-        
       <!-- Botón al final -->
       <div class="flex justify-end mt-8 mr-12">
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg 

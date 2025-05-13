@@ -43,19 +43,11 @@
         </style>
     </head>
     <body class="h-100vh">
-            <header class="w-full flex  justify-between items-center bg-[#162D4B] p-2">
-
+            <header class="w-full flex justify-between items-center bg-[#014E82] p-2">
                 <div class="inline-flex space-x-5 ">
-
-                    <img class="w-22 h-14 sm:w-[180px] sm:h-auto  md:w-[200px]  lg:w-[205px]  xl:w-[210px] " 
-                    src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
-
-
-
-                    <img class="w-22 h-14 sm:w-[100px] sm:h-auto  md:w-[90px]  lg:w-[100px]  xl:w-[100px]" 
-                    src="{{ asset('img/logoitv.png') }}" >
+                    <img class="w-22 h-14 sm:w-[180px] sm:h-auto  md:w-[200px]  lg:w-[205px]  xl:w-[210px]" src="{{ asset('img/logotecnmblanco.png') }}" alt="logo">
+                    <img class="w-22 h-14 sm:w-[100px] sm:h-auto  md:w-[90px]  lg:w-[100px]  xl:w-[100px]" src="{{ asset('img/logoitv.png') }}">
                 </div>
-                
         
                 {{-- Links login y Register --}}
                 @if (Route::has('login'))
@@ -65,8 +57,7 @@
                         @auth
                             <a
                                 href="{{ url('/dashboard') }}"
-                                class="font-bold text-white text-sm py-1 sm:text-xl bg-blue-500 rounded px-2 py-2 sm:px-4 sm:mr-6 hover:bg-blue-700"
-                            >
+                                class="font-bold text-white text-sm py-1 sm:text-xl bg-blue-500 rounded px-2 py-2 sm:px-4 sm:mr-6 hover:bg-blue-700">
                                 Inicio
                             </a>
                         @else
@@ -105,8 +96,7 @@
             <div class="flex justify-start space-x-5 items-center sm:pl-[10%]">
                 
                 <div class="w-16 h-auto sm:w-16  md:w-16  lg:[100px]  xl:w-[100px] ">
-                    <img 
-                    src="{{ asset('img/itver-forms-logo.png') }}" alt="logo app" >
+                    <img src="{{ asset('img/logo.png') }}" alt="logo app" >
                 </div>
 
                 <div>
@@ -131,7 +121,6 @@
             </p>
 
             <div class="text-lg flex flex-col text-justify sm:pl-[10%] sm:text-xl sm:w-1/2 sm:mx-auto md:text-xl lg:text-4xl xl:text-3xl">
-            
                 <br>
                 <p>¡Tu opinión marca la diferencia!</p>
                 <br>
@@ -139,11 +128,9 @@
                 <br>
                 <b>El equipo de ITVER-Forms</b>
             </div>
-        
-
             </div>
         </div>
-        <footer class="text-white bg-[#1F2C66] font-bold text-center py-3 w-full">
+        <footer class="text-white bg-[#014E82] font-bold text-center py-3 w-full">
             © Copyright 2025 TecNM - Todos los Derechos Reservados
         </footer>
 

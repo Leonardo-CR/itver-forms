@@ -6,7 +6,7 @@
               <!-- COLUMNA PRINCIPAL -->
               <div class="w-full lg:basis-[80%] flex flex-col gap-2">
                   <!-- INSTRUCCIONES -->
-                  <div class="flex flex-col sm:flex-row items-center bg-[#0081B4] text-white p-5 rounded">
+                  <div class="flex flex-col sm:flex-row items-center bg-[#0569ab] text-white p-5 rounded">
                       <div class="flex-1">
                           <h2 class="font-bold uppercase mb-2 text-xl">Instrucciones:</h2>
                           <p class="text-base">
@@ -17,7 +17,7 @@
                   </div>
 
                   <!-- PARTES DEL CUESTIONARIO -->
-                  <div class="bg-[#0081B4] text-white p-5 rounded">
+                  <div class="bg-[#0569ab] text-white p-5 rounded">
                       <h2 class="font-bold uppercase mb-2 text-xl">Partes del cuestionario de egresados</h2>
                       <ul class="space-y-2 text-base list-inside">
                           <li>
@@ -39,13 +39,13 @@
               <!-- COLUMNA SECUNDARIA -->
               <div class="w-full lg:basis-[20%] flex flex-col gap-2">
                   <!-- RECUERDE -->
-                  <div class="bg-[#0081B4] text-white p-5 rounded flex flex-col items-center text-center">
+                  <div class="bg-[#0569ab] text-white p-5 rounded flex flex-col items-center text-center">
                       <h2 class="font-bold uppercase mb-2 text-xl">¡Recuerde que, su progreso!</h2>
                       <img src="{{ asset('img/instrucciones/guardar.png') }}" alt="" class="w-28 h-auto mt-2">
                   </div>
 
                   <!-- GRACIAS -->
-                  <div class="bg-[#0081B4] text-white p-5 rounded flex flex-col items-center text-center">
+                  <div class="bg-[#0569ab] text-white p-5 rounded flex flex-col items-center text-center">
                       <h2 class="font-bold uppercase mb-2 text-xl">¡Gracias por su gentil colaboración!</h2>
                       <img src="{{ asset('img/instrucciones/colabora.png') }}" alt="" class="w-28 h-auto mt-2">
                   </div>
