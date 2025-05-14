@@ -5,7 +5,18 @@
             <flux:breadcrumbs.item >Egresados</flux:breadcrumbs.item>
         </flux:breadcrumbs>
         @livewireScripts
-
+        {{-- Link Importacion --}}
+        <div  class="btn btn-blue">
+        <form action="{{ route('admin.egresados.importar') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="archivo" required  accept=".xlsx">
+            <button type="submit">Importar Egresados</button>
+        </form>
+        </div>
+        {{-- Link para exportar --}}
+        <a href="{{ route('admin.egresados.exportar') }}" class="btn btn-blue">
+            <button>Exportar Egresados</button>
+        </a>
         {{-- <a href="{{ route('admin.egresados.create') }}" class="btn btn-blue">Nuevo</a> --}}
     </div>
     <form method="GET" action="{{ route('admin.egresados.index') }}" class="mb-4 flex flex-wrap gap-2 items-center">

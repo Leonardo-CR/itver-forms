@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         $dba = User::create([
             'name' => 'Leo DBA',
-            'email' => 'adminDBA@itverforms.com',            
+            'email' => 'dba@itverforms.com',            
             'password' => Hash::make('Leonardo2004'),
             'cv_carrera' => 1,
             'tipo' => 'DBA'
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
         $dba = User::create([
             'name' => 'aaroin DBA',
-            'email' => 'aaron@itverforms.com',            
+            'email' => 'dba1@itverforms.com',            
             'password' => Hash::make('Leonardo2004'),
             'cv_carrera' => 1,
             'tipo' => 'DBA'

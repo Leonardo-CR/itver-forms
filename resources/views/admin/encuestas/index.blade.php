@@ -4,6 +4,18 @@
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item>Encuestas</flux:breadcrumbs.item>
         </flux:breadcrumbs>
+         {{-- Link Importacion --}}
+        <div  class="btn btn-blue">
+        <form action="{{ route('admin.encuestas.importar') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="archivo" required  accept=".xlsx">
+            <button type="submit">Importar Encuestas</button>
+        </form>
+        </div>
+         {{-- Link para exportar --}}
+        <a href="{{ route('admin.encuestas.exportar') }}" class="btn btn-blue">
+            <button>Exportar Avisos</button>
+        </a>
         <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">+ Nueva Encuesta</a>
     </div>
 

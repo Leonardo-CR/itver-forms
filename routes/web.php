@@ -1,16 +1,29 @@
 <?php
 use Livewire\Volt\Volt;
 use Illuminate\Http\Request;
+use App\Exports\EgresadoExport;
+use App\Imports\EgresadoImport;
 use App\Exports\AvisosExport;
 use App\Imports\AvisosImport;
+use App\Exports\EncuestaExport;
+use App\Imports\EncuestaImport;
 use Maatwebsite\Excel\Facades\Excel;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuiBioController;
 use App\Http\Controllers\admin\AvisoController;
 use App\Http\Controllers\admin\SeccionController;
 use App\Http\Controllers\egresado\EgresadosController;
+use App\Exports\RespuestaCualitativaExport;
+use App\Http\Controllers\admin\EncuestaController;
 
+
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+    ////////////////////////////////////////////////////////////////// Importaciones y expotaciones 
+////////Avisos
 Route::get('admin/avisos/exportar', function () {
     return Excel::download(new AvisosExport, 'avisos.xlsx');
 })->name('admin.avisos.exportar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
@@ -25,13 +38,46 @@ Route::post('admin/avisos/importar', function (Request $request) {
     return redirect()->back()->with('success', 'Avisos importados correctamente.');
 })->name('admin.avisos.importar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
 
+/////////// Egresados
+Route::get('admin/egresados/exportar', function () {
+    return Excel::download(new EgresadoExport, 'egresados.xlsx');
+})->name('admin.egresados.exportar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
+Route::post('admin/egresados/importar', function (Request $request) {
+    $request->validate([
+        'archivo' => 'required|file|mimes:xlsx',
+    ]);
+
+    Excel::import(new EgresadoImport, $request->file('archivo'));
+
+    return redirect()->back()->with('success', 'Egresados importados correctamente.');
+})->name('admin.egresados.importar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
+
+/////////// Encuestas
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('admin/encuestas/exportar', function () {
+    return Excel::download(new EncuestaExport, 'encuestas.xlsx');
+})->name('admin.encuestas.exportar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
 
-//Rutas Egresado 
+Route::post('admin/encuestas/importar', function (Request $request) {
+    $request->validate([
+        'archivo' => 'required|file|mimes:xlsx',
+    ]);
+
+    Excel::import(new EncuestaImport, $request->file('archivo'));
+
+    return redirect()->back()->with('success', 'Encuestas importadas correctamente.');
+})->name('admin.encuestas.importar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
+
+// Respuesta Cualitativa Export
+Route::get('admin/encuestas/{encuesta}/respuestas-cualitativas/exportar', function ($encuesta) {
+    return Excel::download(new RespuestaCualitativaExport($encuesta), 'respuestas_cualitativas_'.$encuesta.'.xlsx');
+})->name('admin.encuestas.respuestas_cualitativas.exportar')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
+
+Route::post('/admin/respuestas-cualitativas/import', [EncuestaController::class, 'import'])
+    ->name('admin.respuestas_cualitativas.import');
+
+    //////////////////////////////////////////////////////////////////////////////Rutas Egresado 
 
 Route::get('/bienvenida', [EgresadosController::class, 'bienvenida'])->name('egresado.bienvenida')->middleware('auth');
 
@@ -63,4 +109,5 @@ require __DIR__.'/auth.php';
 require __DIR__.'/general.php';
 require __DIR__.'/quibio.php';
 require __DIR__.'/admin.php';
+require __DIR__.'/export_import.php';
 

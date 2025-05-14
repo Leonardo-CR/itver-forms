@@ -4,12 +4,14 @@
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item >Avisos</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <!-- Formulario para importar -->
+       {{-- Link Importacion --}}
+        <div  class="btn btn-blue">
         <form action="{{ route('admin.avisos.importar') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="file" name="archivo" required>
+            <input type="file" name="archivo" required  accept=".xlsx">
             <button type="submit">Importar Avisos</button>
         </form>
+        </div>
         {{-- Link para exportar --}}
         <a href="{{ route('admin.avisos.exportar') }}" class="btn btn-blue">
             <button>Exportar Avisos</button>

@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\RespuestaCualitativa;
 use App\Models\RespuestaCuantitativa;
+use App\Imports\RespuestaCualitativaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EncuestaController extends Controller
 {
@@ -193,4 +195,14 @@ class EncuestaController extends Controller
         $encuesta->delete();
         return redirect()->route('admin.encuestas.index');
     }
+    public function import(Request $request)
+{
+    $request->validate([
+        'archivo' => 'required|file|mimes:xlsx,xls'
+    ]);
+
+    Excel::import(new RespuestaCualitativaImport, $request->file('archivo'));
+
+    return redirect()->back()->with('success', 'Importación completada correctamente.');
+}
 }

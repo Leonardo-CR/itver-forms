@@ -28,7 +28,10 @@
             <div class="flex justify-between items-baseline">
               <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
                 {{ $usuarios[$i]->name }}
+                <span class="ml-2 font-bold">  Correo:   </span>
+                {{ $usuarios[$i]->email }}
               </p>
+              
               <span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                 {{ $usuarios[$i]->carrera->nombre }}
               </span>
