@@ -23,12 +23,14 @@ class RespuestaCualitativa extends Model
     public function pregunta(){
         return $this->belongsTo(Pregunta::class, 'cv_pregunta');
     }
+    
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
-public function encuesta()
-{
-    return $this->belongsTo(Encuesta::class, 'cv_encuesta');
-}
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function encuesta()
+    {
+        return $this->belongsTo(Encuesta::class, 'cv_encuesta');
+    }
 }

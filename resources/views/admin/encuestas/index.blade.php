@@ -14,9 +14,9 @@
         </div>
          {{-- Link para exportar --}}
         <a href="{{ route('admin.encuestas.exportar') }}" class="btn btn-blue">
-            <button>Exportar Avisos</button>
+            <button>Exportar Encuestas</button>
         </a>
-        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">+ Nueva Encuesta</a>
+        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">Nueva Encuesta</a>
     </div>
 
     <div class="relative overflow-x-auto bg-white shadow rounded-lg">

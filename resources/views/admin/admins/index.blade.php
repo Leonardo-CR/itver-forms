@@ -4,7 +4,7 @@
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item >Administradores</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a href="{{ route('admin.admins.create') }}" class="btn btn-blue">Nuevo</a>
+        <a href="{{ route('admin.admins.create') }}" class="btn btn-blue">Nuevo Admin</a>
     </div>
     <form method="GET" action="{{ route('admin.admins.index') }}" class="mb-4 flex flex-wrap gap-2 items-center">
         <input type="text" name="nombre" value="{{ request('nombre') }}" placeholder="Buscar por nombre" class="border border-gray-300 rounded px-2 py-1 text-sm">
