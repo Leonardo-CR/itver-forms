@@ -70,12 +70,14 @@ class AdminController extends Controller
             'password' => bcrypt($validated['password']),
             'cv_carrera' => 1,
             'tipo' => $validated['tipo'],
+            'is_active' => 1,
         ]);
 
         foreach ($request->input('carreras', []) as $carreraSel) {
             UserCarrera::create([
                 'id' => $user->id,
                 'cv_carrera' => $carreraSel,
+                'is_active' => 1,            
             ]);
         }
 
@@ -116,6 +118,7 @@ class AdminController extends Controller
             'nombre' => 'required|string|max:100',
             'correo' => 'required|string|email|max:100',
             'tipo'   => 'required|in:DBA,Jefe de Departamento',
+            'is_active' => 'nullable|boolean',
         ]);
 
         // Actualizar datos del usuario
@@ -123,6 +126,7 @@ class AdminController extends Controller
             'name'  => $data['nombre'],
             'email' => $data['correo'],
             'tipo'  => $data['tipo'],
+            'is_active'  => $data['is_active'],
         ]);
         
         UserCarrera::where('id', $admin->id)->delete(); // Eliminar carreras anteriores
@@ -143,7 +147,8 @@ class AdminController extends Controller
     public function destroy(User $admin)
     {
         //dd($admin);  // Esto mostrará la información del objeto
-        $admin->delete();
+        $admin->is_active = 0; // Cambia el estado a inactivo
+        $admin->save();
         return redirect()->route('admin.admins.index');
     }
 }

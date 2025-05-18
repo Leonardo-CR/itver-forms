@@ -20,13 +20,13 @@ return new class extends Migration
 
             //Foraneas
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->unsignedBigInteger('cv_pregunta');
-            $table->foreign('cv_pregunta')->references('cv_pregunta')->on('pregunta');
+            $table->foreign('cv_pregunta')->references('cv_pregunta')->on('pregunta')->onDelete('cascade');
 
             $table->unsignedBigInteger('cv_encuesta');
-            $table->foreign('cv_encuesta')->references('cv_encuesta')->on('encuesta');
+            $table->foreign('cv_encuesta')->references('cv_encuesta')->on('encuesta')->onDelete('cascade');
         });
 
         

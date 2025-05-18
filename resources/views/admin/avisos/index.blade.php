@@ -32,7 +32,10 @@
                         Contenido (HTML)
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Editar
+                        Estado
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Acciones
                     </th>
                 </tr>
             </thead>
@@ -47,6 +50,12 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $aviso->contenido }}
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $aviso->publicado ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $aviso->publicado ? 'Publicado' : 'No publicado' }}
+                        </span>
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">

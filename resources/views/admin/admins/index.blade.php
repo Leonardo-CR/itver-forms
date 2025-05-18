@@ -29,6 +29,7 @@
                     <th scope="col" class="px-6 py-3">Correo</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
                     <th scope="col" class="px-6 py-3">Carrera(s)</th>
+                    <th scope="col" class="px-6 py-3">Estado</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -46,7 +47,7 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $admin->tipo }}
-                    </td>
+                    </td>                
                     <td class="px-6 py-4">
                         @foreach ($admin->carreras as $carrera)
                             <span class="text-xs text-gray-500">{{ $carrera->nombre }}</span>
@@ -54,6 +55,12 @@
                                 <span class="text-xs text-gray-500">, </span>
                             @endif
                         @endforeach                    
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $admin->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $admin->is_active ? 'Activo' : 'Inactivo' }}
+                        </span>
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">

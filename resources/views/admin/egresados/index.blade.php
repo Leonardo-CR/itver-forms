@@ -36,9 +36,9 @@
                 <tr>
                     <th scope="col" class="px-6 py-3">ID</th>
                     <th scope="col" class="px-6 py-3">Nombre</th>
-                    
                     <th scope="col" class="px-6 py-3">Correo Electrónico</th>
                     <th scope="col" class="px-6 py-3">Carrera</th>
+                    <th scope="col" class="px-6 py-3">Estado</th>
                     <th scope="col" class="px-6 py-3">Verificado</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
@@ -57,6 +57,12 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $egresado->carrera->nombre }}
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $egresado->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $egresado->is_active ? 'Activo' : 'Inactivo' }}
+                        </span>
                     </td>
                     <td class="px-6 py-4">
                         @if ($egresado->email_verified_at)

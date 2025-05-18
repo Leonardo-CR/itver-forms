@@ -192,17 +192,18 @@ class EncuestaController extends Controller
 
     public function destroy(Encuesta $encuesta)
     {
-        $encuesta->delete();
+        $encuesta->is_active = false;
+        $encuesta->save();
         return redirect()->route('admin.encuestas.index');
     }
     public function import(Request $request)
-{
-    $request->validate([
-        'archivo' => 'required|file|mimes:xlsx,xls'
-    ]);
+    {
+        $request->validate([
+            'archivo' => 'required|file|mimes:xlsx,xls'
+        ]);
 
-    Excel::import(new RespuestaCualitativaImport, $request->file('archivo'));
+        Excel::import(new RespuestaCualitativaImport, $request->file('archivo'));
 
-    return redirect()->back()->with('success', 'Importación completada correctamente.');
-}
+        return redirect()->back()->with('success', 'Importación completada correctamente.');
+    }
 }

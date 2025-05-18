@@ -8,16 +8,19 @@
         <div class="mb-6">
           <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre:</label>
           <input required type="text" id="nombre" name="nombre" value="{{ old('nombre', optional($datos)->nombre) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Felipe" required />
+          @error('nombre') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
         </div>
          <!-- FILA 2-->
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <label for="ap_paterno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Paterno:</label>
                 <input required type="text" id="ap_paterno" name="ap_paterno" value="{{ old('ap_paterno', optional($datos)->ap_paterno) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ferra" required />
-            </div>  
+                @error('ap_paterno') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
+            </div>
             <div>
                 <label for="ap_materno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Materno:</label>
                 <input required type="text" id="ap_materno" name="ap_materno" value="{{ old('ap_materno', optional($datos)->ap_materno) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Gomez" required />
+                @error('ap_materno') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>  
         </div>
         <!-- FILA 3-->
@@ -32,6 +35,7 @@
                 </svg>
               </div>
               <input required datepicker id="fecha_nac" type="date" name="fecha_nac" value="{{ old('fecha_nac', optional($datos)->fecha_nac) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Selecciona una fecha">
+              @error('fecha_nac') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>
           </div>
           <div> 
@@ -43,26 +47,31 @@
               <input required id="femenino" type="radio" value="Femenino" name="sexo" @if(old('sexo', optional($datos)->sexo) == 'Femenino') checked @endif class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               <label for="femenino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Femenino</label>
             </div>
+            @error('sexo') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>    
         </div>
         <!-- FILA 4-->
         <div class="mb-6">
           <label for="curp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CURP:</label>
           <input required type="text" id="curp" name="curp" value="{{ old('curp', optional($datos)->curp) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="FAGF900101HDFRRL09" required />
+          @error('curp') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
         </div>
         <!-- FILA 5-->
         <div class="grid gap-6 mb-6 md:grid-cols-3">
           <div>
             <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
             <input required type="text" id="estado" name="estado" value="{{ old('estado', optional($datos)->estado) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            @error('estado') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <div>
             <label for="municipio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Municipio:</label>
             <input required type="text" id="municipio" name="municipio" value="{{ old('municipio', optional($datos)->municipio) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            @error('municipio') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <div>
             <label for="ciudad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ciudad:</label>
             <input required type="text" id="ciudad" name="ciudad" value="{{ old('ciudad', optional($datos)->ciudad) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Veracruz" required />
+            @error('ciudad') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
         </div>
         <!-- FILA 6-->
@@ -70,18 +79,22 @@
           <div>
             <label for="colonia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Colonia:</label>
             <input required type="text" id="colonia" name="colonia" value="{{ old('colonia', optional($datos)->colonia) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Infonavit Buenavista" required />
+            @error('colonia') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <div>
             <label for="cp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">C.P.:</label>
             <input required type="text" id="cp" name="cp" value="{{ old('cp', optional($datos)->cp) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="91850" required />
+            @error('cp') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <div>
             <label for="calle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Calle:</label>
             <input required type="text" id="calle" name="calle" value="{{ old('calle', optional($datos)->calle) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ahuehuete" required />
+            @error('calle') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <div>
             <label for="no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.:</label>
             <input required type="text" id="no" name="no" value="{{ old('no', optional($datos)->no) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="44" required />
+            @error('no') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
         </div>
         <!-- FILA 7-->
@@ -98,6 +111,7 @@
           <div>
             <label for="especialidad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingrese su Especialidad:</label>
             <input type="text" id="especialidad" name="especialidad" value="{{ old('especialidad', optional($datos)->especialidad) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Redes y telecomunicaciones" required />
+            @error('especialidad') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
         </div>
         <!-- FILA 7-->
@@ -124,7 +138,7 @@
           <div>
             <label for="anio_egreso" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Año de egreso:</label>
             <input required type="number" id="anio_egreso" name="anio_egreso" value="{{ old('anio_egreso', optional($datos)->anio_egreso) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ejemplo:2025" required />
-          
+            @error('anio_egreso') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
           <!-- TELEFONO CELULAR -->
           <div>
@@ -133,6 +147,7 @@
               <input  required type="text" id="lada" name="lada_celular" value="{{ old('lada_celular', optional($datos)->lada_celular) }}" class="basis-[30%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+52" required />
               <input  required type="text" id="tel_celular" name="tel_celular" value="{{ old('tel_celular', optional($datos)->tel_celular) }}" class="basis-[70%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2291411203" required />
             </div>
+            @error('tel_celular') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
         </div>
         <!-- FILA 7-->
@@ -156,18 +171,20 @@
               <input required type="text" id="lada2" name="lada_casa_paterna" value="{{ old('lada_casa_paterna', optional($datos)->lada_casa_paterna) }}" class="basis-[20%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+52" required />
               <input required type="text" id="tel_celular2" name="tel_casa_paterna" value="{{ old('tel_casa_paterna', optional($datos)->tel_casa_paterna) }}" class="basis-[80%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2291832312" required />
             </div>
+            @error('tel_casa_paterna') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
           </div>
         </div>
-      
         <!-- FILA 1-->
   <div class="mb-6">
     <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo electrónico:</label>
     <input required type="text" id="correo" name="correo" value="{{ old('correo', optional($datos)->correo) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="aaronsalasn@gmail.com" required />
+    @error('correo') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
   </div>
   <!-- FILA 2-->
   <div class="mb-6">
     <label for="no_control" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número de control:</label>
     <input required type="text" id="no_control" name="no_control" value="{{ old('no_control', optional($datos)->no_control) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="22020795" required />
+    @error('no_control') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
   </div>
   <!-- FILA 3-->
   <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -191,8 +208,8 @@
             <input required type="text" id="ingles" name="dominio_ingles" value="{{ old('dominio_ingles', optional($datos)->dominio_ingles) }}" class="basis-[90%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="50" required />
             <span class="basis-[10%] mb-2 text-sm font-medium text-gray-900 dark:text-white">%</span>
           </div>
-        </div>
-        
+          @error('dominio_ingles') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
+        </div>        
       </div>
     </div>
   </div>
@@ -200,6 +217,7 @@
   <div class="mb-6">
     <label for="paquetes_comp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Manejo de paquetes computacionales (especificar):</label>
     <input required type="text" id="paquetes_comp" name="manejo_paquetes" value="{{ old('manejo_paquetes', optional($datos)->manejo_paquetes) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Excel, Word, ..." required />
+    @error('manejo_paquetes') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
   </div>
   <!-- FILA 5 -->
   <div class="flex">
@@ -207,7 +225,6 @@
   </div>
       </form>
     </div>
-    
     <script>
       document.addEventListener('DOMContentLoaded', function() {
           const form = document.getElementById('formulario');

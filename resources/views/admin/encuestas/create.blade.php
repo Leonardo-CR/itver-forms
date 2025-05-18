@@ -13,9 +13,6 @@
     <form action="{{ route('admin.encuestas.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card mt-4 space-y-6">
-    
-            
-    
             <flux:input 
                 label="Periodo" 
                 name="periodo" 
