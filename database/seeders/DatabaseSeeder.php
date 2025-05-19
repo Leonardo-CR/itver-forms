@@ -50,6 +50,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dba@itverforms.com',            
             'password' => Hash::make('Leonardo2004'),
             'cv_carrera' => 1,
+            'is_active' => 1,
             'tipo' => 'DBA'
         ]);        
         $dba->assignRole('DBA');
@@ -61,6 +62,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dba1@itverforms.com',            
             'password' => Hash::make('Leonardo2004'),
             'cv_carrera' => 1,
+            'is_active' => 1,
             'tipo' => 'DBA'
         ]);        
         $dba->assignRole('DBA');
@@ -71,13 +73,45 @@ class DatabaseSeeder extends Seeder
             'name' => 'valeriachi',
             'email' => 'valeriachoi@itverforms.com',            
             'password' => Hash::make('Leonardo2004'),
-            'cv_carrera' => 1,
-            'tipo' => 'Jefe de Departamento'
-        ]);        
-        $dba->assignRole('jefe_de_departamento');
+            'cv_carrera' => 7,
+            'is_active' => 1,
+            'tipo' => 'Egresado'
+        ]);
+        $dba->assignRole('egresado_general');
         $dba->save(); // Para generar el c
-        $dba->carreras()->attach([6,2,1,7]);
         
+        $dba = User::create([
+            'name' => 'valeriachi',
+            'email' => '666546@itverforms.com',            
+            'password' => Hash::make('Leonardo2004'),
+            'cv_carrera' => 7,
+            'is_active' => 1,
+            'tipo' => 'Egresado'
+        ]);
+        $dba->assignRole('egresado_general');
+        $dba->save(); // Para generar el c
+
+        $dba = User::create([
+            'name' => 'gdfgdgffdg',
+            'email' => '45454@itverforms.com',            
+            'password' => Hash::make('Leonardo2004'),
+            'cv_carrera' => 7,
+            'is_active' => 1,
+            'tipo' => 'Egresado'
+        ]);
+        $dba->assignRole('egresado_general');
+        $dba->save(); // Para generar el c
+
+        $dba = User::create([
+            'name' => 'dadasd',
+            'email' => '3434@itverforms.com',            
+            'password' => Hash::make('Leonardo2004'),
+            'cv_carrera' => 7,
+            'is_active' => 1,
+            'tipo' => 'Egresado'
+        ]);
+        $dba->assignRole('egresado_general');
+        $dba->save(); // Para generar el c
         /*
         Aviso::factory(20)->create();
         Admin::factory(20)->create();

@@ -49,8 +49,7 @@
                 @error('is_active')
                     <span class="text-sm text-red-500">{{ $message }}</span>
                 @enderror
-            </div>
-            
+            </div>            
 
             <div class="flex justify-end">
                 <flux:button variant="primary" type="Submit">Enviar</flux:button>         

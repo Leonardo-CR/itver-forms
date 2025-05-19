@@ -23,14 +23,35 @@
                 <flux:select.option value="Jefe de Departamento" :selected="old('tipo', $admin->tipo) === 'Jefe de Departamento'">Jefe de Departamento</flux:select.option>
             </flux:select>
 
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Estado del Admin</label>
+                <div class="flex items-center gap-6">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="1" class="form-radio text-blue-600"
+                            {{ old('is_active', $admin->is_active) == '1' ? 'checked' : '' }}>
+                        <span class="ml-2">Activo</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="0" class="form-radio text-red-600"
+                            {{ old('is_active', $admin->is_active) == '0' ? 'checked' : '' }}>
+                        <span class="ml-2">Inactivo</span>
+                    </label>
+                </div>
+                @error('is_active')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
+            </div>            
+
             <flux:checkbox.group name="carreras[]" label="Seleccione las carreras a las que pertenece el administrador">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 @foreach ($carreras as $carrera)
-                    <div class="flex items-center mb-4">
+                    <div class="flex items-center space-x-2">
                         <input type="checkbox" name="carreras[]" id="carrera_{{ $carrera->cv_carrera }}" value="{{ $carrera->cv_carrera }}"
                             {{ in_array($carrera->cv_carrera, $checkedCarreras) ? 'checked' : '' }}>
                         <label for="carrera_{{ $carrera->cv_carrera }}">{{ $carrera->nombre }}</label>
                     </div>
                 @endforeach
+                </div>
             </flux:checkbox.group>
 
             <div class="flex justify-end">

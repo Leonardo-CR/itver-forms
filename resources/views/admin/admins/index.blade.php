@@ -4,7 +4,7 @@
             <flux:breadcrumbs.item href="{{ route('dashboard') }}">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item >Administradores</flux:breadcrumbs.item>
         </flux:breadcrumbs>
-        <a href="{{ route('admin.admins.create') }}" class="btn btn-blue">Nuevo</a>
+        <a href="{{ route('admin.admins.create') }}" class="btn btn-blue">Nuevo Admin</a>
     </div>
     <form method="GET" action="{{ route('admin.admins.index') }}" class="mb-4 flex flex-wrap gap-2 items-center">
         <input type="text" name="nombre" value="{{ request('nombre') }}" placeholder="Buscar por nombre" class="border border-gray-300 rounded px-2 py-1 text-sm">
@@ -29,6 +29,7 @@
                     <th scope="col" class="px-6 py-3">Correo</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
                     <th scope="col" class="px-6 py-3">Carrera(s)</th>
+                    <th scope="col" class="px-6 py-3">Estado</th>
                     <th scope="col" class="px-6 py-3">Acciones</th>
                 </tr>
             </thead>
@@ -46,7 +47,7 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $admin->tipo }}
-                    </td>
+                    </td>                
                     <td class="px-6 py-4">
                         @foreach ($admin->carreras as $carrera)
                             <span class="text-xs text-gray-500">{{ $carrera->nombre }}</span>
@@ -54,6 +55,12 @@
                                 <span class="text-xs text-gray-500">, </span>
                             @endif
                         @endforeach                    
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $admin->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $admin->is_active ? 'Activo' : 'Inactivo' }}
+                        </span>
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">

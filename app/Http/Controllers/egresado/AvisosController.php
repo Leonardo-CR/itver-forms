@@ -13,7 +13,6 @@ class AvisosController extends Controller
         $avisos = Aviso::where('publicado', true)
             ->orderBy('created_at', 'desc')
             ->paginate(8);
-
             
         return view('egresado.avisos', compact('avisos'));
     }

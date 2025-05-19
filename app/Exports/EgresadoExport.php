@@ -25,12 +25,13 @@ class EgresadoExport implements FromCollection, WithHeadings
                     'correo'   => $user->email,
                     'carrera'  => optional($user->carrera)->nombre,
                     'tipo'     => $user->tipo,
+                    'is_active' => $user->is_active ? '1' : '0',
                 ];
             });
     }
 
     public function headings(): array
     {
-        return ['id', 'nombre', 'correo', 'carrera', 'tipo'];
+        return ['id', 'nombre', 'correo', 'carrera', 'tipo', 'is_active'];
     }
 }

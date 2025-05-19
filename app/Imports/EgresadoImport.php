@@ -25,6 +25,7 @@ class EgresadoImport implements ToModel, WithHeadingRow
                     'email'      => $row['correo'],
                     'cv_carrera' => $cv_carrera,
                     'tipo'       => $row['tipo'] ?? $user->tipo,
+                    'is_active'  => $row['is_active'] ? '1' : '0',
                 ]);
                 return $user;
             }
@@ -36,9 +37,9 @@ class EgresadoImport implements ToModel, WithHeadingRow
             'email'      => $row['correo'],
             'cv_carrera' => $cv_carrera,
             'tipo'       => $row['tipo'],
+            'is_active'  => $row['is_active'] ? '1' : '0',
             'password'   => Hash::make('password'), // O una contraseña predeterminada segura
         ]);
-
         // Asignar rol según carrera
         if (in_array($row['carrera'], ['Ing.Química', 'Ing.Bioquímica'])) {
             $newUser->assignRole('egresado_quibioo');

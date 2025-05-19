@@ -16,7 +16,7 @@
         <a href="{{ route('admin.avisos.exportar') }}" class="btn btn-blue">
             <button>Exportar Avisos</button>
         </a>
-    <a href="{{ route('admin.avisos.create') }}" class="btn btn-blue">Nuevo</a>
+    <a href="{{ route('admin.avisos.create') }}" class="btn btn-blue">Nuevo Aviso</a>
     </div>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -29,7 +29,13 @@
                         Title
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Editar
+                        Contenido (HTML)
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Estado
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Acciones
                     </th>
                 </tr>
             </thead>
@@ -41,6 +47,15 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $aviso->titulo }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $aviso->contenido }}
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $aviso->publicado ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $aviso->publicado ? 'Publicado' : 'No publicado' }}
+                        </span>
                     </td>
                     <td class="px-6 py-4" width="10px">
                         <div class="flex space-x-2">
