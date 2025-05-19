@@ -18,6 +18,40 @@
         </a>
         <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">Nueva Encuesta</a>
     </div>
+    
+    <div class="py-2 flex flex-col md:flex-row space-y-4">
+    @if ($mostrarGenerales)
+        <!-- Formulario de encuestas Generales -->
+        <form action="{{ route('graficas.reporte_generales_n') }}" method="GET" class="max-w-md mx-auto p-4 bg-white rounded shadow">
+            <p class="font-bold pb-2 dark:text-black">Graficar encuestas Generales</p>
+            <label for="encuestas" class="block text-gray-700 font-semibold mb-2">
+                Clave de encuestas <span class="text-sm text-gray-500">(separadas por comas)</span>:
+            </label>
+            <input type="text" name="encuestas" id="encuestas" placeholder="Ej: 1,3,5"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4 dark:text-black" />
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                Generar gráfico
+            </button>
+        </form>
+    @endif
+
+    @if ($mostrarQuibio)
+        <!-- Formulario de encuestas Quibio -->
+        <form action="{{ route('graficas.reporte_quibio_n') }}" method="GET" class="max-w-md mx-auto p-4 bg-white rounded shadow md:ml-4">
+            <p class="font-bold pb-2 dark:text-black">Graficar encuestas Quibio</p>
+            <label for="encuestas" class="block text-gray-700 font-semibold mb-2">
+                Clave de encuestas <span class="text-sm text-gray-500">(separadas por comas)</span>:
+            </label>
+            <input type="text" name="encuestas" id="encuestas" placeholder="Ej: 1,3,5"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4 dark:text-black" />
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                Generar gráfico
+            </button>
+        </form>
+    @endif
+    </div>
 
     <div class="relative overflow-x-auto bg-white shadow rounded-lg">
         <table class="w-full text-sm text-left text-gray-600">

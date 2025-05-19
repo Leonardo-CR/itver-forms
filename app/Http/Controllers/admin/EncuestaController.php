@@ -17,23 +17,32 @@ use Maatwebsite\Excel\Facades\Excel;
 class EncuestaController extends Controller
 {
     public function index()
-    {   
-        if (auth()->user()->hasRole('jefe_de_departamento')) {
-            $resp = UserCarrera::where('id', auth()->id())->get();
-            $car = [];
-            foreach($resp as $r) {
-                $car[] = $r->cv_carrera;
-            }
-            if(in_array(1, $car) || in_array(2, $car)) { // Si el jefe de departamento tiene acceso a QUIMICA(1) O BIOQUIMICA(2)
-                $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 2)->paginate(); // Solo ve las encuestas de QUIBIO
-            }else{
-                $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 1)->paginate(); // Solo ve las encuestas GENERAL
-            }
-        }else{
-            $encuestas = Encuesta::with('tipo_encuesta')->paginate(); // Si es DBA -> Ve todas las encuestas
+{   
+    $user = auth()->user();
+    $mostrarGenerales = false;
+    $mostrarQuibio = false;
+
+    if ($user->hasRole('jefe_de_departamento')) {
+        $resp = UserCarrera::where('id', $user->id)->get();
+        $car = $resp->pluck('cv_carrera')->toArray();
+
+        if (in_array(1, $car) || in_array(2, $car)) {
+            $mostrarQuibio = true;
+            $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 2)->paginate();
+        } else {
+            $mostrarGenerales = true;
+            $encuestas = Encuesta::with('tipo_encuesta')->where('cv_tipo_encuesta', 1)->paginate();
         }
-        return view('admin.encuestas.index', compact('encuestas'));
+    } else {
+        // DBA ve todo
+        $mostrarGenerales = true;
+        $mostrarQuibio = true;
+        $encuestas = Encuesta::with('tipo_encuesta')->paginate();
     }
+
+    return view('admin.encuestas.index', compact('encuestas', 'mostrarGenerales', 'mostrarQuibio'));
+}
+
 
     public function create()
     {

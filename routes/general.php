@@ -11,8 +11,7 @@ use App\Http\Controllers\egresado\PerfilEgresadoController;
 
 // Ruta avisos
 Route::get('/avisos', [AvisosController::class, 'avisos'])
-    ->name('avisos')
-    ->middleware(['auth', 'role:DBA|jefe_de_departamento|egresado_quibio|egresado_general', CheckIfUserIsActive::class]);
+    ->name('avisos')->middleware(['auth', 'role:DBA|jefe_de_departamento|egresado_quibio|egresado_general', CheckIfUserIsActive::class]);
 
 // Ruta ver secciones de la encuesta
 Route::get('/general/encuesta', [EgresadosController::class, 'encuesta'])->name('egresado.encuesta')->middleware(['auth', 'role:DBA|jefe_de_departamento|egresado_general', CheckIfUserIsActive::class]);
@@ -35,5 +34,14 @@ Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'repo
 Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores')->middleware(['auth', 'role:DBA|jefe_de_departamento', CheckIfUserIsActive::class]);
 Route::get('admin/general/{encuesta}/respuestas',[EncuestaController::class, 'show'])->name('admin.general.respuestas')->middleware(['auth', 'role:DBA|jefe_de_departamento', CheckIfUserIsActive::class]);
 Route::get('admin/general/respuestas/{encuesta}/{pregunta}/respuestasDetalle',[EncuestaController::class, 'respuestasDetalle'])->name('admin.general.respuestasDetalle')->middleware(['auth', 'role:DBA|jefe_de_departamento', CheckIfUserIsActive::class]);
+
+    
+
+
+
+Route::get('/graficas-generales', [GraficasController::class, 'reporte_generales_n'])->name('graficas.reporte_generales_n');
+
+Route::get('/graficas-quibios', [GraficasController::class, 'reporte_quibio_n'])->name('graficas.reporte_quibio_n');
+
 
 require __DIR__.'/auth.php';
