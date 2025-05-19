@@ -13,10 +13,17 @@ class AvisosExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Aviso::select('titulo')->get();
+         return Aviso::all()->map(function ($aviso) {
+            return [
+                'id' => $aviso->id,
+                'titulo' => $aviso->titulo,
+                'contenido' => $aviso->contenido,
+                'publicado' => $aviso->publicado ? '1' : '0',
+            ];
+        });
     }
     public function headings(): array
     {
-        return ['Título'];
+        return ['id', 'titulo', 'contenido', 'publicado'];
     }
 }
