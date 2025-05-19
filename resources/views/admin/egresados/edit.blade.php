@@ -24,6 +24,25 @@
                 @endforeach
             </flux:select>
 
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Estado del egresado</label>
+                <div class="flex items-center gap-6">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="1" class="form-radio text-blue-600"
+                            {{ old('is_active', $egresado->is_active) == '1' ? 'checked' : '' }}>
+                        <span class="ml-2">Activo</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="is_active" value="0" class="form-radio text-red-600"
+                            {{ old('is_active', $egresado->is_active) == '0' ? 'checked' : '' }}>
+                        <span class="ml-2">Inactivo</span>
+                    </label>
+                </div>
+                @error('is_active')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
+            </div>     
+
             <div class="flex justify-end">
                 <flux:button variant="primary" type="Submit">Enviar</flux:button>         
             </div>

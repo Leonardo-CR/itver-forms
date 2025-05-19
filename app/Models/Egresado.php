@@ -24,6 +24,7 @@ class Egresado extends Model
         'apm',
         'correo',
         'password',
+        'is_active',
         'cv_carrera',
     ];
    

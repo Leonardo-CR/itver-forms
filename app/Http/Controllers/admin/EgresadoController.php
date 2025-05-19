@@ -54,6 +54,7 @@ class EgresadoController extends Controller
             'cv_carrera' => 'required|integer',
         ]);
         $data['password'] = bcrypt($data['password']);
+        $data['is_active'] = 1;
 
         User::create($data);
     
@@ -76,6 +77,7 @@ class EgresadoController extends Controller
             'nombre' => 'required|string|max:100',
             'correo' => 'required|email|max:100',
             'cv_carrera' => 'required|integer',
+            'is_active' => 'nullable|boolean',
         ]);
         $egresado->update($data);
         return redirect()->route('admin.egresados.edit', $egresado);
@@ -83,7 +85,8 @@ class EgresadoController extends Controller
 
     public function destroy(User $egresado)
     {
-        $egresado->delete();
+        $egresado->is_active = 0;
+        $egresado->save();
         return redirect()->route('admin.egresados.index');
     }
 }

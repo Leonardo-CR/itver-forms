@@ -25,6 +25,7 @@ class User extends Authenticatable
         'cv_carrera',
         'password',
         'tipo',
+        'is_active',
     ];
 
     /**

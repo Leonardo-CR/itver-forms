@@ -14,9 +14,9 @@
         </div>
          {{-- Link para exportar --}}
         <a href="{{ route('admin.encuestas.exportar') }}" class="btn btn-blue">
-            <button>Exportar Avisos</button>
+            <button>Exportar Encuestas</button>
         </a>
-        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">+ Nueva Encuesta</a>
+        <a href="{{ route('admin.encuestas.create') }}" class="btn btn-blue">Nueva Encuesta</a>
     </div>
 
     <div class="relative overflow-x-auto bg-white shadow rounded-lg">
@@ -25,10 +25,10 @@
                 <tr>
                     <th class="px-4 py-3">Clave</th>
                     <th class="px-4 py-3">Periodo</th>
-                    <th class="px-4 py-3">Estado</th>
                     <th class="px-4 py-3">Inicio</th>
                     <th class="px-4 py-3">Cierre</th>
                     <th class="px-4 py-3">Tipo</th>
+                    <th class="px-4 py-3">Estado</th>
                     <th class="px-4 py-3 text-center">Acciones</th>
                 </tr>
             </thead>
@@ -36,13 +36,7 @@
                 @forelse ($encuestas as $encuesta)
                 <tr class="border-t hover:bg-gray-50">
                     <td class="px-4 py-2">{{ $encuesta->cv_encuesta }}</td>
-                    <td class="px-4 py-2">{{ $encuesta->periodo }}</td>
-                    <td class="px-4 py-2">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
-                            {{ $encuesta->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
-                            {{ $encuesta->is_active ? 'Activa' : 'Inactiva' }}
-                        </span>
-                    </td>
+                    <td class="px-4 py-2">{{ $encuesta->periodo }}</td>                    
                     <td class="px-4 py-2">
                         {{ \Carbon\Carbon::parse($encuesta->fecha_inicio)->format('d/m/Y') }} 
                         <span class="text-xs text-gray-500">({{ $encuesta->hora_inicio }})</span>
@@ -53,6 +47,12 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $encuesta->tipo_encuesta->nombre }}
+                    </td>
+                    <td class="px-4 py-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
+                            {{ $encuesta->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700' }}">
+                            {{ $encuesta->is_active ? 'Activa' : 'Inactiva' }}
+                        </span>
                     </td>
                     <td class="px-4 py-2 text-center">
                         <div class="flex justify-center space-x-2">
@@ -85,12 +85,12 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="delete-form">
+                                    <form action="{{ route('admin.encuestas.destroy', $encuesta) }}" method="POST" class="formulario delete-form" id="formulario">
                                         @csrf @method('DELETE')
                                         <!-- Boton Borrar -->
                                         <button type="submit" class="btn btn-red text-xs"> 
                                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-4.29-4.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
                                             </svg>
                                         </button>
                                     </form>
@@ -111,28 +111,4 @@
     <div class="mt-4">
         {{ $encuestas->links() }}
     </div>
-
-    @push('js')
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: "¿Estás seguro?",
-                    text: "¡El registro se eliminará permanentemente!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    cancelButtonText: "Cancelar",
-                    confirmButtonText: "Sí, eliminar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
-            });
-        });
-    </script>
-    @endpush
 </x-layouts.administrarum>
