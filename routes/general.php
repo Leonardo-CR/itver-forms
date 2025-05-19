@@ -42,7 +42,7 @@ Route::get('/general/comentarios-sugerencias', [EgresadosController::class, 'com
 
 Route::post('/general/store', [GeneralController::class, 'store'])->name('general.store');//Esta ruta registra las respuestas de la encuesta GENERAL
 
-Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'reporte_generales'])->name('admin.general.graficas')->middleware(['auth', 'role|jefe_de_departamento']);
+Route::get('admin/general/{encuesta}/graficas',[GraficasController::class, 'reporte_generales'])->name('admin.general.graficas')->middleware(['auth', 'role:DBA|egresado_general']);
 
 Route::get('admin/general/{encuesta}/indicadores',[IndicadoresController::class, 'indicadores_general'])->name('admin.general.indicadores')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
 Route::get('admin/general/{encuesta}/respuestas',[EncuestaController::class, 'show'])->name('admin.general.respuestas')->middleware(['auth', 'role:DBA|jefe_de_departamento']);
@@ -52,6 +52,8 @@ Route::get('admin/general/respuestas/{encuesta}/{pregunta}/respuestasDetalle',[E
 //Route::post('egresado/perfil/register', [PerfilEgresadoController::class, 'guardarDatosGenerales'])->name('egresado.perfil.register'); //registra los datos generales del egresado
 //Route::get('egresado/perfil', [PerfilEgresadoController::class, 'datospersonales'])->name('egresado.perfil.mostrar'); //muestra el perfil del egresado
 
+Route::get('/graficas-generales', [GraficasController::class, 'reporte_generales_n'])->name('graficas.reporte_generales_n');
 
+Route::get('/graficas-quibios', [GraficasController::class, 'reporte_quibio_n'])->name('graficas.reporte_quibio_n');
 
 require __DIR__.'/auth.php';

@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             ['codigo' => 'GESEM', 'nombre' => 'Ing.Gestion Empresarial'],
             ['codigo' => 'ELECA', 'nombre' => 'Ing.Electrica'],
             ['codigo' => 'ADMIN', 'nombre' => 'Lic.Administración'],
+            ['codigo' => 'SISTE', 'nombre' => 'Ing.Sistemas computacionales'],
             ['codigo' => 'ENREN', 'nombre' => 'Ing.Energias Renovables']
         ]);
 
